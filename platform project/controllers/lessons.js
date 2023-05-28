@@ -24,17 +24,15 @@ router.delete('/delete/:id',async(req,res)=>{
     const lesson=await Lesson.findByIdAndDelete(req.params.id)
     let course=lesson.course
     let courseId=course.toString()
-    // res.sendStatus(201)
+
     res.redirect(`/lessons/${courseId}`)
 }) 
 
-   
+     
 //this is course id
 router.post('/new/:id',async(req,res)=>{
     let Id=req.params.id
   
-   
-    console.log(Id)
     const lesson=new Lesson({
         title:req.body.title,
         content:req.body.content,
