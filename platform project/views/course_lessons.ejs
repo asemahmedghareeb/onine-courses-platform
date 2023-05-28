@@ -9,25 +9,25 @@
 <body>
     <form action="/lessons/new/<%= id %>" method="post">
 
-        <h1>Add new lesson</h1>
+        <h1>اضافة درس جديد</h1>
 
     
             <div>
-                <label for="title">title</label>
+                <label for="title">عنوان الدرس</label>
                 <input type="text" id="title" name="title" placeholder="type the lesson name">
             </div>
     
             <div>
-                <label for="content" >link</label>
+                <label for="content" >رابط الدرس</label>
                 <textarea name="content" id="content" cols="30" rows="10" placeholder="enter the video linek"></textarea>
                 <!-- <input type="text" id="content" name="content"> -->
             </div>
     
-            <button type="submit">create</button>
+            <button type="submit">اضافة</button>
 
     </form>
     <hr>
-    <h1><%=title%>  lessons</h1>
+    <h1>دروس <%=title%>  </h1>
 
     <% lessons.map(lesson=>{ %>
       <div>
@@ -35,7 +35,7 @@
           <h3><%= lesson.title %></h2>
             <iframe width="560" height="315" src="<%= lesson.content %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             <form action="/lessons/delete/<%= lesson.id %>?_method=Delete" method="post">
-              <button type="submit">Delete</button>
+              <button type="submit">حدف الدرس</button>
             </form>
           <hr>
     </div>

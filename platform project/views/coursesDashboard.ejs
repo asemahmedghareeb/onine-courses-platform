@@ -15,26 +15,27 @@
         td ,tr{
             border: 1px black solid;
         }
+     
 
     </style>
 </head>
 <body>
-    <h1>Add new course</h1>
+    <h1>اضافة مادة جديدة</h1>
     <form action="/courses/new" method="Post">
 
         <div>
-            <label for="title">title</label>
+            <label for="title">اسم المادة</label>
             <input type="text" id="title" name="title">
         </div>
 
         <div>
-            <label for="description">description</label>
+            <label for="description">التيرم</label>
             <input type="text" id="description" name="description">
         </div>
 
-        <button type="submit">create</button>
+        <button type="submit">اضافة</button>
     </form>
-    <h1>our courses</h1>
+    <h1>المواد</h1>
     <table style="border:1px black solid">
         <% courses.map(course=>{ %>
             <tr>
@@ -46,17 +47,17 @@
 
                 </td>
                 <td>
-                    <a href="/lessons/<%= course.id %>">lessons</a>
+                    <a href="/lessons/<%= course.id %>">الدروس</a>
 
                 </td>
                 <td>
                     <form action="/courses/delete/<%= course.id %>?_method=Delete" method="post">
-                        <button type="submit">Delete</button>
+                        <button type="submit">حذف</button>
                     </form>
                 </td>
                 <td>
                     <form action="/courses/update/<%= course.id %>" method="get">
-                        <button type="submit">update</button>
+                        <button type="submit">تعديل</button>
                     </form>
                 </td>
             </tr>

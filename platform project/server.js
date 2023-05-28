@@ -14,7 +14,7 @@ const lessonsRouter=require('./controllers/lessons')
 
 //middleware
 app.set('view-engine',"ejs")
-app.use(express.static(path.join(__dirname,'public/styles')))
+app.use(express.static(path.join('public/styles')))
 app.use(express.urlencoded({ extended: false }))
 app.use(methodOverride('_method'))
 

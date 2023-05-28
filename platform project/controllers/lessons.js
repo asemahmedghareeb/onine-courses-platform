@@ -16,6 +16,19 @@ router.get('/:id',async(req,res)=>{
     res.render("course_lessons.ejs",{lessons:Lessons,id:Id,title:title})
  
 })
+
+router.get('/show/:id',async(req,res)=>{
+    let Id=req.params.id
+    //getting the title to view on the lessons page
+    const course=await Course.findById(Id)
+    title=course.title
+    
+
+    //getting all the lessons
+    const Lessons=await Lesson.find({course:Id})
+    res.render("lessons.ejs",{lessons:Lessons,id:Id,title:title})
+ 
+})
     
 
 //this id is lesson id
