@@ -4,9 +4,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>courses Details</title>
+    <title>courses lessons</title>
 </head>
 <body>
+    <form action="/lessons/new/<%= id %>" method="post">
+
+        <h1>Add new lesson</h1>
+
     
+            <div>
+                <label for="title">title</label>
+                <input type="text" id="title" name="title" placeholder="type the lesson name">
+            </div>
+    
+            <div>
+                <label for="content" >link</label>
+                <!-- <textarea name="content" id="content" cols="30" rows="10" placeholder="enter the video linek"></textarea> -->
+                <input type="text" id="content" name="content">
+            </div>
+    
+            <button type="submit">create</button>
+
+    </form>
+    <hr>
+    <h1><%=title%>  lessons</h1>
+
+    <% lessons.map(lesson=>{ %>
+      <div>
+
+          <h3><%= lesson.title %></h2>
+            <iframe width="560" height="315" src="<%= lesson.content %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <form action="/lessons/delete/<%= lesson.id %>?_method=Delete" method="post">
+              <button type="submit">Delete</button>
+            </form>
+          <hr>
+    </div>
+    
+    <% })%>
 </body>
 </html>

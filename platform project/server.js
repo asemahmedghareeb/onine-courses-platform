@@ -5,9 +5,12 @@ const port=process.env.PORT
 const app=express()
 express.json()
 const methodOverride = require('method-override')
+
+//import routers
 const loginRouter=require('./controllers/auth/login')
 const registerRouter=require('./controllers/auth/register')
 const couresRouter=require('./controllers/courses')
+const lessonsRouter=require('./controllers/lessons')
 
 //middleware
 app.set('view-engine',"ejs")
@@ -33,6 +36,7 @@ app.get('/',(req,res)=>{
 app.use('/login',loginRouter)
 app.use('/register',registerRouter)
 app.use('/courses',couresRouter)
+app.use('/lessons',lessonsRouter)
 
     
   
