@@ -13,11 +13,11 @@ router.get('/:id',async(req,res)=>{
     
 
     //getting all the lessons
-    const Lessons=await Lesson.find({course:Id})
+    const Lessons=await Lesson.find({course:Id}).sort({lessonNumber:1})
     res.render("course_lessons.ejs",{lessons:Lessons,id:Id,title:title})
  
-})
- 
+    
+}) 
 router.get('/show/:id',async(req,res)=>{
     let Id=req.params.id
     //getting the title to view on the lessons page
@@ -50,7 +50,8 @@ router.post('/new/:id',async(req,res)=>{
     const lesson=new Lesson({
         title:req.body.title,
         content:req.body.content,
-        course:Id
+        course:Id,
+        lessonNumber:req.body.lessonNumber
     })
 
     await lesson.save()

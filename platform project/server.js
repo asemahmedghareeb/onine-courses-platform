@@ -18,7 +18,7 @@ app.use(express.static('public/styles'))
 app.use(express.urlencoded({ extended: false }))
 app.use(methodOverride('_method'))
 
-
+ 
 //database connection
 const mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://asem:123@cluster0.etxylsx.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
