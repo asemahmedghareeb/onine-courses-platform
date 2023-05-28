@@ -7,10 +7,10 @@
     <title>courses</title>
 </head>
 <body>
-    <h1>our courses</h1>
+    <h1>المواد</h1>
     <% courses.map(course=>{ %>
-        <div><%= course.title %></div>
-        <div><%= course.description %></div>
+        <div>السنة الدراسة <%= course.title %></div>
+        <div>  <%= course.description %></div>
         <a href="/lessons/show/<%= course.id %>">دروس المادة</a>
 
 

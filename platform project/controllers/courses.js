@@ -11,7 +11,7 @@ router.get('/',async(req,res)=>{
 
 router.get('/dashboard',async(req,res)=>{
   const courses=await Course.find()
-  res.render('coursesDashboard.ejs',{courses:courses})
+  res.render('dashboards/coursesDashboard.ejs',{courses:courses})
  
 })
 
