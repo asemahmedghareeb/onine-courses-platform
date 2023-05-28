@@ -7,20 +7,20 @@
     <title>Edit</title>
 </head>
 <body>
-    <h1>Edit</h1>
+    <h1>تعديل المادة</h1>
     <form action="/courses/update/<%= course.id %>?_method=put" method="Post">
 
         <div>
-            <label for="title">title</label>
+            <label for="title">ايم المادة</label>
             <input type="text" id="title" name="title" value="<%= course.title%>">
         </div>
  
         <div>
-            <label for="description">description</label>
+            <label for="description">الفصل الدراسي</label>
             <input type="text" id="description" name="description" value="<%= course.description%>">
         </div>
 
-        <button type="submit">Save</button>
+        <button type="submit">حفظ</button>
     </form>
 </body>
 </html>

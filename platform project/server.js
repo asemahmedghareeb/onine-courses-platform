@@ -11,10 +11,10 @@ const loginRouter=require('./controllers/auth/login')
 const registerRouter=require('./controllers/auth/register')
 const couresRouter=require('./controllers/courses')
 const lessonsRouter=require('./controllers/lessons')
-
+const profileRouter=require('./controllers/profile')
 //middleware
 app.set('view-engine',"ejs")
-app.use(express.static(path.join('public/styles')))
+app.use(express.static('public/styles'))
 app.use(express.urlencoded({ extended: false }))
 app.use(methodOverride('_method'))
 
@@ -37,6 +37,7 @@ app.use('/login',loginRouter)
 app.use('/register',registerRouter)
 app.use('/courses',couresRouter)
 app.use('/lessons',lessonsRouter)
+app.use('/profile',profileRouter)
 
     
   

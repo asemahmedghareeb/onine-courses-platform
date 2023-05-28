@@ -3,6 +3,7 @@ const router = express.Router();
 const Lesson = require('../models/lesson');
 const Course = require('../models/course');
   
+//read
 //this id is course id 
 router.get('/:id',async(req,res)=>{
     let Id=req.params.id
@@ -30,7 +31,7 @@ router.get('/show/:id',async(req,res)=>{
  
 })  
      
-
+//delete
 //this id is lesson id
 router.delete('/delete/:id',async(req,res)=>{
   
@@ -41,7 +42,7 @@ router.delete('/delete/:id',async(req,res)=>{
     res.redirect(`/lessons/${courseId}`)
 }) 
 
-     
+//create   
 //this is course id
 router.post('/new/:id',async(req,res)=>{
     let Id=req.params.id
