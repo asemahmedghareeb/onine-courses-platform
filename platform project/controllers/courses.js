@@ -1,7 +1,7 @@
 const express=require('express')
 const router = express.Router();
 const Course = require('../models/course');
-
+const Lesson = require('../models/lesson');
 router.get('/',async(req,res)=>{
   const courses=await Course.find()
 
@@ -19,10 +19,12 @@ router.get('/dashboard',async(req,res)=>{
 //when we delete course we have to delete all it's lessons
 router.delete('/delete/:id',async(req,res)=>{
   await Course.findByIdAndDelete(req.params.id)
-  res.redirect('/courses/dashboard')
+  let lessons =await Lesson.deleteMany({course:req.params.id})
 
+  res.redirect('/courses/dashboard')
+    
 }) 
-     
+
 
 router.get('/update/:id',async(req,res)=>{
   const course=await Course.findById(req.params.id)
