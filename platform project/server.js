@@ -15,11 +15,21 @@ const profileRouter=require('./controllers/profile')
 const usersRouter=require('./controllers/users')
 //middleware
 app.set('view-engine',"ejs")
-app.use(express.static('public/styles'))
+
+
+// Serve static files from the "public" directory
+app.use(express.static('public'));
+
+
+
+// Start the server
+app.listen(3000, () => {
+  console.log('Server started on port 3000');
+});
 app.use(express.urlencoded({ extended: false }))
 app.use(methodOverride('_method'))
 
- 
+
 //database connection
 const mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://asem:123@cluster0.etxylsx.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
