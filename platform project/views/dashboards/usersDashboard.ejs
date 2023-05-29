@@ -63,11 +63,15 @@
             course id
         </th>
         <th>
+            user registeration date
+        </th>
+        <th>
              Delete user
         </th>
         <th>
              Edit user
         </th>
+
 
         <% users.map(user=>{ %>
             </th>
@@ -92,9 +96,15 @@
 
                 </td>
                 <td>
+                    <%= user.createdAt.toLocaleDateString() %>
+
+                </td>
+                <td>
                     <%= user.coursesId %>
 
                 </td>
+    
+                
                 <td>
                     <form action="/users/<%= user.id %>?_method=Delete" method="post">
                         <button type="submit">حذف</button>

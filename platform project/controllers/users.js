@@ -11,7 +11,6 @@ router.get('/',async(req,res)=>{
 
 
 
-
 //delete user
 router.delete('/:id',async(req,res)=>{
     const Users=await User.findByIdAndDelete(req.params.id)
@@ -79,6 +78,7 @@ router.patch('/:id',async(req,res)=>{
         user.role=role
         user.courses=course
         user.coursesId=course2.id
+
         await user.save()
     }
     else if(role==='admin'){
