@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-
 const userSchema = new mongoose.Schema({
     name: {
       type: String,
@@ -14,6 +13,10 @@ const userSchema = new mongoose.Schema({
       type: String,
       required: true
     },
+    role: {
+      type: String,
+      required: true
+    },
     courses: [{
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Course'
@@ -23,5 +26,4 @@ const userSchema = new mongoose.Schema({
         default: Date.now
     },
 });
-
-const User = mongoose.model('User', userSchema);
+module.exports = mongoose.model('User', userSchema);
