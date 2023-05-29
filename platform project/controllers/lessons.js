@@ -14,10 +14,13 @@ router.get('/:id',async(req,res)=>{
 
     //getting all the lessons
     const Lessons=await Lesson.find({course:Id}).sort({lessonNumber:1})
-    res.render("course_lessons.ejs",{lessons:Lessons,id:Id,title:title})
+    res.render("dashboards/course_lessons.ejs",{lessons:Lessons,id:Id,title:title})
  
     
 }) 
+
+
+
 router.get('/show/:id',async(req,res)=>{
     let Id=req.params.id
     //getting the title to view on the lessons page
@@ -30,7 +33,7 @@ router.get('/show/:id',async(req,res)=>{
     res.render("lessons.ejs",{lessons:Lessons,id:Id,title:title})
  
 })  
-     
+      
 //delete
 //this id is lesson id
 router.delete('/delete/:id',async(req,res)=>{
