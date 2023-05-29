@@ -14,11 +14,12 @@ router.delete('/:id',async(req,res)=>{
     res.redirect('/users/')
 })
 
-
+ 
 router.post('/new',async(req,res)=>{
     const {name,password,email,role,course}=req.body
-    const course2=await Course.findOne({title:name})
 
+    const course2=await Course.findOne({title:course})
+    
     console.log(course2)
     if(course2!==null){
         const user=new User({
