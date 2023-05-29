@@ -6,7 +6,6 @@ const Course = require('../models/course');
 //get all users
 router.get('/',async(req,res)=>{
     const Users=await User.find()
-    console.log(Users)
   res.render('dashboards/usersDashboard.ejs',{users:Users})
 })
 
@@ -26,8 +25,7 @@ router.post('/new',async(req,res)=>{
     //hashing passwords
     const course2=await Course.findOne({title:course})
     
-    console.log(course2)
-    if(course2!==null){
+    if(course2 ){
         const user=new User({
             name:name,
             email:email,
@@ -36,9 +34,19 @@ router.post('/new',async(req,res)=>{
             courses:course,
             coursesId:course2.id
         })
-        
+         
           await user.save()
-          console.log(user)
+
+    }else if(role==='admin'){
+        const user=new User({
+            name:name,
+            email:email,
+            password:password, 
+            role:role,
+            courses:course,
+        })
+        await user.save()
+
     }
     else 
         console.log('this course not found');
@@ -46,21 +54,25 @@ router.post('/new',async(req,res)=>{
   res.redirect('/users/')
 })
 
-
-//get update
+ 
+//get update page  
 router.get('/:id',async(req,res)=>{
-    res.render('updateUser.ejs',{id:req.params.id})
+    const user=await User.findById(req.params.id)
+    res.render('updateUser.ejs',{id:req.params.id , user:user})
 })
 
-//update
-router.put('/:id',async(req,res)=>{
+
+
+
+//update user information
+router.patch('/:id',async(req,res)=>{
 
     
     const {name,password,email,role,course}=req.body
     const course2=await Course.findOne({title:course})
-    console.log(course2)
-    if(course2!==null){
-        const user=await User.findById(req.params.id)
+
+    const user=await User.findById(req.params.id)
+    if(course2 ){
         user.name=name
         user.email=email,
         user.password=password
@@ -68,11 +80,18 @@ router.put('/:id',async(req,res)=>{
         user.courses=course
         user.coursesId=course2.id
         await user.save()
-        console.log(user)
+    }
+    else if(role==='admin'){
+        user.name=name
+        user.email=email,
+        user.password=password
+        user.role=role
+        user.courses=course
+        await user.save()
     }
     else 
         console.log('this course not found');
-
+ 
   res.redirect('/users/')
 })
 

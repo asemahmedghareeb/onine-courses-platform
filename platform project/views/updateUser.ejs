@@ -8,27 +8,27 @@
 </head>
 <body>
     <h1>تعديل بيانات المستخدم</h1>
-    <form action="/users/<%=id%>" method="post">
+    <form action="/users/<%=id%>?_method=patch" method="post">
         <div>
             <label for="name">الاسم </label>
-            <input type="name" id="name" name="name">
+            <input type="name" id="name" name="name" value="<%= user.name %>">
         </div>
     
         <div>
             <label for="email">الايميل</label>
-            <input type="email" id="email" name="email">
+            <input type="email" id="email" name="email" value="<%= user.email %>">
         </div>
         <div>
             <label for="password">كلمة المرور</label>
-            <input type="password" id="password" name="password">
+            <input type="text" id="password" name="password" value="<%= user.password %>">
         </div>
         <div>
             <label for="role">نوع المستخدم</label>
-            <input type="text" id="role" name="role">
+            <input type="text" id="role" name="role" value="<%= user.role %>">
         </div>
         <div>
             <label for="course">اسم الكورس</label>
-            <input type="text" id="course" name="course">
+            <input type="text" id="course" name="course" value="<%= user.courses %>">
         </div>
     
         <button type="submit">حفظ</button>
