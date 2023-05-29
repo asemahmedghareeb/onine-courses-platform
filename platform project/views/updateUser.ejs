@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>update user</title>
+</head>
+<body>
+    <h1>تعديل بيانات المستخدم</h1>
+    <form action="/users/<%=id%>" method="post">
+        <div>
+            <label for="name">الاسم </label>
+            <input type="name" id="name" name="name">
+        </div>
+    
+        <div>
+            <label for="email">الايميل</label>
+            <input type="email" id="email" name="email">
+        </div>
+        <div>
+            <label for="password">كلمة المرور</label>
+            <input type="password" id="password" name="password">
+        </div>
+        <div>
+            <label for="role">نوع المستخدم</label>
+            <input type="text" id="role" name="role">
+        </div>
+        <div>
+            <label for="course">اسم الكورس</label>
+            <input type="text" id="course" name="course">
+        </div>
+    
+        <button type="submit">حفظ</button>
+        
+    </form>
+</body>
+</html>
