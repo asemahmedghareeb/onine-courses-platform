@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>users Dashboard</title>
+    <style>
+        table{
+            border: 1px black solid;
+        }
+        tr ,td{
+            border:solid 1px black;
+        }
+
+    </style>
+</head>
+<body>
+    <form action="/users/new" method="post">
+        <div>
+            <label for="name">الاسم </label>
+            <input type="name" id="name" name="name">
+        </div>
+    
+        <div>
+            <label for="email">الايميل</label>
+            <input type="email" id="email" name="email">
+        </div>
+        <div>
+            <label for="password">كلمة المرور</label>
+            <input type="password" id="password" name="password">
+        </div>
+        <div>
+            <label for="role">نوع المستخدم</label>
+            <input type="text" id="role" name="role">
+        </div>
+        <div>
+            <label for="course">اسم الكورس</label>
+            <input type="text" id="course" name="course">
+        </div>
+    
+        <button type="submit">اضافة</button>
+        
+    </form>
+
+    <table>
+        <th>
+            name
+        </th>
+        <th>
+            email
+        </th>
+        <th>
+            password
+        </th>
+        <th>
+            role
+        </th>
+        <th>
+            course
+        </th>
+        <th>
+            course id
+        </th>
+        <th>
+             Delete user
+        </th>
+        <th>
+             Edit user
+        </th>
+
+        <% users.map(user=>{ %>
+            </th>
+            <tr>
+                <td>
+                <%= user.name %>
+                </td>
+                <td>
+                    <%= user.email %>
+
+                </td>
+                <td>
+                    <%= user.password %>
+
+                </td>
+                <td>
+                    <%= user.role %>
+
+                </td>
+                <td>
+                    <%= user.courses %>
+
+                </td>
+                <td>
+                    <%= user.coursesId %>
+
+                </td>
+                <td>
+                    <form action="/users/<%= user.id %>?_method=Delete" method="post">
+                        <button type="submit">حذف</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="/users/update/<%= user.id %>" method="get">
+                        <button type="submit">تعديل</button>
+                    </form>
+                </td>
+            </tr>
+        
+        <% })%>
+        
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

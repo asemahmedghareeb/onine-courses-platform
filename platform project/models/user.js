@@ -15,11 +15,19 @@ const userSchema = new mongoose.Schema({
     },
     role: {
       type: String,
-      required: true
+      required: false,
+      default:"user"
     },
     courses: [{
+      type: mongoose.Schema.Types.title,
+      type:String,
+      ref: 'Course',
+      required:false
+    }],
+    coursesId: [{
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Course'
+      ref: 'Course',
+      required:false
     }],
     createdAt: {
         type: Date,
