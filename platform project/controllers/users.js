@@ -15,7 +15,7 @@ router.get('/',async(req,res)=>{
 //delete user
 router.delete('/:id',async(req,res)=>{
     const Users=await User.findByIdAndDelete(req.params.id)
-    // console.log(Users)
+
     res.redirect('/users/')
 })
 
@@ -77,8 +77,4 @@ router.patch('/:id',async(req,res)=>{
  
   res.redirect('/users/')
 })
-
-
-
-
 module.exports=router
