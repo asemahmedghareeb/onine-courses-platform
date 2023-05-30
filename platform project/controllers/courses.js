@@ -4,7 +4,6 @@ const Course = require('../models/course');
 const Lesson = require('../models/lesson');
 router.get('/',async(req,res)=>{
   const courses=await Course.find()
-  
   res.render('courses.ejs',{courses:courses})
 })
 

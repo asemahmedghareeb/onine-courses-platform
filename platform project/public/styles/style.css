@@ -1,30 +1,57 @@
 html body{
+    margin: 0px;
     height: 100%;
 }
 body{
-    color: aliceblue;
-    background-color:#080c14;
+    color: white;
+    background-color:#172030;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
 }
+     
+#bg{
+    height: 100vh;
+    width: 100%;
+}
+
+nav{
+    width: 100%;
+}
+
 
 a{
     text-decoration: none;
-    color: aliceblue;
-    margin-right: 10px;
+    color:white;
 }
 table {
     text-align: center;
 }
 
-nav{
-    padding: 10px;
-}
-
-
-
 
 table{
     border: 1px black solid;
 }
+
 tr ,td,th{
+    padding: 10px;
     border:solid 1px white;
+}
+
+
+#courses{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100px;
+    width: 200px;
+    background-color: black;
+}
+
+
+form input{
+    margin: 10px;
 }

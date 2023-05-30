@@ -7,14 +7,13 @@ const app=express()
 express.json()
 const methodOverride = require('method-override')
  
-  
- 
+
 //middleware
 app.use(express.static('public')); 
 app.set('view-engine',"ejs")
 app.use(express.urlencoded({ extended: false }))
 app.use(methodOverride('_method'))
-
+  
 //import routers
 const loginRouter=require('./controllers/auth/login')
 const registerRouter=require('./controllers/auth/register')
@@ -23,7 +22,7 @@ const lessonsRouter=require('./controllers/lessons')
 const profileRouter=require('./controllers/profile')
 const usersRouter=require('./controllers/users')
     
-
+ 
 //database connection
 mongoose.connect('mongodb+srv://asem:123@cluster0.etxylsx.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to database'))
