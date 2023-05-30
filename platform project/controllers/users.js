@@ -40,20 +40,7 @@ router.post('/new',async(req,res)=>{
          
           await user.save()
 
-    // }
-    // else if(role==='admin'){
-    //     const user=new User({
-    //         name:name,
-    //         email:email,
-    //         password:password, 
-    //         role:role,
-    //         courses:course,
-    //     })
-    //     await user.save()
- 
-    // }
-    // else 
-    //     console.log('this course not found');
+
 
   res.redirect('/users/')
 })
@@ -62,7 +49,8 @@ router.post('/new',async(req,res)=>{
 //get update page  
 router.get('/:id',async(req,res)=>{
     const user=await User.findById(req.params.id)
-    res.render('updateUser.ejs',{id:req.params.id , user:user})
+    const names=await Course.find({}, 'title') 
+    res.render('updateUser.ejs',{id:req.params.id , user:user,names:names})
 })
 
 
@@ -83,19 +71,9 @@ router.patch('/:id',async(req,res)=>{
         user.role=role
         user.courses=course
         user.coursesId=course2.id
+        await user.save()
+    }
 
-        await user.save()
-    }
-    else if(role==='admin'){
-        user.name=name
-        user.email=email,
-        user.password=password
-        user.role=role
-        user.courses=course
-        await user.save()
-    }
-    else 
-        console.log('this course not found');
  
   res.redirect('/users/')
 })

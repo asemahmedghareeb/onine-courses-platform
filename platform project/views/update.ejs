@@ -13,12 +13,15 @@
     <form action="/courses/update/<%= course.id %>?_method=put" method="Post">
         <div>
             <label for="title">ايم المادة</label>
-            <input type="text" id="title" name="title" value="<%= course.title%>">
+            <input type="text" id="title" name="title" value="<%= course.title%>"required>
         </div>
  
         <div>
             <label for="description">الفصل الدراسي</label>
-            <input type="text" id="description" name="description" value="<%= course.description%>">
+            <select name="description" id="description">
+                <option >التيرم الاول</option>
+                <option >التيرم التاني</option>
+            </select>
         </div>
 
         <button type="submit">حفظ</button>

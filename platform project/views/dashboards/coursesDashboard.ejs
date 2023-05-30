@@ -6,19 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/style.css">
     <title>courses Dashboard</title>
-    <style>
-        body,html{
-            height: 100%;
-            margin: 0px;
-            padding: 0px;
-            /* background-color: orange; */
-        }
-        td ,tr{
-            border: 1px black solid;
-        }
+
      
 
-    </style>
 </head>
 <body>
     <h1>اضافة مادة جديدة</h1>
@@ -26,12 +16,16 @@
 
         <div>
             <label for="title">اسم المادة</label>
-            <input type="text" id="title" name="title">
+            <input type="text" id="title" name="title" required>
         </div>
 
         <div>
             <label for="description">التيرم</label>
-            <input type="text" id="description" name="description">
+            <!-- <input type="text" id="description" name="description"> -->
+            <select name="description" id="description">
+                <option >التيرم الاول</option>
+                <option >التيرم التاني</option>
+            </select>
         </div>
 
         <button type="submit">اضافة</button>

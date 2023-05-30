@@ -4,7 +4,7 @@ const Course = require('../models/course');
 const Lesson = require('../models/lesson');
 router.get('/',async(req,res)=>{
   const courses=await Course.find()
-
+  
   res.render('courses.ejs',{courses:courses})
 })
 
@@ -22,7 +22,6 @@ router.get('/dashboard',async(req,res)=>{
 router.delete('/delete/:id',async(req,res)=>{
   await Course.findByIdAndDelete(req.params.id)
   let lessons =await Lesson.deleteMany({course:req.params.id})
-
   res.redirect('/courses/dashboard')
     
 })  
@@ -35,7 +34,7 @@ router.get('/update/:id',async(req,res)=>{
   
  
 router.put('/update/:id',async(req,res)=>{
-  console.log(req.body.title)
+
   const course=await Course.findById(req.params.id)
   course.title=req.body.title
   course.description=req.body.description
