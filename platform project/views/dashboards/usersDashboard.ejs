@@ -12,26 +12,35 @@
     <form action="/users/new" method="post">
         <div>
             <label for="name">الاسم </label>
-            <input type="name" id="name" name="name">
+            <input type="name" id="name" name="name" required>
         </div>
     
         <div>
             <label for="email">الايميل</label>
-            <input type="email" id="email" name="email">
+            <input type="email" id="email" name="email" required>
         </div>
         <div>
             <label for="password">كلمة المرور</label>
-            <input type="password" id="password" name="password">
+            <input type="password" id="password" name="password" required min="8" >
         </div>
         <div>
             <label for="role">نوع المستخدم</label>
-            <input type="text" id="role" name="role">
+            <select name="role" id="role">
+                <option value="user">user</option>
+                <option value="admin">admin</option>
+            </select>
         </div>
         <div>
             <label for="course">اسم الكورس</label>
-            <input type="text" id="course" name="course">
+            <select name="course" id="course">
+                <% names.map(name=>{ %>
+                    <option> <%= name.title %></option>
+                    
+                    <% }) %>
+                    <option >none</option>
+            </select>
         </div>
-    
+
         <button type="submit">اضافة</button>
         
     </form>
@@ -43,9 +52,9 @@
         <th>
             email
         </th>
-        <th>
+        <!-- <th>
             password
-        </th>
+        </th> -->
         <th>
             role
         </th>
@@ -53,11 +62,11 @@
             course
         </th>
         <th>
-            course id
-        </th>
-        <th>
             user registeration date
         </th>
+        <!-- <th>
+            course id
+        </th> -->
         <th>
              Delete user
         </th>
@@ -76,10 +85,10 @@
                     <%= user.email %>
 
                 </td>
-                <td>
-                    <%= user.password %>
+                <!-- <td>
+                    <input type="password" value="<%= user.password %>">
 
-                </td>
+                </td> -->
                 <td>
                     <%= user.role %>
 
@@ -92,10 +101,10 @@
                     <%= user.createdAt.toLocaleDateString() %>
 
                 </td>
-                <td>
+                <!-- <td>
                     <%= user.coursesId %>
 
-                </td>
+                </td> -->
     
                 
                 <td>

@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema({
       type: String,
       required: false,
       default:"user"
-    },
+    }, 
     courses: [{
       type: mongoose.Schema.Types.title,
       type:String,

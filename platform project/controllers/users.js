@@ -6,7 +6,8 @@ const Course = require('../models/course');
 //get all users
 router.get('/',async(req,res)=>{
     const Users=await User.find()
-  res.render('dashboards/usersDashboard.ejs',{users:Users})
+    const names=await Course.find({}, 'title') 
+  res.render('dashboards/usersDashboard.ejs',{users:Users,names:names})
 })
 
 
@@ -23,32 +24,36 @@ router.post('/new',async(req,res)=>{
     const {name,password,email,role,course}=req.body
     //hashing passwords
     const course2=await Course.findOne({title:course})
-    
-    if(course2 ){
+    let id=null;
+    if(course2){
+        id=course2.id
+    }
+  
         const user=new User({
             name:name,
             email:email,
             password:password, 
             role:role,
             courses:course,
-            coursesId:course2.id
+            coursesId:id
         })
          
           await user.save()
 
-    }else if(role==='admin'){
-        const user=new User({
-            name:name,
-            email:email,
-            password:password, 
-            role:role,
-            courses:course,
-        })
-        await user.save()
+    // }
+    // else if(role==='admin'){
+    //     const user=new User({
+    //         name:name,
+    //         email:email,
+    //         password:password, 
+    //         role:role,
+    //         courses:course,
+    //     })
+    //     await user.save()
  
-    }
-    else 
-        console.log('this course not found');
+    // }
+    // else 
+    //     console.log('this course not found');
 
   res.redirect('/users/')
 })

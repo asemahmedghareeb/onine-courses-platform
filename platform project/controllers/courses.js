@@ -9,6 +9,8 @@ router.get('/',async(req,res)=>{
 })
 
 
+
+
 router.get('/dashboard',async(req,res)=>{
   const courses=await Course.find()
   res.render('dashboards/coursesDashboard.ejs',{courses:courses})
