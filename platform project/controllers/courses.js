@@ -14,7 +14,7 @@ router.get('/dashboard',async(req,res)=>{
   res.render('dashboards/coursesDashboard.ejs',{courses:courses})
  
 })
-
+ 
 // modify this when we add the lessons
 //when we delete course we have to delete all it's lessons
 router.delete('/delete/:id',async(req,res)=>{
@@ -23,15 +23,15 @@ router.delete('/delete/:id',async(req,res)=>{
 
   res.redirect('/courses/dashboard')
     
-}) 
+})  
 
-
+    
 router.get('/update/:id',async(req,res)=>{
   const course=await Course.findById(req.params.id)
   res.render('update.ejs',{course:course})
 })
   
-
+ 
 router.put('/update/:id',async(req,res)=>{
   console.log(req.body.title)
   const course=await Course.findById(req.params.id)
@@ -43,7 +43,7 @@ router.put('/update/:id',async(req,res)=>{
    
 })
     
- 
+   
    
 router.post('/new',async(req,res)=>{
     const course= new Course({
@@ -53,4 +53,4 @@ router.post('/new',async(req,res)=>{
     await course.save()
     res.redirect('/courses/dashboard') 
 })
-module.exports=router   
+module.exports=router       

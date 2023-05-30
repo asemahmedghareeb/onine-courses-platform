@@ -1,0 +1,28 @@
+html body{
+    height: 100%;
+}
+body{
+    color: aliceblue;
+    background-color:#080c14;
+}
+
+a{
+    text-decoration: none;
+    color: aliceblue;
+    margin-right: 10px;
+}
+
+
+nav{
+    padding: 10px;
+}
+
+
+
+
+table{
+    border: 1px black solid;
+}
+tr ,td,th{
+    border:solid 1px white;
+}

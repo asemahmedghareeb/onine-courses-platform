@@ -5,6 +5,6 @@ router.get('/',(req,res)=>{
   res.render('auth/login.ejs')
 })
 
-
-
+ 
+ 
 module.exports=router

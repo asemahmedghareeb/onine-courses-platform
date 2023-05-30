@@ -20,7 +20,8 @@ const lessonSchema = new mongoose.Schema({
       },
     lessonNumber: {
         type: Number,
-        required:true
+        required:true,
+        unique: true
       },
   });
 

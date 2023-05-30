@@ -45,7 +45,7 @@ router.post('/new',async(req,res)=>{
             courses:course,
         })
         await user.save()
-
+ 
     }
     else 
         console.log('this course not found');
