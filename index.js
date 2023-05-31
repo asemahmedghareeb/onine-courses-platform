@@ -11,7 +11,7 @@ app.use(express.static('public'));
 app.set('view-engine',"ejs")
 app.use(express.urlencoded({ extended: false }))
 app.use(methodOverride('_method'))
-       
+         
 //import routers
 const loginRouter=require('./controllers/auth/login')
 const registerRouter=require('./controllers/auth/register')
