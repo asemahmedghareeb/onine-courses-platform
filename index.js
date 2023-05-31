@@ -1,8 +1,6 @@
 require('dotenv').config()
 const express=require('express')
 const mongoose = require('mongoose');
-const path=require('path')
-
 const app=express()
 express.json()
 const methodOverride = require('method-override')
@@ -34,12 +32,6 @@ const connectDB=async()=>{
     process.exit(1)
   }
 }
-   
-
-      
-
-      
-  
 //home page router
 app.get('/',(req,res)=>{
   res.render('home.ejs')
@@ -53,8 +45,6 @@ app.use('/profile',profileRouter)
 app.use('/users',usersRouter)
 
     
-    
-
 //running the sever
 connectDB().then(()=>{
   app.listen(process.env.PORT||5000,()=>{
