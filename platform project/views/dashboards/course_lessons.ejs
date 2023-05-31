@@ -13,7 +13,7 @@
 
         <h1>اضافة درس جديد</h1>
 
-    
+        <div class="form-container">
             <div>
                 <label for="title">عنوان الدرس</label>
                 <input type="text" id="title" name="title" placeholder="اكتب عنوان الدرس">
@@ -30,7 +30,7 @@
             </div>
     
             <button type="submit">اضافة</button>
-
+            </div>
     </form>
     <hr>
     <h1>دروس <%=title%>  </h1>
@@ -41,7 +41,7 @@
           <h3><%= lesson.title %></h2>
           <%- lesson.content %>
             <form action="/lessons/delete/<%= lesson.id %>?_method=Delete" method="post">
-              <button type="submit">حدف الدرس</button>
+              <button type="submit" id="delete">حدف الدرس</button>
             </form>
           <hr>
     </div>

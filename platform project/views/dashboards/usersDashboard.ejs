@@ -10,6 +10,7 @@
 </head>
 <body>
     <form action="/users/new" method="post">
+        <div class="form-container">
         <div>
             <label for="name">الاسم </label>
             <input type="name" id="name" name="name" required>
@@ -42,7 +43,8 @@
         </div>
 
         <button type="submit">اضافة</button>
-        
+        </div>
+
     </form>
 
     <table>
@@ -99,7 +101,7 @@
                 
                 <td>
                     <form action="/users/<%= user.id %>?_method=Delete" method="post">
-                        <button type="submit">حذف</button>
+                        <button type="submit" id="delete">حذف</button>
                     </form>
                 </td>
                 <td>

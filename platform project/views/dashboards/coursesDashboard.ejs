@@ -13,7 +13,7 @@
 <body>
     <h1>اضافة مادة جديدة</h1>
     <form action="/courses/new" method="Post">
-
+        <div class="form-container">
         <div>
             <label for="title">اسم المادة</label>
             <input type="text" id="title" name="title" required>
@@ -26,8 +26,9 @@
                 <option >التيرم الاول</option>
                 <option >التيرم التاني</option>
             </select>
-        </div>
 
+        </div>
+        </div>
         <button type="submit">اضافة</button>
     </form>
     <h1>المواد</h1>
@@ -47,7 +48,7 @@
                 </td>
                 <td>
                     <form action="/courses/delete/<%= course.id %>?_method=Delete" method="post">
-                        <button type="submit">حذف</button>
+                        <button type="submit" id="delete">حذف</button>
                     </form>
                 </td>
                 <td>
