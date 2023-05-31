@@ -5,7 +5,7 @@ const app=express()
 express.json()
 const methodOverride = require('method-override')
 
-
+  
 //middleware
 app.use(express.static('public')); 
 app.set('view-engine',"ejs")
