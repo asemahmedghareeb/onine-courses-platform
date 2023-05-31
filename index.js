@@ -61,4 +61,4 @@ connectDB().then(()=>{
     console.log(`serve is running on port ${process.env.PORT}`)
     
   })
-})
+}) 
