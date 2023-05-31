@@ -1,19 +1,19 @@
-const dotenv=require('dotenv').config()
+require('dotenv').config()
 const express=require('express')
 const mongoose = require('mongoose');
 const path=require('path')
-const port=process.env.PORT
+
 const app=express()
 express.json()
 const methodOverride = require('method-override')
- 
+
 
 //middleware
 app.use(express.static('public')); 
 app.set('view-engine',"ejs")
 app.use(express.urlencoded({ extended: false }))
 app.use(methodOverride('_method'))
-  
+       
 //import routers
 const loginRouter=require('./controllers/auth/login')
 const registerRouter=require('./controllers/auth/register')
@@ -22,11 +22,18 @@ const lessonsRouter=require('./controllers/lessons')
 const profileRouter=require('./controllers/profile')
 const usersRouter=require('./controllers/users')
     
- 
+  
 //database connection
-mongoose.connect('mongodb+srv://asem:123@cluster0.etxylsx.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('Connected to database'))
-  .catch(err => console.error('Error connecting to database'));
+const connectDB=async()=>{
+  try{
+    const con=await mongoose.connect(process.env.CONN)
+    console.log(`connected to DB ${con.connection.host}`);
+  }catch(err){
+    console.log('Error connecting to database')
+    console.log(err)
+    process.exit(1)
+  }
+}
    
 
       
@@ -46,10 +53,12 @@ app.use('/profile',profileRouter)
 app.use('/users',usersRouter)
 
     
-  
+    
 
 //running the sever
-app.listen(port,()=>{
-  console.log(`serve is running on port ${port}`)
-
+connectDB().then(()=>{
+  app.listen(process.env.PORT||5000,()=>{
+    console.log(`serve is running on port ${process.env.PORT}`)
+    
+  })
 })
