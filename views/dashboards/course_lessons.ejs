@@ -39,10 +39,10 @@
           <h3><%= lesson.title %></h2>
           <%- lesson.content %>
           
-    </div>
-        <form action="/lessons/delete/<%= lesson.id %>?_method=Delete" method="post">
-          <button type="submit" id="delete">حدف الدرس</button>
-        </form>
+        </div >
+          <form action="/lessons/delete/<%= lesson.id %>?_method=Delete" method="post" style="margin-bottom:25px;">
+              <button type="submit" id="delete">حدف الدرس</button>
+            </form>
     
     <% })%>
    
