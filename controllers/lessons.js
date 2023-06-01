@@ -14,9 +14,7 @@ router.get('/:id',async(req,res)=>{
 
     //getting all the lessons
     const Lessons=await Lesson.find({course:Id}).sort({lessonNumber:1})
-    res.render("dashboards/course_lessons.ejs",{lessons:Lessons,id:Id,title:title})
- 
-    
+    res.render("dashboards/course_lessons.ejs",{lessons:Lessons,id:Id,title:title})  
 }) 
 
  
@@ -56,13 +54,8 @@ router.post('/new/:id',async(req,res)=>{
         course:Id,
         lessonNumber:req.body.lessonNumber
     })
-
     await lesson.save()
     console.log("created")
     res.redirect(`/lessons/${Id}`)
 })
-
-
-
-
 module.exports=router  

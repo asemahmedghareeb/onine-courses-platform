@@ -3,12 +3,11 @@ const router = express.Router();
 const Course = require('../models/course');
 const Lesson = require('../models/lesson');
 router.use(express.static('public')); 
+
 router.get('/',async(req,res)=>{
   const courses=await Course.find()
   res.render('courses.ejs',{courses:courses})
 })
-
-
 
 
 router.get('/dashboard',async(req,res)=>{
@@ -17,8 +16,6 @@ router.get('/dashboard',async(req,res)=>{
  
 })
  
-// modify this when we add the lessons
-//when we delete course we have to delete all it's lessons
 router.delete('/delete/:id',async(req,res)=>{
   await Course.findByIdAndDelete(req.params.id)
   let lessons =await Lesson.deleteMany({course:req.params.id})
@@ -44,7 +41,6 @@ router.put('/update/:id',async(req,res)=>{
    
 })
     
-   
    
 router.post('/new',async(req,res)=>{
     const course= new Course({

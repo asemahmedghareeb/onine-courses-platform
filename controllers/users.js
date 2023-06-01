@@ -7,15 +7,13 @@ router.use(express.static('public'));
 router.get('/',async(req,res)=>{
     const Users=await User.find()
     const names=await Course.find({}, 'title') 
-  res.render('dashboards/usersDashboard.ejs',{users:Users,names:names})
+    res.render('dashboards/usersDashboard.ejs',{users:Users,names:names})
 })
-
 
 
 //delete user
 router.delete('/:id',async(req,res)=>{
     const Users=await User.findByIdAndDelete(req.params.id)
-
     res.redirect('/users/')
 })
 
@@ -29,20 +27,17 @@ router.post('/new',async(req,res)=>{
         id=course2.id
     }
   
-        const user=new User({
-            name:name,
-            email:email,
-            password:password, 
-            role:role,
-            courses:course,
-            coursesId:id
-        })
+    const user=new User({
+        name:name,
+        email:email,
+        password:password, 
+        role:role,
+        courses:course,
+        coursesId:id
+    })
          
-          await user.save()
-
-
-
-  res.redirect('/users/')
+    await user.save()
+    res.redirect('/users/')
 })
 
  
@@ -53,13 +48,8 @@ router.get('/:id',async(req,res)=>{
     res.render('updateUser.ejs',{id:req.params.id , user:user,names:names})
 })
 
-
-
-
 //update user information
 router.patch('/:id',async(req,res)=>{
-
-    
     const {name,password,email,role,course}=req.body
     const course2=await Course.findOne({title:course})
 
@@ -73,8 +63,6 @@ router.patch('/:id',async(req,res)=>{
         user.coursesId=course2.id
         await user.save()
     }
-
- 
   res.redirect('/users/')
 })
 module.exports=router
