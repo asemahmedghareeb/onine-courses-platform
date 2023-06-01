@@ -2,7 +2,7 @@ const express=require('express')
 const router = express.Router();
 const User = require('../models/user');
 const Course = require('../models/course');
-
+router.use(express.static('public')); 
 //get all users
 router.get('/',async(req,res)=>{
     const Users=await User.find()

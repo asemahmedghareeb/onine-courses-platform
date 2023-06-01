@@ -2,6 +2,7 @@ const express=require('express')
 const router = express.Router();
 const Course = require('../models/course');
 const Lesson = require('../models/lesson');
+router.use(express.static('public')); 
 router.get('/',async(req,res)=>{
   const courses=await Course.find()
   res.render('courses.ejs',{courses:courses})
@@ -28,7 +29,7 @@ router.delete('/delete/:id',async(req,res)=>{
     
 router.get('/update/:id',async(req,res)=>{
   const course=await Course.findById(req.params.id)
-  res.render('update.ejs',{course:course})
+  res.render('updatecourse.ejs',{course:course})
 })
   
  

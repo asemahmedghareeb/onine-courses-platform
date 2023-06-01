@@ -2,7 +2,7 @@ const express=require('express')
 const router = express.Router();
 const Lesson = require('../models/lesson');
 const Course = require('../models/course');
-  
+router.use(express.static('public')); 
 //read
 //this id is course id 
 router.get('/:id',async(req,res)=>{
