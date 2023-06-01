@@ -167,3 +167,17 @@ footer div{
     display: inline-block;
     font-size: 18px;
 }
+
+
+
+@media only screen and (max-width: 768px) {
+    td , th{
+        font-size: 12px;
+        padding: 0px;
+        margin: 0px;
+    }
+    form{
+        padding: 0px;
+        margin: 0px;
+    }
+}
