@@ -9,16 +9,19 @@
 </head>
 <body> 
     <h1>الكورسات الموجودة علي الموقع</h1>
-    <% courses.map(course=>{ %>
-        <section id="courses">
+    <div id="container">
 
-            <div>السنة الدراسة <%= course.title %></div>
-            <div>  <%= course.description %></div>
-            <a  id="lessons_show" href="/lessons/show/<%= course.id %>"> اسماء الدروس</a>
-            
-            
-        </section>
-        <br><br>
-    <% })%>
+        <% courses.map(course=>{ %>
+            <section id="courses">
+                
+                <div>السنة الدراسة <%= course.title %></div>
+                <div>  <%= course.description %></div>
+                <a  id="lessons_show" href="/lessons/show/<%= course.id %>"> اسماء الدروس</a>
+                
+                
+            </section>
+            <br><br>
+            <% })%>
+    </div>
 </body>
 </html>
