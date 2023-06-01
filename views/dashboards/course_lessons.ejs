@@ -34,15 +34,15 @@
     <h1>دروس <%=title%>  </h1>
 
     <% lessons.map(lesson=>{ %>
-      <div>
+      <div style="padding:20px;">
 
           <h3><%= lesson.title %></h2>
           <%- lesson.content %>
-            <form action="/lessons/delete/<%= lesson.id %>?_method=Delete" method="post">
-              <button type="submit" id="delete">حدف الدرس</button>
-            </form>
-          <hr>
+          
     </div>
+        <form action="/lessons/delete/<%= lesson.id %>?_method=Delete" method="post">
+          <button type="submit" id="delete">حدف الدرس</button>
+        </form>
     
     <% })%>
    
