@@ -21,7 +21,6 @@
 
         <div>
             <label for="description">التيرم</label>
-            <!-- <input type="text" id="description" name="description"> -->
             <select name="description" id="description">
                 <option >التيرم الاول</option>
                 <option >التيرم التاني</option>
@@ -43,8 +42,9 @@
 
                 </td>
                 <td>
-                    <a href="/lessons/<%= course.id %>">الدروس</a>
-
+                    <form action="/lessons/<%= course.id %>" method="get">
+                        <button type="submit" >اضافة و حذق الدروس  </button>
+                    </form>
                 </td>
                 <td>
                     <form action="/courses/delete/<%= course.id %>?_method=Delete" method="post">
