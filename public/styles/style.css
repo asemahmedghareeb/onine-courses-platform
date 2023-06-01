@@ -73,7 +73,7 @@ tr ,td,th{
 }
 
 
-input {
+input  {
     padding: 5px;
     width: 100%;
     box-sizing: border-box;
@@ -82,15 +82,18 @@ input {
     margin-bottom: 10px;
 }
 
-button {
+select{
+    margin: 10px;
+}
 
+button {
     background-color: #4CAF50;
     color: white;
-    margin: 0px;
     padding: 5px 10px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    margin-top: 5px;
 }
 
 form input{
