@@ -123,9 +123,9 @@ select{
 button {
     background-color: #4CAF50;
     color: white;
-    padding: 5px 10px;
+    padding: 5px;
     border: none;
-    border-radius: 20px;
+    border-radius: 10px;
     cursor: pointer;
     margin-top: 5px;
     font-size: 20px;
