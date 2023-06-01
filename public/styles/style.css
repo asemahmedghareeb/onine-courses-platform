@@ -169,7 +169,7 @@ footer div{
 }
 
 @media only screen and (max-width: 768px) {
-    td , th ,tr{
+    .userstable td , th ,tr{
         word-wrap: break-word;
         font-size: 10px;
         padding: 0px;
