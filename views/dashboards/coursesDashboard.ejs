@@ -5,28 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/style.css">
-    <title>courses Dashboard</title>
-
-     
-
+    <title>coursesDashboard</title>
 </head>
 <body>
     <h1>اضافة مادة جديدة</h1>
     <form action="/courses/new" method="Post">
         <div class="form-container">
-        <div>
-            <label for="title">اسم المادة</label>
-            <input type="text" id="title" name="title" required>
-        </div>
-
-        <div>
-            <label for="description">التيرم</label>
-            <select name="description" id="description">
-                <option >التيرم الاول</option>
-                <option >التيرم التاني</option>
-            </select>
-
-        </div>
+            <div>
+                <label for="title">اسم المادة</label>
+                <input type="text" id="title" name="title" required>
+            </div>
+            <div>
+                <label for="description">التيرم</label>
+                <select name="description" id="description">
+                    <option >التيرم الاول</option>
+                    <option >التيرم التاني</option>
+                </select>
+            </div>
         </div>
         <button type="submit">اضافة</button>
     </form>
@@ -42,11 +37,9 @@
 
                 </td>
                 <td>
-
                     <form action="/lessons/<%= course.id %>" method="get">
                         <button type="submit" >اضافة و حذق الدروس  </button>
                     </form>
-
                 </td>
                 <td>
                     <form action="/courses/delete/<%= course.id %>?_method=Delete" method="post">
@@ -59,10 +52,7 @@
                     </form>
                 </td>
             </tr>
-        
         <% })%>
-        
     </table>
-
 </body>
 </html>
