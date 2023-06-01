@@ -169,7 +169,7 @@ footer div{
 }
 
 @media only screen and (max-width: 768px) {
-    td , th {
+    td , th ,tr{
         word-wrap: break-word;
         font-size: 10px;
         padding: 0px;
@@ -182,8 +182,8 @@ footer div{
     }
 
     button{
-        padding: 3px;
-        margin: 1px;
+        padding-top: 7px;
+        margin: 0px;
         font-size: 10px;
     }
 }
