@@ -90,15 +90,11 @@
                 </td>
                 <td>
                     <%= user.courses %>
-
                 </td>
                 <td>
                     <%= user.createdAt.toLocaleDateString() %>
-
                 </td>
-              
-    
-                
+               
                 <td>
                     <form action="/users/<%= user.id %>?_method=Delete" method="post">
                         <button type="submit" id="delete">حذف</button>
