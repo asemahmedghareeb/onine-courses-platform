@@ -2,6 +2,7 @@ const express=require('express')
 const router = express.Router();
 const Lesson = require('../models/lesson');
 const Course = require('../models/course');
+const lesson = require('../models/lesson');
 router.use(express.static('public')); 
 //read
 //this id is course id 
@@ -11,7 +12,6 @@ router.get('/:id',async(req,res)=>{
     const course=await Course.findById(Id)
     title=course.title
     
-
     //getting all the lessons
     const Lessons=await Lesson.find({course:Id}).sort({lessonNumber:1})
     res.render("dashboards/course_lessons.ejs",{lessons:Lessons,id:Id,title:title})  
@@ -24,13 +24,11 @@ router.get('/show/:id',async(req,res)=>{
     //getting the title to view on the lessons page
     const course=await Course.findById(Id)
     title=course.title
-    
 
     //getting all the lessons
-    const Lessons=await Lesson.find({course:Id})
+    let Lessons=await Lesson.find({course:Id})
     res.render("lessons.ejs",{lessons:Lessons,id:Id,title:title})
- 
-})  
+})   
       
 //delete
 //this id is lesson id
@@ -39,7 +37,6 @@ router.delete('/delete/:id',async(req,res)=>{
     const lesson=await Lesson.findByIdAndDelete(req.params.id)
     let course=lesson.course
     let courseId=course.toString()
-
     res.redirect(`/lessons/${courseId}`)
 }) 
 
