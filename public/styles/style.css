@@ -136,10 +136,21 @@ button {
 form div{
     width: 280px;
 }
-form{
-    margin-bottom: 20px;
-}
 
+
+
+
+.ff{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    background-color:#111827;
+    height: auto;
+    width: auto;
+    padding: 4%;
+    margin: 20px;
+}
 #delete{
     background-color: rgb(210, 56, 56);
 }
