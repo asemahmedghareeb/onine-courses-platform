@@ -213,7 +213,9 @@ footer div{
         padding: 0px;
         margin: 0px;
     }
-
+    table{
+        width: 100%;
+    }
     button{
        padding-top: 7px;
        margin: 0px;
@@ -226,6 +228,9 @@ footer div{
     div{
 
         font-size: 20px;
+    }
+    footer div{
+        font-size: 15px;
     }
 
     .lessons{
