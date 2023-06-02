@@ -52,14 +52,6 @@ a{
 }
 
 
-
-
-
-
-
-
-
-
 /* stylinlg tables */
 table {
     text-align: center;
@@ -100,7 +92,6 @@ tr ,td,th{
     color: white;
 }
 
-
 #courses div{
     margin: 10px;
 }
@@ -116,7 +107,16 @@ tr ,td,th{
     cursor: pointer;
     border:#4CAF50 1px;
 }
+/* lessons */
+.lessons{
+    background-color: #111827;
+    padding: 0 2% 0 2%;
+    border-radius: 10px;
+    width: 50%;
+    display: inline-block;
+    border-bottom: #080c14 4px solid;
 
+}
 /* forms styling */
 .form-container {
     display: flex;
@@ -166,10 +166,6 @@ form div{
     margin: 20px;
 }
 
-
-
-
-
 /* buttons */
 button {
     background-color: #4CAF50;
@@ -186,10 +182,6 @@ button {
     background-color: rgb(210, 56, 56);
 }
 
-
-
-
-
 /* footer */
 footer{
     display: flex;
@@ -203,9 +195,6 @@ footer div{
     display: inline-block;
     font-size: 18px;
 }
-
-
-
 
 /* media query */
 @media only screen and (max-width: 768px) {
@@ -227,4 +216,8 @@ footer div{
         font-size: 10px;
     }
 
+    .lessons{
+        font-size: 15px;
+    
+    }
 }
