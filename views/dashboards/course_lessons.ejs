@@ -8,8 +8,8 @@
     <title>coursesLessons</title>
 </head>
 <body>
-    <form action="/lessons/new/<%= id %>" method="post" class="f">
-        <h1>اضافة درس جديد</h1>
+    <h1>اضافة درس جديد</h1>
+    <form action="/lessons/new/<%= id %>" method="post" class="dashf">
 
         <div class="form-container">
             <div>
@@ -27,8 +27,8 @@
                 <input name="lessonNumber" id="lessonNumber"  placeholder="قم بكتابة رقم الدرس" required>
             </div>
 
+            <button type="submit">اضافة</button>
         </div>
-        <button type="submit">اضافة</button>
     </form>
     <hr>
     <h1>دروس <%=title%>  </h1>
