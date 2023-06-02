@@ -2,7 +2,6 @@ const express=require('express')
 const router = express.Router();
 const Lesson = require('../models/lesson');
 const Course = require('../models/course');
-const lesson = require('../models/lesson');
 router.use(express.static('public')); 
 //read
 //this id is course id 
@@ -18,7 +17,6 @@ router.get('/:id',async(req,res)=>{
 }) 
 
  
-
 router.get('/show/:id',async(req,res)=>{
     let Id=req.params.id
     //getting the title to view on the lessons page
@@ -52,7 +50,6 @@ router.post('/new/:id',async(req,res)=>{
         lessonNumber:req.body.lessonNumber
     })
     await lesson.save()
-    console.log("created")
     res.redirect(`/lessons/${Id}`)
 })
 module.exports=router  

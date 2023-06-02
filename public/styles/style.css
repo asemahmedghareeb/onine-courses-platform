@@ -13,7 +13,7 @@ div{
     font-size: 25px;
     color: rgb(255, 184, 53);
 }
-
+/* background img */
 .image-container {
     overflow: hidden;
 }
@@ -51,6 +51,10 @@ a{
     color:white;
 }
 
+iframe{
+    width: 900px;
+    height: 500px;
+}
 
 /* stylinlg tables */
 table {
@@ -219,5 +223,10 @@ footer div{
     .lessons{
         font-size: 15px;
     
+    }
+
+    iframe{
+        width: 400px;
+        height: 280px;
     }
 }
