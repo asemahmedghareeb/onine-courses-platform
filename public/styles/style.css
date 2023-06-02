@@ -200,6 +200,8 @@ footer{
     bottom:0px;
 }
 
+
+footer a{text-decoration: none;}
 footer div{
     display: inline-block;
     font-size: 18px;
@@ -213,7 +215,7 @@ footer div{
         padding: 0px;
         margin: 0px;
     }
-    table{
+    .userstable{
         width: 100%;
     }
     button{
