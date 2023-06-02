@@ -160,7 +160,9 @@ select{
 form div{
     width: 280px;
 }
-.dashf{ 
+
+
+.ff , .dashf{ 
     display: flex;
     justify-content: center;
     align-items: center;
