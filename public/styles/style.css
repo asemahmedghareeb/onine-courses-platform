@@ -95,13 +95,15 @@ tr ,td,th{
     width: 250px;
     background-color:#111827;
     margin: 10px;
-    padding: 5%;
+    padding: 2%;
     border-radius: 15px;
     color: white;
 }
 
 
-
+#courses div{
+    margin: 10px;
+}
 
 #lessons_show{
     margin: 4px;
