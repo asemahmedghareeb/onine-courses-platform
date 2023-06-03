@@ -172,8 +172,11 @@ input{
 
 
 select{
+    
     margin: 10px;
     font-size: 18px;
+    background-color: #101426;
+    color: white;
 }
 
 
