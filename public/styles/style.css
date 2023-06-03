@@ -176,6 +176,7 @@ select{
     margin: 10px;
     font-size: 18px;
     background-color: #101426;
+    border-radius: 4px;
     color: white;
 }
 
