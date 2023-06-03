@@ -25,7 +25,7 @@ const usersRouter=require('./controllers/users')
 const connectDB=async()=>{
   try{
     const con=await mongoose.connect(process.env.CONN)
-    console.log(`connected to DB ${con.connection.host}`);
+    console.log(`connected to DB`);
   }catch(err){
     console.log('Error connecting to database')
     console.log(err)

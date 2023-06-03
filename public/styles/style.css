@@ -3,7 +3,15 @@ html body{
     height: 100;
 
     color: white;
-    background-color:#080c14;
+    /* old */
+    /* background-color:#080c14; */
+
+    /* try */
+    /* background-color:#222b45; */
+
+    /* used now */
+    background-color:#101426;
+
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -28,7 +36,6 @@ img{
 /* navbar styling */
 nav {
     width: 100%;
-
     padding: 0px;
 }
 
@@ -94,7 +101,9 @@ tr ,td,th{
     flex-direction: column;
     height: 200px;
     width: 250px;
-    background-color:#111827;
+    /* background-color:#111827; */
+    background-color:#222b45;
+
     margin: 10px;
     padding: 2%;
     border-radius: 15px;
@@ -118,7 +127,9 @@ tr ,td,th{
 }
 /* lessons */
 .lessons{
-    background-color: #111827;
+    /* background-color: #111827; */
+    background-color:#222b45;
+
     padding: 0 2% 0 2%;
     border-radius: 10px;
     width: 30%;
@@ -141,7 +152,11 @@ label{
 
 
 textarea, input  {
-    background-color: #080c14;
+    /* background-color: #080c14; */
+    background-color:#101426;
+    
+    
+
     padding: 5px;
     width: 100%;
     box-sizing: border-box;
@@ -173,7 +188,10 @@ form div{
     align-items: center;
     flex-direction: column;
     border-radius: 30px;
-    background-color:#111827;
+    /* background-color:#111827;
+     */
+    background-color:#222b45;
+
     height: auto;
     width: auto;
     padding: 4%;
@@ -203,10 +221,13 @@ footer{
     align-items: center;
     flex-direction: column;
     height:120px;
-    position: relative;
+    /* position: relative; */
+    position: absolute;
     bottom:0px;
     width: 100%;
-    background-color:#080c14;
+
+    background-color:#222b45;
+
 }
 
 
