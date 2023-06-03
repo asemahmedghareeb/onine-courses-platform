@@ -241,7 +241,7 @@ footer div{
 
 /* media query */
 @media only screen and (max-width: 768px) {
-  .userstable td , th ,tr{
+    .userstable td , th ,tr{
         word-wrap: break-word;
         font-size: 10px;
         padding: 0px;
@@ -250,6 +250,13 @@ footer div{
     .userstable    {
         width: 98%;
     }
+    .courses_table  td , th ,tr{
+        word-wrap: break-word;
+        font-size: 10px;
+        padding: 0px;
+        margin: 0px;
+    }
+
     button{
        padding-top: 7px;
        margin: 0px;
