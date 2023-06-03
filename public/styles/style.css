@@ -247,7 +247,7 @@ footer div{
         padding: 0px;
         margin: 0px;
     }
-    .userstable    {
+    .userstable  , .courses_table   {
         width: 98%;
     }
     .courses_table  td , th ,tr{
