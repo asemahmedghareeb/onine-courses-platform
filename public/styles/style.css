@@ -154,9 +154,6 @@ label{
 textarea, input  {
     /* background-color: #080c14; */
     background-color:#101426;
-    
-    
-
     padding: 5px;
     width: 100%;
     box-sizing: border-box;
@@ -172,7 +169,6 @@ input{
 
 
 select{
-    
     margin: 10px;
     font-size: 18px;
     background-color: #101426;
