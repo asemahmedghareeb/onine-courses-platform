@@ -21,12 +21,10 @@ router.delete('/:id',async(req,res)=>{
 router.post('/new',async(req,res)=>{
     const {name,password,email,role,course}=req.body
     //hashing passwords
+    //we should make validation for email to chech if it is dublicated or not
     const course2=await Course.findOne({title:course})
-    let id=null;
-    if(course2){
-        id=course2.id
-    }
-  
+
+    id=course2.id
     const user=new User({
         name:name,
         email:email,
