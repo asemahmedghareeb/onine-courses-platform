@@ -239,11 +239,11 @@ footer div{
 }
 
 .nav__link {
-    position: fixed;
-    width: 94%;
+    position: absolute;
+    width: 96%;
     top:4rem;
-    left: 3%;
-    right: 3%;
+    left: 2%;
+    right: 2%;
     background-color:#101426;
 
 }
