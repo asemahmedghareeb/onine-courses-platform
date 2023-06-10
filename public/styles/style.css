@@ -240,12 +240,11 @@ footer div{
 
 .nav__link {
     position: absolute;
-    width: 96%;
+    width: 98%;
     top:4rem;
-    left: 2%;
-    right: 2%;
-    background-color:#101426;
+    left: 1%;
 
+    background-color:#101426;
 }
 
 .nav__link a {
@@ -310,13 +309,7 @@ footer div{
     iframe{
         width: 320px;
         height: 250px;
-    }
-    
-
-
-
-  
-    
+    } 
 }
 
 @media screen and (min-width: 1000px) {
@@ -328,7 +321,7 @@ footer div{
     }
 
     #logo{
-        width: 20%;
+        width: 25%;
     }
     .nav__link {
 
@@ -348,4 +341,4 @@ footer div{
         margin-left: 16px;
         display: none;
     }
-  }
+}
