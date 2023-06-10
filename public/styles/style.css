@@ -241,7 +241,7 @@ footer div{
 .nav__link {
     position: fixed;
     width: 94%;
-    top:3rem;
+    top:4rem;
     left: 3%;
     right: 3%;
     background-color:#101426;
@@ -331,6 +331,7 @@ footer div{
         width: 20%;
     }
     .nav__link {
+
         display: block;
         position: static;
 
