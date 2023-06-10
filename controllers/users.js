@@ -3,6 +3,21 @@ const router = express.Router();
 const User = require('../models/user');
 const Course = require('../models/course');
 router.use(express.static('public')); 
+const jwtAuth=require('../middlewares/login').jwtAuth
+const checkuser=require('../middlewares/login').checkuser
+
+router.use(checkuser)
+
+router.use((req, res, next) => {
+  console.log("works")
+  if(req.user.role==="admin")
+    next();
+  else{
+    console.log("not allowed")
+    res.redirect('/')
+  }
+}); 
+
 //get all users
 router.get('/',async(req,res)=>{
     const Users=await User.find()

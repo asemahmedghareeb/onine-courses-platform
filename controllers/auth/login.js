@@ -46,5 +46,11 @@ router.post ('/',async(req,res)=>{
   }
 }) 
 
+
+router.get('/logout',(req,res)=>{
+  if(req.user){
+    req.cookies
+  }
+})
  
 module.exports=router  

@@ -18,4 +18,17 @@ exports.jwtAuth=(req,res,next)=>{
 
 } 
 
+exports.checkuser=(req,res,next)=>{
+    const token=req.cookies.token
+    if(token===undefined){
+        console.log("not loged")
+        return res.redirect('/login')
+    }
+    next()
+
+} 
+
+
+
+
 
