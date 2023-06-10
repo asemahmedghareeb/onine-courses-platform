@@ -50,7 +50,7 @@ app.use('/lessons',jwtAuth,lessonsRouter)
 app.use('/users',jwtAuth,usersRouter)
 app.get('/logout', (req, res) => {
   res.clearCookie('token');
-  res.send('Logout successful');
+  res.redirect("/login")
 });
 
       
