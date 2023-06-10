@@ -210,9 +210,9 @@ footer div{
     color: white;
 }
   .logo {
-    font-size: 1.8rem;
+    font-size: 20px;
 
-    padding-left: 20px;
+    padding-left: 15px;
     color: rgb(255, 184, 53);
   }
   
@@ -231,11 +231,11 @@ footer div{
   
   .nav__link {
     position: fixed;
-
+    width: 94%;
     top:3rem;
     left: 3%;
     right: 3%;
-    height: 100%;
+
     background-color:#101426;
 
   }
@@ -243,11 +243,12 @@ footer div{
   .nav__link a {
     display: block;
     text-align: center;
-    height: 100%;
-    padding: 5px;
+    padding: 10px;
   }
   
-
+  .nav__link a:hover {
+    background-color: #222b45
+  }
   
   .hide {
     display: none;
@@ -310,20 +311,20 @@ footer div{
 
 @media screen and (min-width: 1000px) {
     .nav__link {
-      display: block;
-      position: static;
+        display: block;
+        position: static;
 
-    font-size: 20px;
-      background: none;
+        font-size: 10px;
+        background: none;
     }
   
     .nav__link a {
-      display: inline-block;
+        display: inline-block;
         margin: 10px;
     }
   
     .hamburger {
         margin-left: 16px;
-      display: none;
+        display: none;
     }
   }
