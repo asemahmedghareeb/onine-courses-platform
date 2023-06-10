@@ -189,7 +189,9 @@ footer{
 .userstable ,.courses_table{
     width: 80%;
 }
-footer a{text-decoration: none;}
+footer a{
+    color:white;
+}
 
 footer div{
     display: inline-block;
@@ -201,7 +203,7 @@ footer div{
 
 
 .nav {
-
+    height: 60px;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -211,51 +213,56 @@ footer div{
 .nav a{
     text-decoration: none;
     color: white;
-}
-  .logo {
     font-size: 20px;
 
+}
+
+
+#logo a {
+    font-size: 20px;
     padding-left: 15px;
-    color: rgb(255, 184, 53);
-  }
-  
-  .hamburger {
+    color: rgb(255, 184, 53) ;
+
+}
+
+.hamburger {
     padding-right: 20px;
     cursor: pointer;
-  }
-  
-  .hamburger .line {
+}
+
+.hamburger .line {
     display: block;
     width: 35px;
     height: 3px;
     margin: 8px;
     background-color: white;
-  }
-  
-  .nav__link {
+}
+
+.nav__link {
     position: fixed;
     width: 94%;
     top:3rem;
     left: 3%;
     right: 3%;
-
     background-color:#101426;
 
-  }
-  
-  .nav__link a {
+}
+
+.nav__link a {
     display: block;
     text-align: center;
-    padding: 10px;
-  }
-  
-  .nav__link a:hover {
+
+    padding: 0px;
+    margin: 0px;
+}
+
+.nav__link a:hover {
     background-color: #222b45
-  }
-  
-  .hide {
+}
+
+.hide {
     display: none;
-  }
+}
 
 
 
@@ -313,6 +320,16 @@ footer div{
 }
 
 @media screen and (min-width: 1000px) {
+    #logo a {
+        font-size: 20px;
+        padding-left: 15px;
+        color: #ffb835 ;
+        padding: 10px;
+    }
+
+    #logo{
+        width: 20%;
+    }
     .nav__link {
         display: block;
         position: static;
