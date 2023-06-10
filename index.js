@@ -4,14 +4,19 @@ const mongoose = require('mongoose');
 const app=express()
 express.json()
 const methodOverride = require('method-override')
+const cookieParser=require('cookie-parser')
 
-    
+
+//custom middlewares
+
+
+
 //middleware
 app.use(express.static('public')); 
 app.set('view-engine',"ejs")
 app.use(express.urlencoded({ extended: false }))
 app.use(methodOverride('_method'))
-        
+app.use(cookieParser())
 //import routers
 const loginRouter=require('./controllers/auth/login')
 const registerRouter=require('./controllers/auth/register')
@@ -38,17 +43,17 @@ app.get('/',(req,res)=>{
 })
 
 app.use('/login',loginRouter)
+app.use('/profile',profileRouter)
 app.use('/register',registerRouter)
 app.use('/courses',couresRouter)
 app.use('/lessons',lessonsRouter)
-app.use('/profile',profileRouter)
 app.use('/users',usersRouter)
 
-    
+     
 //running the sever
 connectDB().then(()=>{
   app.listen(process.env.PORT||5000,()=>{
     console.log(`serve is running on port ${process.env.PORT}`)
     
   })
-}) 
+})  
