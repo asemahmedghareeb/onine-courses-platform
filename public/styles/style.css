@@ -154,6 +154,9 @@ form div{
     margin: 20px;
 }
 
+a{
+    text-decoration: none;
+}
 /* buttons */
 button {
     background-color: #4CAF50;
