@@ -2,13 +2,13 @@ const jwt=require('jsonwebtoken')
 exports.jwtAuth=(req,res,next)=>{
     const refreash=req.cookies.refreash
     const token=req.cookies.token
+
     if(refreash&&token){
         jwt.verify(token,process.env.MY_SECRET,(err, user) => {     
             if (err) {
                 console.log("invalid access token")
             }else{
                 req.user = user 
-
             } 
         })
         
@@ -19,7 +19,6 @@ exports.jwtAuth=(req,res,next)=>{
                 req.user = user 
             }
         })
-        next()
     }
     else if(refreash){
         //verifying refreash token
@@ -33,18 +32,14 @@ exports.jwtAuth=(req,res,next)=>{
                 let accessToken=jwt.sign(user,process.env.MY_SECRET)
 
                 res.cookie('token',accessToken,{
-                    httpOnly:true
-                })
-                next()
+                    httpOnly:true,
+                    expires: new Date(Date.now() + 2 * 60 * 60 * 1000)
+                  })
+                console.log('new access token')
             }
-        })
+        }) 
     }
-    else{
-        next()
-    }
-
-
-    
+    next()
 } 
 
 exports.checkuser=(req,res,next)=>{
@@ -55,9 +50,4 @@ exports.checkuser=(req,res,next)=>{
         return res.redirect('/login')
     } 
     next()
-}  
-
- 
-
-
-
+}

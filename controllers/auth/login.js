@@ -1,9 +1,9 @@
 const express=require('express')
 const jwt=require('jsonwebtoken')
 const User = require('../../models/user');
-const { checkuser } = require('../../middlewares/login');
+const { checkuser,jwtAuth } = require('../../middlewares/login');
 const router = express.Router();
-const jwtAuth=require('../../middlewares/login').jwtAuth
+
 
 
 router.get('/',jwtAuth,(req,res)=>{
@@ -33,20 +33,20 @@ router.post ('/',async(req,res)=>{
       }
       
       //genetating access token 
-      console.log(info)
-      const token= jwt.sign(info,process.env.MY_SECRET,{expiresIn:"2h"})
+
+      const token= jwt.sign(info,process.env.MY_SECRET)
       res.cookie('token',token,{
         httpOnly:true,
         expires: new Date(Date.now() + 2 * 60 * 60 * 1000)
-
-      })
       
-      const refreshToken= jwt.sign(info,process.env.REFREASH,{expiresIn:"7d"})
+      })
+      //generate refreash token
+      const refreshToken= jwt.sign(info,process.env.REFREASH)
       res.cookie('refreash',refreshToken,{
         httpOnly:true,
         expires:  new Date(Date.now()+7 * 24 * 60 * 60 * 1000 )
-      })
 
+      })
 
       res.redirect('/profile')
     } 
@@ -57,9 +57,4 @@ router.post ('/',async(req,res)=>{
     return  res.render("auth/login.ejs",{error:"password or email is wrong"})
   }
 }) 
-
-
-
-
-
 module.exports=router        
