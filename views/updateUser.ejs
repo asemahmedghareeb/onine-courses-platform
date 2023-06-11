@@ -9,6 +9,7 @@
     <title>update user</title>
 </head>
 <body>
+    <%- include('nav.ejs') %>
     <h1>تعديل بيانات المستخدم</h1>
     <form action="/users/<%=id%>?_method=patch" method="post" class="dashf">
       
@@ -48,5 +49,7 @@
 
 
     </form>
+
+    <script src="js/main.js"></script></script>
 </body>
 </html>

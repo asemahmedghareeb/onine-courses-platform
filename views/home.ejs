@@ -14,7 +14,8 @@
 
 <body>
 
-
+  <%- include('nav.ejs') %>
+<!-- 
     <nav class="nav">
       <div id="logo">
 
@@ -27,9 +28,7 @@
         <span class="line"></span>
       </div>
 
-      <div class="nav__link hide">
-
-
+       <div class="nav__link hide">
         <a href="/logout">  تسجيل الخروج</a></li>
         <a href="/login">تسجيل الدخول</a></li>
         <a href="/register">انشاء حساب</a></li>
@@ -37,7 +36,8 @@
         <a href="/courses/dashboard">لوحة تحكم الكورسات</a></li>
         <a href="/users">لوحة تحكم المستخدمين</a></li>
       </div>
-    </nav>
+    </nav>  -->
+
 
     
     <div class="image-container">
@@ -51,17 +51,7 @@
     <div>Copyright@2023</div>
   </footer>
 
-  <script>
-    const hamburger = document.querySelector('.hamburger');
-    const navLink = document.querySelector('.nav__link');
-    
-    
-hamburger.addEventListener('click', () => {
-  navLink.classList.toggle('hide');
-});
-
-
-  </script>
+  <script src="js/main.js"></script>"></script>
 
 
   </body>

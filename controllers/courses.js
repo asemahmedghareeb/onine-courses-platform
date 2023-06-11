@@ -3,7 +3,6 @@ const router = express.Router();
 const Course = require('../models/course');
 const Lesson = require('../models/lesson');
 router.use(express.static('public')); 
-const jwtAuth=require('../middlewares/login').jwtAuth
 const checkuser=require('../middlewares/login').checkuser
 router.get('/',async(req,res)=>{
   const courses=await Course.find()
@@ -15,16 +14,16 @@ router.get('/',async(req,res)=>{
 router.use(checkuser) 
 
 router.use((req, res, next) => {
-  console.log("works")
+
   if(req.user.role==="admin")
     next();
   else{
     console.log("not allowed")
-    res.redirect('/') 
+    return res.redirect('/') 
   }
 });
-
-
+ 
+ 
 
 router.get('/dashboard',async(req,res)=>{
   const courses=await Course.find()

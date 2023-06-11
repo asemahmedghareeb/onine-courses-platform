@@ -38,7 +38,7 @@ const connectDB=async()=>{
   }
 }
 //home page router
-app.get('/',(req,res)=>{
+app.get('/',jwtAuth,(req,res)=>{
   res.render('home.ejs')
 })
 
@@ -46,10 +46,12 @@ app.use('/login',loginRouter)
 app.use('/profile',profileRouter)
 app.use('/register',registerRouter)
 app.use('/courses',jwtAuth,couresRouter)
-app.use('/lessons',jwtAuth,lessonsRouter)
+app.use('/lessons',lessonsRouter)
 app.use('/users',jwtAuth,usersRouter)
+
 app.get('/logout', (req, res) => {
   res.clearCookie('token');
+  res.clearCookie('refreash');
   res.redirect("/login")
 });
 

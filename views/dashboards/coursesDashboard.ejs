@@ -8,6 +8,8 @@
     <title>coursesDashboard</title>
 </head>
 <body>
+    <%- include('../nav.ejs') %>
+
     <h1>اضافة مادة جديدة</h1>
     <form action="/courses/new" method="Post" class="dashf">
         <div class="form-container">
@@ -54,5 +56,6 @@
             </tr>
         <% })%>
     </table>
+    <script src="js/main.js"></script></script>
 </body>
 </html>

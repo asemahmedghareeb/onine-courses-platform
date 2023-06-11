@@ -9,6 +9,7 @@
     <title>Edit</title>
 </head>
 <body>
+    <%- include('nav.ejs') %>
     <h1>تعديل المادة</h1>
     <form action="/courses/update/<%= course.id %>?_method=put" method="Post" class="dashf">
 
@@ -28,5 +29,7 @@
 
         <button type="submit">حفظ</button>
     </form>
+
+    <script src="js/main.js"></script></script>
 </body>
 </html>
