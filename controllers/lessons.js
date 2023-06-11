@@ -3,6 +3,9 @@ const router = express.Router();
 const Lesson = require('../models/lesson');
 const Course = require('../models/course');
 router.use(express.static('public')); 
+const checkuser=require('../middlewares/login').checkuser
+const jwtAuth=require('../middlewares/login').jwtAuth
+
 //read
 //this id is course id 
 router.get('/:id',async(req,res)=>{
@@ -16,7 +19,20 @@ router.get('/:id',async(req,res)=>{
     res.render("dashboards/course_lessons.ejs",{lessons:Lessons,id:Id,title:title})  
 }) 
 
+router.use(jwtAuth) 
+router.use(checkuser) 
+
+router.use((req, res, next) => {
+
+  if(req.user.role==="admin")
+    next();
+  else{
+    console.log("not allowed")
+    return res.redirect('/') 
+  }
+});
  
+
 router.get('/show/:id',async(req,res)=>{
     let Id=req.params.id
     //getting the title to view on the lessons page

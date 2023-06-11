@@ -47,7 +47,7 @@ router.post ('/',async(req,res)=>{
         expires:  new Date(Date.now()+7 * 24 * 60 * 60 * 1000 )
       })
 
-      console.log("from login route"+refreshToken, token)
+
       res.redirect('/profile')
     } 
   }  

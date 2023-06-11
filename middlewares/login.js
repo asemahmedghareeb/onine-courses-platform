@@ -2,14 +2,13 @@ const jwt=require('jsonwebtoken')
 exports.jwtAuth=(req,res,next)=>{
     const refreash=req.cookies.refreash
     const token=req.cookies.token
-    console.log(refreash , token)
     if(refreash&&token){
         jwt.verify(token,process.env.MY_SECRET,(err, user) => {     
             if (err) {
                 console.log("invalid access token")
             }else{
                 req.user = user 
-                console.log("verified")
+
             } 
         })
         
@@ -18,7 +17,6 @@ exports.jwtAuth=(req,res,next)=>{
                 console.log("invalid refreash token") 
             }else{
                 req.user = user 
-                console.log("verified")
             }
         })
         next()
