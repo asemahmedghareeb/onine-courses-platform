@@ -8,17 +8,7 @@ const jwtAuth=require('../middlewares/login').jwtAuth
 
 //read
 //this id is course id 
-router.get('/:id',async(req,res)=>{
-    let Id=req.params.id
-    //getting the title to view on the lessons page
-    const course=await Course.findById(Id)
-    title=course.title
-    
-    //getting all the lessons
-    const Lessons=await Lesson.find({course:Id}).sort({lessonNumber:1})
-    res.render("dashboards/course_lessons.ejs",{lessons:Lessons,id:Id,title:title})  
-}) 
-  
+
 router.get('/show/:id',async(req,res)=>{
     let Id=req.params.id
     //getting the title to view on the lessons page
@@ -29,17 +19,29 @@ router.get('/show/:id',async(req,res)=>{
     let Lessons=await Lesson.find({course:Id})
     res.render("lessons.ejs",{lessons:Lessons,id:Id,title:title})
 })   
+  
+  
+  
+  
+  
+  router.use(jwtAuth) 
+  router.use(checkuser) 
+  
+  router.get('/:id',async(req,res)=>{
+      let Id=req.params.id
+      //getting the title to view on the lessons page
+      const course=await Course.findById(Id)
+      title=course.title
+      
+      //getting all the lessons
+      const Lessons=await Lesson.find({course:Id}).sort({lessonNumber:1})
+      res.render("dashboards/course_lessons.ejs",{lessons:Lessons,id:Id,title:title})  
+  }) 
 
 
-
-
-
-router.use(jwtAuth) 
-router.use(checkuser) 
-
-router.use((req, res, next) => {
-
-  if(req.user.role==="admin")
+  router.use((req, res, next) => {
+    
+    if(req.user.role==="admin")
     next();
   else{
     console.log("not allowed")
