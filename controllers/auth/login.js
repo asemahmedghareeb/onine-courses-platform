@@ -37,7 +37,7 @@ router.post ('/',async(req,res)=>{
       const token= jwt.sign(info,process.env.MY_SECRET)
       res.cookie('token',token,{
         httpOnly:true,
-        expires: new Date(Date.now() + 2 * 60 * 60 * 1000)
+        expires: new Date(Date.now() +60 * 60 * 1000)
       
       })
       //generate refreash token
