@@ -22,7 +22,7 @@ router.get('/show/:id',async(req,res)=>{
   
   router.use(jwtAuth) 
   router.use(checkuser) 
-  
+   
   router.use((req, res, next) => {
 
     if(req.user.role==="admin")
@@ -33,7 +33,7 @@ router.get('/show/:id',async(req,res)=>{
     }
   }); 
 
-  
+
   router.get('/:id',async(req,res)=>{
       let Id=req.params.id
       //getting the title to view on the lessons page

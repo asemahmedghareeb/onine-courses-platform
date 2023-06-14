@@ -6,7 +6,7 @@ express.json()
 const methodOverride = require('method-override')
 const cookieParser=require('cookie-parser')
 
-const jwtAuth=require('./middlewares/login').jwtAuth
+const {jwtAuth}=require('./middlewares/login')
 //custom middlewares
 
 
@@ -43,7 +43,7 @@ app.get('/',jwtAuth,(req,res)=>{
 })
 
 app.use('/login',loginRouter)
-app.use('/profile',profileRouter)
+app.use('/profile',jwtAuth,profileRouter)//=>
 app.use('/register',registerRouter)
 app.use('/courses',jwtAuth,couresRouter)
 app.use('/lessons',lessonsRouter)
@@ -63,3 +63,4 @@ connectDB().then(()=>{
     
   })
 })  
+ 

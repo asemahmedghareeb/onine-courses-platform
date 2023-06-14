@@ -3,7 +3,7 @@ const router = express.Router();
 const Course = require('../models/course');
 const Lesson = require('../models/lesson');
 router.use(express.static('public')); 
-const checkuser=require('../middlewares/login').checkuser
+const {checkuser}=require('../middlewares/login')
 router.get('/',async(req,res)=>{
   const courses=await Course.find()
   res.render('courses.ejs',{courses:courses})
@@ -22,7 +22,7 @@ router.use((req, res, next) => {
     return res.redirect('/') 
   }
 });
- 
+  
  
 
 router.get('/dashboard',async(req,res)=>{

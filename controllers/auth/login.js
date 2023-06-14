@@ -1,7 +1,7 @@
 const express=require('express')
 const jwt=require('jsonwebtoken')
 const User = require('../../models/user');
-const { jwtAuth } = require('../../middlewares/login');
+const { jwtAuth ,checkuser} = require('../../middlewares/login');
 const router = express.Router();
 
 
@@ -36,8 +36,9 @@ router.post ('/',async(req,res)=>{
         httpOnly:true,
         expires: new Date(Date.now() +60 * 60 * 1000)
       })
+      
       //generate refreash token
-      const refreshToken= jwt.sign(refreash,process.env.REFREASH)
+      const refreshToken= jwt.sign(info,process.env.REFREASH)
       res.cookie('refreash',refreshToken,{
         httpOnly:true,
         expires:  new Date(Date.now()+7 * 24 * 60 * 60 * 1000 )
