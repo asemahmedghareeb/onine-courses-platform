@@ -52,7 +52,8 @@ app.use('/users',jwtAuth,usersRouter)
 app.get('/logout', (req, res) => {
   res.clearCookie('token');
   res.clearCookie('refreash');
-  res.redirect("/login")
+  // res.redirect("/login")
+ return res.render("Error.ejs",{error:"  تم تسجيل الخروج"})
 });
 
       

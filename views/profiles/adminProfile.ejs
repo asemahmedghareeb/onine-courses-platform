@@ -11,10 +11,13 @@
 <body>
     <%- include('../nav.ejs') %>
     <div>Hi <%= name %></div>
-
             <a href="/courses/dashboard">لوحة تحكم الكورسات</a></li>
             <a href="/users">لوحة تحكم المستخدمين</a></li>
- 
+    <script>
+        let x=document.querySelector('.nav__link')
+        
+        x.innerHTML+='<a href="/logout">  تسجيل الخروج</a></li>'
+    </script>
     <script src="js/main.js"></script></script>
 </body>
 </html>

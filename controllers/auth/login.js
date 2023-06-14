@@ -9,7 +9,7 @@ const router = express.Router();
 router.get('/',jwtAuth,(req,res)=>{
   
   if(req.user){
-     res.redirect("/profile")
+     res.render("Error.ejs",{error:"لقد قمت بتسجيل الدخول"})
   }
   else
   res.render('auth/login.ejs',{error:""})

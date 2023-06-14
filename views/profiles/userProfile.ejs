@@ -8,6 +8,7 @@
 </head>
 <body>
     <%- include('../nav.ejs') %>
+
     <div>Hi <%= name %></div>
     <div>الكورس</div>
     <div>
@@ -16,6 +17,11 @@
         
     </div>
     <a href="profile/<%= course.id %>">الدروس</a>
+    <script>
+        let x=document.querySelector('.nav__link')
+        
+        x.innerHTML+='<a href="/logout">  تسجيل الخروج</a></li>'
+    </script>
     <script src="js/main.js"></script></script>
 </body>
 </html>
