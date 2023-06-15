@@ -30,6 +30,7 @@ router.post ('/',async(req,res)=>{
       const refreash ={
         id:user.id
       }
+
       //genetating access token 
       const token= jwt.sign(info,process.env.MY_SECRET)
       res.cookie('token',token,{
@@ -38,7 +39,7 @@ router.post ('/',async(req,res)=>{
       })
       
       //generate refreash token
-      const refreshToken= jwt.sign(info,process.env.REFREASH)
+      const refreshToken= jwt.sign(refreash,process.env.REFREASH)
       res.cookie('refreash',refreshToken,{
         httpOnly:true,
         expires:  new Date(Date.now()+7 * 24 * 60 * 60 * 1000 )
@@ -46,6 +47,5 @@ router.post ('/',async(req,res)=>{
       return res.redirect('/profile')
     }   
     return  res.render("auth/login.ejs",{error:"هناك خطا في كلمة السر او الاميل"})
-  
 })  
 module.exports=router        
