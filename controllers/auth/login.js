@@ -1,7 +1,7 @@
 const express=require('express')
 const jwt=require('jsonwebtoken')
 const User = require('../../models/user');
-const { jwtAuth ,checkuser} = require('../../middlewares/login');
+const { jwtAuth } = require('../../middlewares/login');
 const router = express.Router();
 
 
@@ -45,7 +45,7 @@ router.post ('/',async(req,res)=>{
       })
       return res.redirect('/profile')
     }   
-    return  res.render("auth/login.ejs",{error:"password or email is wrong"})
+    return  res.render("auth/login.ejs",{error:"هناك خطا في كلمة السر او الاميل"})
   
 })  
 module.exports=router        

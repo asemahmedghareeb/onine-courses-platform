@@ -5,11 +5,8 @@ const app=express()
 express.json()
 const methodOverride = require('method-override')
 const cookieParser=require('cookie-parser')
-
 const {jwtAuth}=require('./middlewares/login')
 //custom middlewares
-
-
 
 //middleware
 app.use(express.static('public')); 
