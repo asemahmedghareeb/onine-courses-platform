@@ -8,13 +8,11 @@
 </head>
 <body>
     <%- include('nav.ejs') %>
+
     <h1>دروس <%=title%>  </h1>
     <% lessons.map(lesson=>{ %>
-      <div>
-
-          <h3><%= lesson.title %></h2>
-          <%- lesson.content %>
-          
+      <div class="lessons">
+          <h3><a href="/lessons/lesson/<%= lesson.id%>"><%= lesson.title %></a></h2>
         </div >
               
     <% })%>

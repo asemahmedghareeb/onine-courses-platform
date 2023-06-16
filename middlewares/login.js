@@ -79,3 +79,36 @@ exports.checkuser=(req,res,next)=>{
     }   
     next()
 }
+
+
+
+exports.adminOnly=(req, res, next) => {
+    
+  if(req.user.role==="admin")
+  next();
+  else{
+    console.log("not allowed")
+    res.redirect('/')
+  }
+}
+
+
+exports.userOnly=(req, res, next)=> {
+    
+  if(req.user.role==="user")
+  next();
+  else{
+    console.log("not allowed")
+    res.redirect('/')
+  }
+}; 
+
+
+exports.adminAndUser=(req,res,next)=>{
+  if(req.user.role==="user"||req.user.role==="admin")
+  next();
+  else{
+    console.log("not allowed")
+    res.redirect('/')
+  }
+}

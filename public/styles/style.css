@@ -27,7 +27,7 @@ img{
 }
 
 
-iframe styling
+/* iframe styling */
 iframe{
     width: 900px;
     height: 500px;
@@ -311,8 +311,8 @@ footer div{
     }
 
     iframe{
-        width: 320px;
-        height: 250px;
+        width: 360px;
+        height: 260px;
     } 
 }
 

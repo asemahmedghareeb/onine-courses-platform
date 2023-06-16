@@ -10,14 +10,14 @@
     <%- include('../nav.ejs') %>
 
     <div>Hi <%= name %></div>
-    <div>الكورس</div>
-    <div>
+    <div>الكورسات</div>
+    <div id="courses">
 
         <%= course.title %>
         
+    <div id="lessons_show"><a href="profile/<%= course.id %>">الدروس</a></div>
     </div>
-    <a href="profile/<%= course.id %>">الدروس</a>
-    <script>
+        <script>
         let x=document.querySelector('.nav__link')
         
         x.innerHTML+='<a href="/logout">  تسجيل الخروج</a></li>'
