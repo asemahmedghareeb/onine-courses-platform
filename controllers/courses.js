@@ -26,14 +26,24 @@ router.use((req, res, next) => {
  
 
 router.get('/dashboard',async(req,res)=>{
-  const courses=await Course.find()
+  try{
+
+    const courses=await Course.find()
+  }catch(err){
+    res.send({error:err})
+  }
   res.render('dashboards/coursesDashboard.ejs',{courses:courses})
  
 })
  
 router.delete('/delete/:id',async(req,res)=>{
-  await Course.findByIdAndDelete(req.params.id)
-  let lessons =await Lesson.deleteMany({course:req.params.id})
+  try{
+
+    await Course.findByIdAndDelete(req.params.id)
+    let lessons =await Lesson.deleteMany({course:req.params.id})
+  }catch(err){
+    
+  }
   res.redirect('/courses/dashboard')
     
 })  
@@ -46,23 +56,34 @@ router.get('/update/:id',async(req,res)=>{
   
  
 router.put('/update/:id',async(req,res)=>{
+  try{
 
-  const course=await Course.findById(req.params.id)
-  course.title=req.body.title
-  course.description=req.body.description
+    const course=await Course.findById(req.params.id)
+    course.title=req.body.title
+    course.description=req.body.description
+  
+    await course.save()
 
-  await course.save()
+  }catch(err){
+    res.send({error:err})
+  }
   res.redirect('/courses/dashboard')
    
 })
     
    
 router.post('/new',async(req,res)=>{
+  try{
+
     const course= new Course({
       title:req.body.title,
       description:req.body.description
     })
     await course.save()
+
+  }catch(err){
+    res.send({error:err})
+  }
     res.redirect('/courses/dashboard') 
 })
 
