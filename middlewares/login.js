@@ -36,11 +36,17 @@ exports.jwtAuth = async (req, res, next) => {
         next(err);
       } else {
         const u = await User.findById(user.id);
-        const info = {
-          name: u.name,
-          role: u.role,
-          courses: u.courses,
-        };
+        let info;
+        if(u){
+
+          info = {
+            name: u.name,
+            role: u.role,
+            courses: u.courses,
+          };
+        }else{
+          next()
+        }
         //generating access token
         let accessToken = jwt.sign(info, process.env.MY_SECRET);
 
