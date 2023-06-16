@@ -1,11 +1,10 @@
 const jwt=require('jsonwebtoken')
 const User = require('../models/user');
-
 function clearCookie(res){
 res.clearCookie('token');
 res.clearCookie('refreash');
 }
-
+ 
 exports.jwtAuth = async (req, res, next) => {
   const refreash = req.cookies.refreash;
   const token = req.cookies.token;
@@ -37,8 +36,7 @@ exports.jwtAuth = async (req, res, next) => {
       } else {
         const u = await User.findById(user.id);
         let info;
-        if(u){
-
+        if(u){  
           info = {
             name: u.name,
             role: u.role,

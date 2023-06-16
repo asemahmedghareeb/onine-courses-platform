@@ -17,7 +17,7 @@ router.get('/',jwtAuth,async(req,res)=>{
         }
     } 
 
-    res.render('Error.ejs',{error:"ليس لديك حساب"})
+    res.render('Error.ejs',{error:"قم بتسجيل الدخول  "})
     
     
 }) 

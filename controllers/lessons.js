@@ -6,20 +6,20 @@ router.use(express.static('public'));
 const checkuser=require('../middlewares/login').checkuser
 const jwtAuth=require('../middlewares/login').jwtAuth
 
+
 //read
 //this id is course id 
-
 router.get('/show/:id',async(req,res)=>{
     let Id=req.params.id
     //getting the title to view on the lessons page
     const course=await Course.findById(Id)
     title=course.title
-
+ 
     //getting all the lessons
     let Lessons=await Lesson.find({course:Id})
     res.render("lessons.ejs",{lessons:Lessons,id:Id,title:title})
 })   
-  
+   
   router.use(jwtAuth) 
   router.use(checkuser) 
    
@@ -46,7 +46,6 @@ router.get('/show/:id',async(req,res)=>{
 
 
   router.use((req, res, next) => {
-    
     if(req.user.role==="admin")
     next();
   else{
@@ -61,7 +60,6 @@ router.get('/show/:id',async(req,res)=>{
 //delete
 //this id is lesson id
 router.delete('/delete/:id',async(req,res)=>{
-  
     const lesson=await Lesson.findByIdAndDelete(req.params.id)
     let course=lesson.course
     let courseId=course.toString()

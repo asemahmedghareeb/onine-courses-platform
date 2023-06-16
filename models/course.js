@@ -1,5 +1,7 @@
-// Course schema
+
 const mongoose = require('mongoose');
+const Lesson = require('../models/lesson');
+
 const courseSchema = new mongoose.Schema({
     title: {
       type: String,
@@ -11,4 +13,5 @@ const courseSchema = new mongoose.Schema({
     },
 });
   
-module.exports = mongoose.model('Course', courseSchema); 
+
+module.exports = mongoose.model('Course', courseSchema);
