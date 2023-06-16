@@ -29,10 +29,10 @@ router.get('/dashboard',async(req,res)=>{
   try{
 
     const courses=await Course.find()
+    res.render('dashboards/coursesDashboard.ejs',{courses:courses})
   }catch(err){
     res.send({error:err})
   }
-  res.render('dashboards/coursesDashboard.ejs',{courses:courses})
  
 })
  
@@ -42,6 +42,7 @@ router.delete('/delete/:id',async(req,res)=>{
     await Course.findByIdAndDelete(req.params.id)
     let lessons =await Lesson.deleteMany({course:req.params.id})
   }catch(err){
+    res.send({error:err})
     
   }
   res.redirect('/courses/dashboard')
@@ -50,8 +51,13 @@ router.delete('/delete/:id',async(req,res)=>{
 
     
 router.get('/update/:id',async(req,res)=>{
-  const course=await Course.findById(req.params.id)
-  res.render('updatecourse.ejs',{course:course})
+  try{
+    const course=await Course.findById(req.params.id)
+    res.render('updatecourse.ejs',{course:course})
+
+  }catch(err){
+    res.send({error:err})
+  }
 })
   
  
