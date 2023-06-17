@@ -15,6 +15,18 @@ div{
     font-size: 25px;
     color: rgb(255, 184, 53);
 }
+.lesson{
+    display: flex;
+}
+#play_button{
+    padding: 0px;
+    display: inline-block;
+}
+#play_button{
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+}
 /* background img */
 .image-container {
     width: 100%;
