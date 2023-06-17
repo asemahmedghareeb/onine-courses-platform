@@ -3,9 +3,8 @@ const jwt=require('jsonwebtoken')
 const User = require('../../models/user');
 const { jwtAuth } = require('../../middlewares/login');
 const router = express.Router();
-
 const bcrypt=require('bcrypt')
- 
+
 function checkpassword(sendedpass,hashedpassword){
   let res;
   bcrypt.compare(sendedpass, hashedpassword, (err, result) => {
