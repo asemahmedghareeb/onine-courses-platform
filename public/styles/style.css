@@ -18,12 +18,17 @@ div{
 .lesson{
     display: flex;
 }
-
+h3 a{
+    padding: 10px;
+}
 #play_button{
     display: inline-block;
+
+    padding: 2px;
     width: 25px;
     height: 25px;
 }
+
 /* background img */
 .image-container {
     width: 100%;
@@ -38,7 +43,7 @@ img{
 
 /* iframe styling */
 iframe{
-    width: 900px;
+    width: 850px;
     height: 500px;
 }
 
@@ -320,8 +325,9 @@ footer div{
     }
 
     iframe{
-        width: 360px;
-        height: 260px;
+  
+        height: 300px;
+        width: 90%;
     } 
 }
 

@@ -12,15 +12,13 @@
     <h1>دروس <%=title%>  </h1>
     <% lessons.map(lesson=>{ %>
       <div class="lessons lesson">
-          <h3 ><a href="/lessons/lesson/<%= lesson.id%>">
+          <h3 >
+            <a href="/lessons/lesson/<%= lesson.id%>" id="lesson_link">
               <%= lesson.title %>
-
-                  
-                  <img src="../images/play2.png" alt="play_button" id="play_button" >
-              
-        </a>
+            <img src="../images/play2.png" alt="play_button" id="play_button" >
+            </a>
         </h3>
-        </div >
+    </div >
               
     <% })%>
     <script src="../js/main.js"></script></script>
