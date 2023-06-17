@@ -9,14 +9,10 @@ router.get('/',async(req,res)=>{
   res.render('courses.ejs',{courses:courses})
 })
 
-
-
 router.use(checkuser) 
 
 router.use(adminOnly);
   
- 
-
 router.get('/dashboard',async(req,res)=>{
   try{
 
