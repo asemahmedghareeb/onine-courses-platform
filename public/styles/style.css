@@ -15,18 +15,25 @@ div{
     font-size: 25px;
     color: rgb(255, 184, 53);
 }
+
+/* lessons in the user profile */
 .lesson{
     display: flex;
 }
-h3 a{
-    padding: 10px;
+
+
+#lesson_name{
+    color: white;
+    display: inline-block;
+   
 }
 #play_button{
     display: inline-block;
-
+    left: 0px;
     padding: 2px;
     width: 25px;
     height: 25px;
+    padding-bottom: 0px;
 }
 
 /* background img */
@@ -140,7 +147,7 @@ textarea, input  {
 }
 
 input{
-    height: 35px;
+    height:35px;
 }
 
 select{
