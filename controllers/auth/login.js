@@ -27,7 +27,6 @@ function checkpassword(sendedpass,hashedpassword){
 
 
 router.get('/',jwtAuth,(req,res)=>{
-  
   if(req.user){
     res.render("Error.ejs",{error:"لقد قمت بتسجيل الدخول"})
   }
@@ -37,7 +36,6 @@ router.get('/',jwtAuth,(req,res)=>{
 
 
 router.post ('/',async(req,res)=>{
-  
   const{email,  password}=req.body
   //checking if email exists
   const user=await User.findOne({email:email})
