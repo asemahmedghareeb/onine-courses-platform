@@ -5,8 +5,8 @@ const app=express()
 express.json()
 const methodOverride = require('method-override')
 const cookieParser=require('cookie-parser')
-const {jwtAuth ,checkuser}=require('./middlewares/login')
-//custom middlewares
+const {jwtAuth}=require('./middlewares/login')
+
 
 //middleware
 app.use(express.static('public')); 
@@ -22,7 +22,6 @@ const lessonsRouter=require('./controllers/lessons')
 const profileRouter=require('./controllers/profile')
 const usersRouter=require('./controllers/users')
     
-  
 //database connection
 const connectDB=async()=>{
   try{
@@ -45,7 +44,6 @@ app.use('/register',registerRouter)
 app.use('/courses',jwtAuth,couresRouter)
 app.use('/lessons',lessonsRouter)
 app.use('/users',jwtAuth,usersRouter)
-
 app.get('/logout', (req, res) => {
   res.clearCookie('token');
   res.clearCookie('refreash');
@@ -61,4 +59,3 @@ connectDB().then(()=>{
     
   })
 })  
- 

@@ -10,12 +10,9 @@ router.get('/',async(req,res)=>{
 })
 
 router.use(checkuser) 
-
 router.use(adminOnly);
-  
 router.get('/dashboard',async(req,res)=>{
   try{
-
     const courses=await Course.find()
     res.render('dashboards/coursesDashboard.ejs',{courses:courses})
   }catch(err){
@@ -80,7 +77,4 @@ router.post('/new',async(req,res)=>{
   }
     res.redirect('/courses/dashboard') 
 })
-
-
-
 module.exports=router       
