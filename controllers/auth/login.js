@@ -26,7 +26,6 @@ function checkpassword(sendedpass,hashedpassword){
 }
 
 
-
 router.get('/',jwtAuth,(req,res)=>{
   
   if(req.user){
