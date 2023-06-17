@@ -2,10 +2,10 @@ const express=require('express')
 const router = express.Router();
 const User = require('../models/user');
 const Course = require('../models/course');
-router.use(express.static('public')); 
 const bcrypt=require('bcrypt')
 const {checkuser, adminOnly}=require('../middlewares/login')
 
+router.use(express.static('public')); 
 router.use(checkuser)
 router.use(adminOnly); 
 
@@ -15,7 +15,6 @@ router.get('/',async(req,res)=>{
     const names=await Course.find({}, 'title') 
     res.render('dashboards/usersDashboard.ejs',{users:Users,names:names})
 })
-
 
 //delete user
 router.delete('/:id',async(req,res)=>{
@@ -39,10 +38,8 @@ router.post('/new',async(req,res)=>{
     if(await isEmailDoublicatedOrNot(email)){
       return res.render('Error.ejs',{error:"الاميل الذي ادخلته مستخدم من قبل"})
     } 
-
     //hashing passwords
     let hashedPass=await bcrypt.hash(password,10)
-
     const course2=await Course.findOne({title:course})
  
     id=course2.id
@@ -54,7 +51,6 @@ router.post('/new',async(req,res)=>{
         courses:course,
         coursesId:id
     })
-      
     await user.save()
     res.redirect('/users/')
 })
@@ -73,7 +69,6 @@ router.get('/:id',async(req,res)=>{
 router.patch('/:id',async(req,res)=>{
     const {name,password,email,role,course}=req.body
     const course2=await Course.findOne({title:course})
-
     const user=await User.findById(req.params.id)
     if(course2 ){
         user.name=name

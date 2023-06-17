@@ -16,10 +16,7 @@ router.get('/',jwtAuth,async(req,res)=>{
             return res.render('profiles/userProfile.ejs',{name:req.user.name,course:course})
         }
     } 
-
     res.render('Error.ejs',{error:"قم بتسجيل الدخول  "})
-    
-    
 }) 
 
 
@@ -29,7 +26,6 @@ router.get('/:id',async(req,res)=>{
     //getting the title to view on the lessons page
     const course=await Course.findById(Id)
     title=course.title
-    
     //getting all the lessons
     const Lessons=await Lesson.find({course:Id}).sort({lessonNumber:1})
     res.render("userLessons.ejs",{lessons:Lessons,id:Id,title:title})  

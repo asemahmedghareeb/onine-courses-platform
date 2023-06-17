@@ -6,7 +6,6 @@ function clearCookie(res){
   res.clearCookie('refreash');
 }
 exports.jwtAuth = async (req, res, next) => {
-
       const refreash = req.cookies.refreash;
       const token = req.cookies.token;
       if (refreash && token) {
@@ -14,7 +13,6 @@ exports.jwtAuth = async (req, res, next) => {
         jwt.verify(token, process.env.MY_SECRET, (err, user) => {
           if (err) {
             clearCookie(res);
-            req.error=err
             next();
           } 
           userData=user;
@@ -37,16 +35,16 @@ exports.jwtAuth = async (req, res, next) => {
             next();
           } 
           else {
-              const userData = await User.findById(user.id);
-              let info;
-              if(userData){  
-                info = {
-                  name: userData.name,
-                  role: userData.role,
-                  courses: userData.courses,
-                };
+            const userData = await User.findById(user.id);
+            let info;
+            if(userData){  
+              info = {
+                name: userData.name,
+                role: userData.role,
+                courses: userData.courses,
+              };
             }else{
-                next()
+              next()
             }
             //generating access token
             let accessToken = jwt.sign(info, process.env.MY_SECRET);
@@ -58,35 +56,30 @@ exports.jwtAuth = async (req, res, next) => {
             next();
           }
         });
-      } else if (token) {
-        jwt.verify(token, process.env.MY_SECRET, (err, user) => {
-          if (err) {
-            clearCookie(res);
-            next();
-          } else {
-            req.user = user;
-            next();
-          }
-        });
-      } else {
-        next();
-      }
+        } else if (token) {
+          jwt.verify(token, process.env.MY_SECRET, (err, user) => {
+            if (err) {
+              clearCookie(res);
+              next();
+            } else {
+              req.user = user;
+              next();
+            }
+          });
+        } else {
+          next();
+        }
 };
 
- 
 exports.checkuser=(req,res,next)=>{
     const token=req.cookies.token
     if(token){
       return next()
     }   
-    
     return res.redirect('/login')
 }
 
-
-
 exports.adminOnly=(req, res, next) => {
-    
   if(req.user.role==="admin"){
     next();
   }
@@ -95,7 +88,6 @@ exports.adminOnly=(req, res, next) => {
     res.redirect('/')
   }
 }
-
 
 exports.userOnly=(req, res, next)=> {
     
@@ -106,7 +98,6 @@ exports.userOnly=(req, res, next)=> {
     res.redirect('/')
   }
 }; 
-
 
 exports.adminAndUser=(req,res,next)=>{
   if(req.user.role==="user"||req.user.role==="admin")
