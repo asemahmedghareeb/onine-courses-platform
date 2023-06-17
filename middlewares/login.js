@@ -1,10 +1,10 @@
 const jwt=require('jsonwebtoken')
 const User = require('../models/user');
+
 function clearCookie(res){
-res.clearCookie('token');
-res.clearCookie('refreash');
+  res.clearCookie('token');
+  res.clearCookie('refreash');
 }
- 
 exports.jwtAuth = async (req, res, next) => {
 
       const refreash = req.cookies.refreash;
@@ -37,20 +37,19 @@ exports.jwtAuth = async (req, res, next) => {
             next();
           } 
           else {
-              const u = await User.findById(user.id);
+              const userData = await User.findById(user.id);
               let info;
-              if(u){  
+              if(userData){  
                 info = {
-                  name: u.name,
-                  role: u.role,
-                  courses: u.courses,
+                  name: userData.name,
+                  role: userData.role,
+                  courses: userData.courses,
                 };
             }else{
                 next()
             }
             //generating access token
             let accessToken = jwt.sign(info, process.env.MY_SECRET);
-
             res.cookie('token', accessToken, {
               httpOnly: true,
               expires: new Date(Date.now() + 2 * 60 * 60 * 1000),
@@ -88,8 +87,9 @@ exports.checkuser=(req,res,next)=>{
 
 exports.adminOnly=(req, res, next) => {
     
-  if(req.user.role==="admin")
-  next();
+  if(req.user.role==="admin"){
+    next();
+  }
   else{
     console.log("not allowed")
     res.redirect('/')

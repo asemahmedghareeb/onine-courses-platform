@@ -3,7 +3,7 @@ const router = express.Router();
 const Course = require('../models/course');
 const Lesson = require('../models/lesson');
 router.use(express.static('public')); 
-const {checkuser}=require('../middlewares/login')
+const {checkuser,adminOnly}=require('../middlewares/login')
 router.get('/',async(req,res)=>{
   const courses=await Course.find()
   res.render('courses.ejs',{courses:courses})
@@ -13,15 +13,7 @@ router.get('/',async(req,res)=>{
 
 router.use(checkuser) 
 
-router.use((req, res, next) => {
-
-  if(req.user.role==="admin")
-    next();
-  else{
-    console.log("not allowed")
-    return res.redirect('/') 
-  }
-});
+router.use(adminOnly);
   
  
 
