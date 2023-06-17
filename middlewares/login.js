@@ -71,11 +71,11 @@ exports.jwtAuth = async (req, res, next) => {
   }
 };
 
-
+ 
 exports.checkuser=(req,res,next)=>{
     const token=req.cookies.token
     if(token){
-      next()
+      return next()
     }   
     return res.redirect('/login')
 }
