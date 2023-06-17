@@ -329,6 +329,11 @@ footer div{
         height: 300px;
         width: 90%;
     } 
+    h3 a{
+        padding: 4px;
+        font-size: 14px;
+    }
+
 }
 
 @media screen and (min-width: 1000px) {
