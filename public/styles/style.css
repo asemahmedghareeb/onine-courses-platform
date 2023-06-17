@@ -1,5 +1,5 @@
 html{min-height: 100%;}
- body{
+body{
     margin: 0px;
     width: 100%;
     height: 100%;
@@ -11,10 +11,74 @@ html{min-height: 100%;}
     font-family:Arial, Helvetica, sans-serif;
 }
 
+/* navbar */
+
+.nav {
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+  
+.nav a{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+
+}
+
+
+#logo a {
+    font-size: 20px;
+    padding-left: 15px;
+    color: rgb(255, 184, 53) ;
+
+}
+
+.hamburger {
+    padding-right: 20px;
+    cursor: pointer;
+}
+
+.hamburger .line {
+    display: block;
+    width: 35px;
+    height: 3px;
+    margin: 8px;
+    background-color: white;
+}
+
+.nav__link {
+    position: absolute;
+    width: 98%;
+    top:4rem;
+    left: 1%;
+
+    background-color:#101426;
+}
+
+.nav__link a {
+    display: block;
+    text-align: center;
+
+    padding: 0px;
+    margin: 0px;
+}
+
+.nav__link a:hover {
+    background-color: #222b45
+}
+
+.hide {
+    display: none;
+}
+
 div{
     font-size: 25px;
     color: rgb(255, 184, 53);
 }
+
 
 /* lessons in the user profile */
 .lesson{
@@ -113,7 +177,6 @@ tr ,td,th{
 /* lessons */
 .lessons{
     background-color:#222b45;
-
     padding: 0 2% 0 2%;
     border-radius: 10px;
     width: 30%;
@@ -121,6 +184,8 @@ tr ,td,th{
     border-bottom: #080c14 4px solid;
 
 }
+
+
 /* forms styling */
 .form-container {
     display: flex;
@@ -223,70 +288,6 @@ footer div{
     font-size: 18px;
 }
 
-
-/* navbar */
-
-
-.nav {
-    height: 60px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-  
-.nav a{
-    text-decoration: none;
-    color: white;
-    font-size: 20px;
-
-}
-
-
-#logo a {
-    font-size: 20px;
-    padding-left: 15px;
-    color: rgb(255, 184, 53) ;
-
-}
-
-.hamburger {
-    padding-right: 20px;
-    cursor: pointer;
-}
-
-.hamburger .line {
-    display: block;
-    width: 35px;
-    height: 3px;
-    margin: 8px;
-    background-color: white;
-}
-
-.nav__link {
-    position: absolute;
-    width: 98%;
-    top:4rem;
-    left: 1%;
-
-    background-color:#101426;
-}
-
-.nav__link a {
-    display: block;
-    text-align: center;
-
-    padding: 0px;
-    margin: 0px;
-}
-
-.nav__link a:hover {
-    background-color: #222b45
-}
-
-.hide {
-    display: none;
-}
 
 
 
