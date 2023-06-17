@@ -18,10 +18,7 @@ div{
 .lesson{
     display: flex;
 }
-#play_button{
-    padding: 0px;
-    display: inline-block;
-}
+
 #play_button{
     display: inline-block;
     width: 25px;
