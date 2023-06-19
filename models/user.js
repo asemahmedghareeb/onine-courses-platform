@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
+const slugify = require('slugify');
 const userSchema = new mongoose.Schema({
+
     name: {
       type: String,
       required: true
@@ -34,4 +36,6 @@ const userSchema = new mongoose.Schema({
         default: Date.now
     },
 });
+
+
 module.exports = mongoose.model('User', userSchema);

@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const Course = require('../models/course');
+const slugify = require('slugify');
 const lessonSchema = new mongoose.Schema({
+
     title: {
       type: String,
       required: true
