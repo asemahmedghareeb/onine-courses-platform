@@ -76,7 +76,8 @@ exports.checkuser=(req,res,next)=>{
     if(token){
       return next()
     }   
-    return res.redirect('https://mr-ahmed-ghareeb.cyclic.app/login')
+
+    res.redirect('https://mr-ahmed-ghareeb.cyclic.app/login')
 }
 
 exports.adminOnly=(req, res, next) => {
