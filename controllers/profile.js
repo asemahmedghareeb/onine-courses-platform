@@ -1,8 +1,10 @@
 const express=require('express')
 const router = express.Router();
 const Course = require('../models/course');
+const User = require('../models/user');
 const Lesson = require('../models/lesson');
 const {jwtAuth}=require('../middlewares/login')
+
 
 
 router.get('/',jwtAuth,async(req,res)=>{
@@ -11,8 +13,10 @@ router.get('/',jwtAuth,async(req,res)=>{
             return res.render('profiles/adminProfile.ejs',{name:req.user.name})
         }
         else if(req.user.role==='user'){
-            console.log(req.user.courses)
-            const courses= await Course.find({title:{$in:req.user.courses}})
+            let user=await User.findById(req.user.id)
+            let c=user.courses
+            console.log('user courses ', c)
+            const courses= await Course.find({title:{$in:c}})
             return res.render('profiles/userProfile.ejs',{name:req.user.name,courses:courses})
         }
     } 
