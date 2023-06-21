@@ -9,7 +9,7 @@ const {checkuser, adminOnly,userOnly}=require('../middlewares/login')
 router.use(checkuser)
 
 router.post('/newCourse/:id',userOnly,(req,res)=>{
-  
+  res.send('<h1>new course added</h1>')
 })
 
 router.use(adminOnly); 
