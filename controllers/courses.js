@@ -14,8 +14,9 @@ router.get('/',async(req,res)=>{
 
 
   
-router.post("/create-checkout-session/:id", async (req, res) => {
-  console.log(req.params.id)
+router.get("/create-checkout-session/:id", async (req, res) => {
+  let course=await Course.findById(req.params.id)
+  
   try { 
     console.log('we access')
     const session = await stripe.checkout.sessions.create({
@@ -26,7 +27,7 @@ router.post("/create-checkout-session/:id", async (req, res) => {
           price_data: {
             currency: "usd",
             product_data: {
-              name:"course",
+              name:course.title,
             },
             unit_amount: 10000,
           },
