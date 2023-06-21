@@ -24,7 +24,7 @@ router.get('/newCourse/:id',userOnly, async(req,res)=>{
     console.error(err);
   });
   console.log(u);
-  req.user.courses.push(course.title)
+  req.user.courses[user.courses.length]=course.title
 
   res.redirect('/profile')
 })
