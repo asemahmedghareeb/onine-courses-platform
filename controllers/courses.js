@@ -36,7 +36,7 @@ router.get("/create-checkout-session/:id",userOnly, async (req, res) => {
         }
       ]
       ,
-        success_url:`https://mr-ahmed-ghareeb.cyclic.app/users/newCourse/${req.params.id}`,
+        success_url:`https://mr-ahmed-ghareeb.cyclic.app/profile`,
         cancel_url: 'https://mr-ahmed-ghareeb.cyclic.app/courses',
       })
    
