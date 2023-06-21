@@ -1,23 +1,25 @@
-const button = document.querySelectorAll(".buy")
+const buttons = document.querySelectorAll(".buy")
 
-button.forEach(button=>{
+buttons.forEach(button=>{
 
     button.addEventListener("click", () => {
-        console.log('clicked')
+        let id=button.id
+        console.log(id)
+        console.log('accessed')
 
-        fetch("https://mr-ahmed-ghareeb.cyclic.app/courses/create-checkout-session", {
+        fetch(`https://mr-ahmed-ghareeb.cyclic.app/courses/create-checkout-session/${id}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-            items: [
-                { id: 1, quantity: 3 },
-                { id: 2, quantity: 1 },
-            ],
-        }),
-    })
-    .then(res => {
+                items: [
+                    { id: 1, quantity: 3 },
+                    { id: 2, quantity: 1 },
+                ],
+            }), 
+    })  
+    .then(res => { 
         if (res.ok) return res.json()
         return res.json().then(json => Promise.reject(json))
     })

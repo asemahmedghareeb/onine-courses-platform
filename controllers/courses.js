@@ -12,14 +12,11 @@ router.get('/',async(req,res)=>{
 })
 
 
-const storeItems = new Map([
-  [1, { priceInCents: 10000, name: "Learn React Today" }],
-  [2, { priceInCents: 20000, name: "Learn CSS Today" }],
-])
 
-
-router.post("/create-checkout-session", async (req, res) => {
-  try {
+  
+router.post("/create-checkout-session/:id", async (req, res) => {
+  console.log(req.params.id)
+  try { 
     console.log('we access')
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
