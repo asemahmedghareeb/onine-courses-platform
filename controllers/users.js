@@ -14,7 +14,7 @@ router.get('/newCourse/:id',userOnly, async(req,res)=>{
 
 
  
-  const u=await User.updateOne(
+  await User.updateOne(
     {name:user.name},
     {$push:{courses:course.title}}
   ) .then(result => {
@@ -23,9 +23,8 @@ router.get('/newCourse/:id',userOnly, async(req,res)=>{
   .catch(err => {
     console.error(err);
   });
-  console.log(u);
-  req.user.courses[user.courses.length]=course.title
-
+ 
+  req.user=await User.findById(user.id)
   res.redirect('/profile')
 })
 
