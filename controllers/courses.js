@@ -5,7 +5,7 @@ const Lesson = require('../models/lesson');
 require('dotenv').config()
 const stripe=require('stripe')(process.env.STRIPE_KEY)
 router.use(express.static('public')); 
-const {checkuser,adminOnly}=require('../middlewares/login')
+const {checkuser,adminOnly,userOnly}=require('../middlewares/login')
 router.get('/',async(req,res)=>{
   const courses=await Course.find()
   res.render('courses.ejs',{courses:courses})
@@ -14,7 +14,7 @@ router.get('/',async(req,res)=>{
 
 
   
-router.get("/create-checkout-session/:id", async (req, res) => {
+router.get("/create-checkout-session/:id",userOnly, async (req, res) => {
   let course=await Course.findById(req.params.id)
   
   try { 
