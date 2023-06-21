@@ -23,7 +23,7 @@ router.get('/newCourse/:id',userOnly, async(req,res)=>{
   .catch(err => {
     console.error(err);
   });
-  
+  req.user=u
 
   res.redirect('/profile')
 })
