@@ -16,6 +16,8 @@
             <div>
                 <label for="title">اسم المادة</label>
                 <input type="text" id="title" name="title" required>
+                <label for="price"> سعر الكورس</label>
+                <input type="text" id="price" name="price" required>
             </div>
             <div>
                 <label for="description">التيرم</label>
@@ -23,6 +25,7 @@
                     <option >التيرم الاول</option>
                     <option >التيرم التاني</option>
                 </select>
+
             </div>
         </div>
         <button type="submit">اضافة</button>
@@ -36,6 +39,10 @@
                 </td>
                 <td>
                     <%= course.description %>
+
+                </td>
+                <td>
+                    <%= course.price %>$
 
                 </td>
                 <td>

@@ -30,12 +30,12 @@ router.get("/create-checkout-session/:id",userOnly, async (req, res) => {
             product_data: {
               name:course.title,
             },
-            unit_amount: 10000,
+            unit_amount: course.price,
           },
           quantity: 1,
         }
       ]
-      ,
+      , 
         success_url:`https://mr-ahmed-ghareeb.cyclic.app/users/newCourse/${req.params
       .id}`,
         cancel_url: 'https://mr-ahmed-ghareeb.cyclic.app/courses',
@@ -94,7 +94,7 @@ router.put('/update/:id',async(req,res)=>{
     const course=await Course.findById(req.params.id)
     course.title=req.body.title
     course.description=req.body.description
-  
+    course.price=req.body.price
     await course.save()
 
   }catch(err){
@@ -110,7 +110,8 @@ router.post('/new',async(req,res)=>{
 
     const course= new Course({
       title:req.body.title,
-      description:req.body.description
+      description:req.body.description,
+      price:req.body.price
     })
     await course.save()
 
