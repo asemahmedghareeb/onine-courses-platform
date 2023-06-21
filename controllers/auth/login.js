@@ -44,6 +44,7 @@ router.post ('/',async(req,res)=>{
 
     if(result){
           const info={
+            id:user.id,
             name:user.name,
             role:user.role,
             courses:user.courses

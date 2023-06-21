@@ -23,8 +23,16 @@ router.get('/newCourse/:id',userOnly, async(req,res)=>{
   .catch(err => {
     console.error(err);
   });
- 
-  req.user=await User.findOne({name:user.name})
+
+  let u=await User.findById({name:user.name})
+  let data={
+    id:u.id,
+    name:u.name,
+    courses:u.courses,
+    role:u.role
+  }
+  console.log(data)
+  req.user=data
   res.redirect('/profile')
 })
 

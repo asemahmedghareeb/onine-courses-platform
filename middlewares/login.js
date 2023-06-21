@@ -39,6 +39,7 @@ exports.jwtAuth = async (req, res, next) => {
             let info;
             if(userData){  
               info = {
+                id:userData.id,
                 name: userData.name,
                 role: userData.role,
                 courses: userData.courses,
