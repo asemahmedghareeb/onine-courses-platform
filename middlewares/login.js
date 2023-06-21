@@ -96,7 +96,8 @@ exports.userOnly=(req, res, next)=> {
   next();
   else{
     console.log("not allowed")
-    res.redirect('/')
+    ///////
+    res.redirect('/login')
   }
 }; 
 

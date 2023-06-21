@@ -12,7 +12,7 @@ router.get('/',jwtAuth,async(req,res)=>{
         }
         else if(req.user.role==='user'){
             const courses= await Course.find({title:{$in:req.user.courses}})
-            
+            console.log(courses)
             return res.render('profiles/userProfile.ejs',{name:req.user.name,courses:courses})
         }
     } 
