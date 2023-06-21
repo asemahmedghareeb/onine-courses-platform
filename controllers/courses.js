@@ -2,8 +2,51 @@ const express=require('express')
 const router = express.Router();
 const Course = require('../models/course');
 const Lesson = require('../models/lesson');
+require('dotenv').config()
+const stripe=require('stripe')(process.env.STRIPE_KEY)
 router.use(express.static('public')); 
 const {checkuser,adminOnly}=require('../middlewares/login')
+router.get('/',async(req,res)=>{
+  const courses=await Course.find()
+  res.render('courses.ejs',{courses:courses})
+})
+
+
+const storeItems = new Map([
+  [1, { priceInCents: 10000, name: "Learn React Today" }],
+  [2, { priceInCents: 20000, name: "Learn CSS Today" }],
+])
+
+
+router.post("/create-checkout-session", async (req, res) => {
+  try {
+    console.log('we access')
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ["card"],
+      mode: "payment",
+      line_items: [
+         {
+          price_data: {
+            currency: "usd",
+            product_data: {
+              name:"course",
+            },
+            unit_amount: 10000,
+          },
+          quantity: 1,
+        }
+      ]
+      ,
+        success_url:'http://localhost:8080/profile',
+        cancel_url: 'http://localhost:8080/courses',
+      })
+   
+    res.json({ url: session.url })
+  } catch (e) {
+    res.status(500).json({ error: e.message })
+  }
+})
+
 router.get('/',async(req,res)=>{
   const courses=await Course.find()
   res.render('courses.ejs',{courses:courses})
