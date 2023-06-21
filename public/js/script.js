@@ -5,7 +5,7 @@ button.forEach(button=>{
     button.addEventListener("click", () => {
         console.log('clicked')
 
-        fetch("http://localhost:8080/courses/create-checkout-session", {
+        fetch("https://mr-ahmed-ghareeb.cyclic.app/courses/create-checkout-session", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
