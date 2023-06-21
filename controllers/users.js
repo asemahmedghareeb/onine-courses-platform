@@ -8,7 +8,7 @@ const {checkuser, adminOnly,userOnly}=require('../middlewares/login')
 //adding new course
 router.use(checkuser)
 
-router.post('/newCourse/:id',userOnly,(req,res)=>{
+router.get('/newCourse/:id',userOnly,(req,res)=>{
   res.redirect('/profile')
 })
 
