@@ -86,4 +86,10 @@ router.patch('/:id',async(req,res)=>{
     }
   res.redirect('/users/')
 })
+
+//adding new course
+
+router.post('/newCourse/:id',(req,res)=>{
+  res.send('<h1>new course added</h1>')
+})
 module.exports=router

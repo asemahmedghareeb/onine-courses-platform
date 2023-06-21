@@ -12,7 +12,7 @@ buttons.forEach(button=>{
             headers: {
                 "Content-Type": "application/json",
             }
-    })  
+    })   
     .then(res => { 
         if (res.ok) return res.json()
         return res.json().then(json => Promise.reject(json))
