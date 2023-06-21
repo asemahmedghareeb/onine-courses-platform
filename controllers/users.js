@@ -14,7 +14,7 @@ router.get('/newCourse/:id',userOnly, async(req,res)=>{
 
 
 
-  const User=await User.updateOne(
+  const u=await User.updateOne(
     {name:user.name},
     {$push:{courses:course.title}}
   ) .then(result => {
