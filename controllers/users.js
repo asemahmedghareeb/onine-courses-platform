@@ -24,7 +24,7 @@ router.get('/newCourse/:id',userOnly, async(req,res)=>{
     console.error(err);
   });
 
-  let u=await User.findById({name:user.name})
+  let u=await User.findById(user.id)
   let data={
     id:u.id,
     name:u.name,
