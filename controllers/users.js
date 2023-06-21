@@ -13,7 +13,7 @@ router.get('/newCourse/:id',userOnly, async(req,res)=>{
   const course= await Course.findById(req.params.id)
 
 
-
+ 
   const u=await User.updateOne(
     {name:user.name},
     {$push:{courses:course.title}}
@@ -23,7 +23,8 @@ router.get('/newCourse/:id',userOnly, async(req,res)=>{
   .catch(err => {
     console.error(err);
   });
-  req.user=u
+  console.log(u);
+  req.user.courses.push(course.title)
 
   res.redirect('/profile')
 })

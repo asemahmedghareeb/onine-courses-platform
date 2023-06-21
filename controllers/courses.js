@@ -24,7 +24,7 @@ router.get("/create-checkout-session/:id",userOnly, async (req, res) => {
       payment_method_types: ["card"],
       mode: "payment",
       line_items: [
-         {
+         { 
           price_data: {
             currency: "usd",
             product_data: {
