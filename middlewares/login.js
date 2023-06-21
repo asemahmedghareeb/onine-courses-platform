@@ -70,13 +70,13 @@ exports.jwtAuth = async (req, res, next) => {
           next();
         }
 };
-
+//
 exports.checkuser=(req,res,next)=>{
     const token=req.cookies.token
     if(token){
       return next()
     }   
-    return res.redirect('/login')
+    return res.redirect('https://mr-ahmed-ghareeb.cyclic.app/login')
 }
 
 exports.adminOnly=(req, res, next) => {
