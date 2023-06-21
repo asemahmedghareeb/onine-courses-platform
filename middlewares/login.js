@@ -25,6 +25,7 @@ exports.jwtAuth = async (req, res, next) => {
           }
         });
         req.user = userData;
+        console.log(userData)
         next()
       } 
       else if (refreash) {

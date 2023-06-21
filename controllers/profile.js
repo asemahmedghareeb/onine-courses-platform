@@ -11,6 +11,7 @@ router.get('/',jwtAuth,async(req,res)=>{
             return res.render('profiles/adminProfile.ejs',{name:req.user.name})
         }
         else if(req.user.role==='user'){
+            console.log(req.user.courses)
             const courses= await Course.find({title:{$in:req.user.courses}})
             return res.render('profiles/userProfile.ejs',{name:req.user.name,courses:courses})
         }

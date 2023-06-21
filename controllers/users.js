@@ -12,8 +12,6 @@ router.get('/newCourse/:id',userOnly, async(req,res)=>{
   const user=req.user;
   const course= await Course.findById(req.params.id)
 
-
- 
   await User.updateOne(
     {name:user.name},
     {$push:{courses:course.title}}
