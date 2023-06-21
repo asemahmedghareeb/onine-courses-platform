@@ -4,9 +4,14 @@ const User = require('../models/user');
 const Course = require('../models/course');
 router.use(express.static('public')); 
 const bcrypt=require('bcrypt')
-const {checkuser, adminOnly}=require('../middlewares/login')
-
+const {checkuser, adminOnly,userOnly}=require('../middlewares/login')
+//adding new course
 router.use(checkuser)
+
+router.post('/newCourse/:id',userOnly,(req,res)=>{
+  res.send('<h1>new course added</h1>')
+})
+
 router.use(adminOnly); 
 
 //get all users
@@ -15,6 +20,7 @@ router.get('/',async(req,res)=>{
     const names=await Course.find({}, 'title') 
     res.render('dashboards/usersDashboard.ejs',{users:Users,names:names})
 })
+
 
 
 //delete user
@@ -87,9 +93,5 @@ router.patch('/:id',async(req,res)=>{
   res.redirect('/users/')
 })
 
-//adding new course
 
-router.post('/newCourse/:id',(req,res)=>{
-  res.send('<h1>new course added</h1>')
-})
 module.exports=router
