@@ -11,9 +11,9 @@ router.get('/',jwtAuth,async(req,res)=>{
             return res.render('profiles/adminProfile.ejs',{name:req.user.name})
         }
         else if(req.user.role==='user'){
-            const course= await Course.findOne({title:req.user.courses[0]})
+            const courses= await Course.find({title:{$in:req.user.courses}})
     
-            return res.render('profiles/userProfile.ejs',{name:req.user.name,course:course})
+            return res.render('profiles/userProfile.ejs',{name:req.user.name,courses:courses})
         }
     } 
     res.render('Error.ejs',{error:"قم بتسجيل الدخول  "})

@@ -8,7 +8,11 @@ const {checkuser, adminOnly,userOnly}=require('../middlewares/login')
 //adding new course
 router.use(checkuser)
 
-router.get('/newCourse/:id',userOnly,(req,res)=>{
+router.get('/newCourse/:id',userOnly, async(req,res)=>{
+  const u=req.user;
+  const course= await Course.findById(req.params.id)
+  const user=await User.find({name:u.name})
+  user.courses.push(course.title)
   res.redirect('/profile')
 })
 

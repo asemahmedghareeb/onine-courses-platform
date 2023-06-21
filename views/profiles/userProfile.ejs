@@ -12,12 +12,17 @@
     <h2>Hi <%= name %></h2>
     
     <div>الكورسات التي تم الاشتراك بها</div>
+    <%= courses.map(course=> %>
+
     <div id="courses">
 
         <%= course.title %>
         
-    <div id="lessons_show"><a href="profile/<%= course.id %>">الدروس</a></div>
+        <div id="lessons_show"><a href="profile/<%= course.id %>">الدروس</a></div>
     </div>
+
+
+    <%= )> %>
         <script>
         let x=document.querySelector('.nav__link')
         
