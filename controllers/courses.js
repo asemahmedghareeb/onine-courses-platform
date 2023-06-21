@@ -13,6 +13,7 @@ router.get('/',async(req,res)=>{
 
 
 
+router.use(checkuser) 
   
 router.get("/create-checkout-session/:id",userOnly, async (req, res) => {
   let course=await Course.findById(req.params.id)
@@ -50,7 +51,6 @@ router.get('/',async(req,res)=>{
   res.render('courses.ejs',{courses:courses})
 })
 
-router.use(checkuser) 
 router.use(adminOnly);
 router.get('/dashboard',async(req,res)=>{
   try{
