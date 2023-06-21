@@ -12,26 +12,30 @@
     <h2>Hi <%= name %></h2>
     
     <div>الكورسات التي تم الاشتراك بها</div>
-    <div>
+    
+    <div id="container">
 
         <% courses.map(course=>{ %>
             
-            <div id="courses">
+            <section id="courses">
                 
-                <%= course.title %>
+                <div>
+                    <%= course.title %>
+                </div>
                 
                 <div id="lessons_show"><a href="profile/<%= course.id %>">الدروس</a></div>
-            </div>
+              
             
             
+            </section>
+            <br><br>
             <% }) %>
-        </div>
-
-        <script>
-        let x=document.querySelector('.nav__link')
-        
-        x.innerHTML+='<a href="/logout">  تسجيل الخروج</a></li>'
-        </script>
-    <script src="js/main.js"></script></script>
-</body>
+    </div>
+            <script>
+            let x=document.querySelector('.nav__link')
+            
+            x.innerHTML+='<a href="/logout">  تسجيل الخروج</a></li>'
+            </script>
+            <script src="js/main.js"></script></script>
+    </body>
 </html>
