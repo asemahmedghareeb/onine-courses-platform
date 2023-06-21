@@ -9,11 +9,22 @@ const {checkuser, adminOnly,userOnly}=require('../middlewares/login')
 router.use(checkuser)
 
 router.get('/newCourse/:id',userOnly, async(req,res)=>{
-  const u=req.user;
+  const user=req.user;
   const course= await Course.findById(req.params.id)
-  const user=await User.find({name:u.name})
-  user.courses.push(course.title)
-  await user.save()
+
+
+
+  const User=await User.updateOne(
+    {name:user.name},
+    {$push:{courses:course.title}}
+  ) .then(result => {
+    console.log(result);
+  })
+  .catch(err => {
+    console.error(err);
+  });
+  
+
   res.redirect('/profile')
 })
 
