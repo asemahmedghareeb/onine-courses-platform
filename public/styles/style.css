@@ -159,7 +159,7 @@ tr ,td,th{
     margin: 10px;
 }
 
-#lessons_show{
+#lessons_show, .buy{
     margin: 4px;
     background-color: #4CAF50;
     color: white;
