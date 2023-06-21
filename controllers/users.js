@@ -22,15 +22,6 @@ router.get('/newCourse/:id',userOnly, async(req,res)=>{
     console.error(err);
   });
 
-  // let u=await User.findById(user.id)
-  // let data={
-  //   id:u.id,
-  //   name:u.name,
-  //   courses:u.courses,
-  //   role:u.role
-  // }
-  // console.log(data)
-  // req.user=data
   res.redirect('/profile')
 })
 
