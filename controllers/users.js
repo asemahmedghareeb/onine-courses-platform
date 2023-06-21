@@ -13,6 +13,7 @@ router.get('/newCourse/:id',userOnly, async(req,res)=>{
   const course= await Course.findById(req.params.id)
   const user=await User.find({name:u.name})
   user.courses.push(course.title)
+  await user.save()
   res.redirect('/profile')
 })
 
