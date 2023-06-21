@@ -24,7 +24,7 @@ router.get('/newCourse/:id',userOnly, async(req,res)=>{
     console.error(err);
   });
  
-  req.user=await User.findById(user.id)
+  req.user=await User.findOne({name:user.name})
   res.redirect('/profile')
 })
 
