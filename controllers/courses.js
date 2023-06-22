@@ -11,7 +11,7 @@ router.get('/',async(req,res)=>{
   res.render('courses.ejs',{courses:courses})
 })
 
-// router.use(checkuser) 
+router.use(checkuser) 
 
 router.get("/create-checkout-session/:id", async (req, res) => {
   let course=await Course.findById(req.params.id)
