@@ -31,8 +31,15 @@
         <button type="submit">اضافة</button>
     </form>
     <h1>المواد</h1>
+    
     <table style="border:1px black solid" class="courses_table">
+        <th>اسم الكورس</th>
+        <th>الترم</th>
+        <th>سعر الكورس</th>
+        <th colspan="3">التحكم بالكورسات</th>
+       
         <% courses.map(course=>{ %>
+
             <tr>
                 <td>
                 <%= course.title %>
@@ -42,7 +49,7 @@
 
                 </td>
                 <td>
-                    <%= course.price %>$
+                    <%= course.price/100%>$
 
                 </td>
                 <td>
