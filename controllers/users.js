@@ -27,7 +27,7 @@ router.post('/new',async(req,res)=>{
     if(req.user){
       if(req.user.role)
       res.redirect('/users')
-      res.redirect('login')
+      res.redirect('/logout')
     } 
     else
       res.redirect('/login')
