@@ -13,7 +13,7 @@ router.get('/',async(req,res)=>{
 
 router.use(checkuser) 
 
-router.get("/create-checkout-session/:id",userOnly, async (req, res) => {
+router.get("/create-checkout-session/:id", async (req, res) => {
   let course=await Course.findById(req.params.id)
 
   let userCourses=req.user.courses
