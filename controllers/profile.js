@@ -3,7 +3,7 @@ const router = express.Router();
 const Course = require('../models/course');
 const User = require('../models/user');
 const Lesson = require('../models/lesson');
-const {jwtAuth}=require('../middlewares/login')
+const {jwtAuth}=require('../middlewares/midddlewares')
 
 
 

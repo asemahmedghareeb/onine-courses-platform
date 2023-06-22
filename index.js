@@ -7,7 +7,7 @@ app.use(cors())
 express.json()
 const methodOverride = require('method-override')
 const cookieParser=require('cookie-parser')
-const {jwtAuth}=require('./middlewares/login')
+const {jwtAuth}=require('./middlewares/midddlewares')
 
 //middleware
 app.use(express.static('public')); 

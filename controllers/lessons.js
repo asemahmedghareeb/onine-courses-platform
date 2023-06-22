@@ -4,7 +4,7 @@ const Lesson = require('../models/lesson');
 const Course = require('../models/course');
 
 router.use(express.static('public')); 
-const {checkuser,adminOnly,jwtAuth,adminAndUser}=require('../middlewares/login')
+const {checkuser,adminOnly,jwtAuth,adminAndUser}=require('../middlewares/midddlewares')
 
 
 

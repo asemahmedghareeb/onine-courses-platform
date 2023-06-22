@@ -4,7 +4,7 @@ const User = require('../models/user');
 const Course = require('../models/course');
 router.use(express.static('public')); 
 const bcrypt=require('bcrypt')
-const {checkuser, adminOnly,userOnly}=require('../middlewares/login')
+const {checkuser, adminOnly,userOnly}=require('../middlewares/midddlewares')
 //adding new course
 router.use(checkuser)
 

@@ -5,7 +5,7 @@ const Lesson = require('../models/lesson');
 require('dotenv').config()
 const stripe=require('stripe')(process.env.STRIPE_KEY)
 router.use(express.static('public')); 
-const {checkuser,adminOnly,userOnly}=require('../middlewares/login')
+const {checkuser,adminOnly,userOnly}=require('../middlewares/midddlewares')
 router.get('/',async(req,res)=>{
   const courses=await Course.find()
   res.render('courses.ejs',{courses:courses})
