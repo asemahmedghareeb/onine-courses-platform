@@ -51,9 +51,11 @@ async function isEmailDoublicatedOrNot (email){
   }
   return false
 }
+
+
 //create new user
 router.post('/new',async(req,res)=>{
-    const {name,password,email,role,course}=req.body
+    const {name,password,email,number}=req.body
     //we should make validation for email to chech if it is dublicated or not
     if(await isEmailDoublicatedOrNot(email)){
       return res.render('Error.ejs',{error:"الاميل الذي ادخلته مستخدم من قبل"})
@@ -62,20 +64,18 @@ router.post('/new',async(req,res)=>{
     //hashing passwords
     let hashedPass=await bcrypt.hash(password,10)
 
-    const course2=await Course.findOne({title:course})
- 
-    id=course2.id
     const user=new User({
         name:name, 
         email:email,  
-        password:hashedPass, 
-        role:role,
-        courses:course,
-        coursesId:id
+        password:hashedPass,  
+        phone_number:number    
     })
       
     await user.save()
-    res.redirect('/users/')
+    if(req.user.role==='admin')
+      res.redirect('/users')
+    else
+      res.redirect('/login')
 })
 
  

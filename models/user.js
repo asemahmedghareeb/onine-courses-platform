@@ -21,11 +21,14 @@ const userSchema = new mongoose.Schema({
       default:"user"
     }, 
     courses: [{
-      type: mongoose.Schema.Types.title,
       type:String,
       ref: 'Course',
       required:false
     }],
+    phone_number:{
+      type:String,
+      required:false
+    },
     createdAt: {
         type: Date,
         default: Date.now
