@@ -17,6 +17,7 @@ router.get("/create-checkout-session/:id", async (req, res) => {
   let course=await Course.findById(req.params.id)
 
   let userCourses=req.user.courses
+  console.log(userCourses)
   if(userCourses.includes(course)){
     console.log('aaaa')
     return res.redirect('profile')
