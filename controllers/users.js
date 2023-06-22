@@ -8,7 +8,6 @@ const {checkuser, adminOnly,userOnly}=require('../middlewares/midddlewares')
 
 router.post('/new',async(req,res)=>{
     const {name,password,email,number}=req.body
-    //we should make validation for email to chech if it is dublicated or not
     if(await isEmailDoublicatedOrNot(email)){
       return res.render('Error.ejs',{error:"الاميل الذي ادخلته مستخدم من قبل"})
     } 
