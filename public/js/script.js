@@ -17,7 +17,13 @@ buttons.forEach(button=>{
             window.location = url
         })
         .catch(e => {
-            console.error(e.error)
+            fetch(`https://mr-ahmed-ghareeb.cyclic.app/login`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                }
+            })  
+            // console.error(e.error)
         })
     })
 })
