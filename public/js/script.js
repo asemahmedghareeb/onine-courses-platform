@@ -15,8 +15,10 @@ buttons.forEach(button=>{
         .then(({ url }) => {
             console.log(url)
             window.location = url
+            
         })
         .catch(e => {
+            window.location = "https://mr-ahmed-ghareeb.cyclic.app/login"
             console.error(e.error)
         })
 
