@@ -14,15 +14,15 @@ router.get('/',jwtAuth,async(req,res)=>{
         }
         else if(req.user.role==='user'){
             let user=await User.findById(req.user.id)
-            let c=user.courses
-            req.user.courses=c;
-            const courses= await Course.find({title:{$in:c}})
+            let userCourses=user.courses
+            req.user.courses=userCourses;
+            const courses= await Course.find({title:{$in:userCourses}})
             return res.render('profiles/userProfile.ejs',{name:req.user.name,courses:courses})
         }
     } 
     res.render('Error.ejs',{error:"قم بتسجيل الدخول  "})
 }) 
-
+ 
 
 
 router.get('/:id',async(req,res)=>{

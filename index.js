@@ -49,7 +49,7 @@ app.get('/logout', (req, res) => {
   res.clearCookie('token');
   res.clearCookie('refreash');
   // res.redirect("/login")
- return res.render("Error.ejs",{error:"  تم تسجيل الخروج"})
+  res.redirect("/login")
 });
 
       

@@ -26,16 +26,9 @@ const userSchema = new mongoose.Schema({
       ref: 'Course',
       required:false
     }],
-    coursesId: [{
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Course',
-      required:false
-    }],
     createdAt: {
         type: Date,
         default: Date.now
     },
 });
-
-
 module.exports = mongoose.model('User', userSchema);
