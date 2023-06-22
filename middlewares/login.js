@@ -79,10 +79,7 @@ exports.checkuser=(req,res,next)=>{
       next()
     }  
     else{
-    // return res.json({ url: 'https://mr-ahmed-ghareeb.cyclic.app/login' })
-
-      console.log('bug else')
-      return res.redirect('https://mr-ahmed-ghareeb.cyclic.app/login')
+      return res.redirect('/login')
     } 
 }
 
