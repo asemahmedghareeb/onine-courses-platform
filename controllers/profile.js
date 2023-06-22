@@ -20,7 +20,8 @@ router.get('/',jwtAuth,async(req,res)=>{
             return res.render('profiles/userProfile.ejs',{name:req.user.name,courses:courses})
         }
     } 
-    res.render('Error.ejs',{error:"قم بتسجيل الدخول  "})
+    res.redirect("/login")
+    // res.render('Error.ejs',{error:"قم بتسجيل الدخول"})
 }) 
  
 
