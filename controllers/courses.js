@@ -20,8 +20,8 @@ router.get("/create-checkout-session/:id",userOnly, async (req, res) => {
   // if(userCourses.includes(course)){
   //   return res.json({error:"تم الاشتراك من فبل في الكورس"})
   // }
-  console.log(req.user)
-  console.log("erorr")
+  console.log(req.user.courses)
+
   try { 
     console.log('we access')
     const session = await stripe.checkout.sessions.create({
