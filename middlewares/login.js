@@ -80,7 +80,8 @@ exports.checkuser=(req,res,next)=>{
     }  
     else{
       console.log('bug else')
-      return res.redirect('/login')
+      return res.render('auth/login.ejs',{error:""})
+      
     } 
 }
 
