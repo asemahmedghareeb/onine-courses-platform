@@ -22,8 +22,9 @@ buttons.forEach(button=>{
                 headers: {
                     "Content-Type": "application/json",
                 }
-            })   
+        }).then(()=>{
             console.error(e.error)
+        })
         })
 
     })
