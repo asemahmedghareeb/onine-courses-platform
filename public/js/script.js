@@ -19,7 +19,6 @@ buttons.forEach(button=>{
         })
         .catch(e => {
             window.location = "https://mr-ahmed-ghareeb.cyclic.app/login"
-            console.error(e.error)
         })
 
     })
