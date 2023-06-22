@@ -16,7 +16,6 @@ router.get('/',jwtAuth,async(req,res)=>{
             let user=await User.findById(req.user.id)
             let c=user.courses
             req.user.courses=c;
-            console.log('user courses ', c)
             const courses= await Course.find({title:{$in:c}})
             return res.render('profiles/userProfile.ejs',{name:req.user.name,courses:courses})
         }

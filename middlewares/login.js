@@ -25,7 +25,6 @@ exports.jwtAuth = async (req, res, next) => {
           }
         });
         req.user = userData;
-        console.log(userData)
         next()
       } 
       else if (refreash) {
@@ -72,15 +71,17 @@ exports.jwtAuth = async (req, res, next) => {
           next();
         }
 };
-//
+
 exports.checkuser=(req,res,next)=>{
     const token=req.cookies.token
     if(token){
-      return next()
-    }   
-
-    res.redirect('/login')
+      next()
+    }  
+    else{
+      res.redirect('/login')
+    } 
 }
+
 
 exports.adminOnly=(req, res, next) => {
   if(req.user.role==="admin"){
@@ -91,6 +92,7 @@ exports.adminOnly=(req, res, next) => {
     res.redirect('/')
   }
 }
+
 
 exports.userOnly=(req, res, next)=> {
     

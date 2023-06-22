@@ -11,13 +11,10 @@ router.get('/',async(req,res)=>{
   res.render('courses.ejs',{courses:courses})
 })
 
-
-
 router.use(checkuser) 
-  
+
 router.get("/create-checkout-session/:id",userOnly, async (req, res) => {
   let course=await Course.findById(req.params.id)
-  
   try { 
     console.log('we access')
     const session = await stripe.checkout.sessions.create({
@@ -34,13 +31,11 @@ router.get("/create-checkout-session/:id",userOnly, async (req, res) => {
           },
           quantity: 1,
         }
-      ]
-      , 
+      ], 
         success_url:`https://mr-ahmed-ghareeb.cyclic.app/users/newCourse/${req.params
       .id}`,
         cancel_url: 'https://mr-ahmed-ghareeb.cyclic.app/courses',
       })
-   
     res.json({ url: session.url })
   } catch (e) {
     res.status(500).json({ error: e.message })
@@ -60,20 +55,16 @@ router.get('/dashboard',async(req,res)=>{
   }catch(err){
     res.send({error:err})
   }
- 
 })
- 
+
 router.delete('/delete/:id',async(req,res)=>{
   try{
-
     await Course.findByIdAndDelete(req.params.id)
     let lessons =await Lesson.deleteMany({course:req.params.id})
   }catch(err){
-    res.send({error:err})
-    
+    res.send({error:err}) 
   }
   res.redirect('/courses/dashboard')
-    
 })  
 
     
@@ -81,13 +72,11 @@ router.get('/update/:id',async(req,res)=>{
   try{
     const course=await Course.findById(req.params.id)
     res.render('updatecourse.ejs',{course:course})
-
   }catch(err){
     res.send({error:err})
   }
 })
   
- 
 router.put('/update/:id',async(req,res)=>{
   try{
 
@@ -100,21 +89,18 @@ router.put('/update/:id',async(req,res)=>{
   }catch(err){
     res.send({error:err})
   }
-  res.redirect('/courses/dashboard')
-   
+  res.redirect('/courses/dashboard') 
 })
     
    
 router.post('/new',async(req,res)=>{
   try{
-
     const course= new Course({
       title:req.body.title,
       description:req.body.description,
       price:req.body.price
     })
     await course.save()
-
   }catch(err){
     res.send({error:err})
   }
