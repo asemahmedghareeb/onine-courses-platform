@@ -75,10 +75,12 @@ exports.jwtAuth = async (req, res, next) => {
 exports.checkuser=(req,res,next)=>{
     const token=req.cookies.token
     if(token){
+      console.log('bug')
       next()
     }  
     else{
       res.redirect('/login')
+      console.log('bug')
     } 
 }
 

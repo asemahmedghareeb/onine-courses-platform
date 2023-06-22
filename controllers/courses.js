@@ -6,14 +6,15 @@ require('dotenv').config()
 const stripe=require('stripe')(process.env.STRIPE_KEY)
 router.use(express.static('public')); 
 const {checkuser,adminOnly,userOnly}=require('../middlewares/login')
+
 router.get('/',async(req,res)=>{
   const courses=await Course.find()
   res.render('courses.ejs',{courses:courses})
 })
 
-router.use(checkuser) 
+// router.use(checkuser) 
 
-router.get("/create-checkout-session/:id",userOnly, async (req, res) => {
+router.get("/create-checkout-session/:id", async (req, res) => {
   let course=await Course.findById(req.params.id)
   try { 
     console.log('we access')

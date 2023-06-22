@@ -9,7 +9,6 @@ const methodOverride = require('method-override')
 const cookieParser=require('cookie-parser')
 const {jwtAuth}=require('./middlewares/login')
 
- 
 //middleware
 app.use(express.static('public')); 
 app.set('view-engine',"ejs")
