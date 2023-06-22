@@ -2,7 +2,7 @@ const buttons = document.querySelectorAll(".buy")
 buttons.forEach(button=>{
     button.addEventListener("click", () => {
         let id=button.id
-        fetch(`https://mr-ahmed-ghareeb.cyclic.app/courses/create-checkout-session/${id}`, {
+        fetch(`localhost:8080/courses/create-checkout-session/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
