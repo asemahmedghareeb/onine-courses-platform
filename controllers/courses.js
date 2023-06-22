@@ -15,11 +15,12 @@ router.use(checkuser)
 
 router.get("/create-checkout-session/:id",userOnly, async (req, res) => {
   let course=await Course.findById(req.params.id)
-  let userCourses=req.uesr.courses
-  console.log(userCourses)
-  if(userCourses.includes(course)){
-    return res.render('Error.ejs',{error:"تم الاشتراك من فبل في الكورس"})
-  }
+
+  // let userCourses=req.uesr.courses
+  // if(userCourses.includes(course)){
+  //   return res.json({error:"تم الاشتراك من فبل في الكورس"})
+  // }
+  console.log(req.user)
   console.log("erorr")
   try { 
     console.log('we access')
