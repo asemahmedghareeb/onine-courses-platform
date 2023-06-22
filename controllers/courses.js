@@ -20,7 +20,7 @@ router.get("/create-checkout-session/:id", async (req, res) => {
   console.log(userCourses)
   
   if(userCourses.includes(course.title)){
-    return  new Error()
+    new Error()
   }
 
   try { 
