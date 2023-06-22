@@ -80,8 +80,7 @@ exports.checkuser=(req,res,next)=>{
     }  
     else{
       console.log('bug else')
-      res.render('auth/login.ejs',{error:""})
-      
+      return res.redirect('https://mr-ahmed-ghareeb.cyclic.app/login')
     } 
 }
 
