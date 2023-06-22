@@ -79,8 +79,8 @@ exports.checkuser=(req,res,next)=>{
       next()
     }  
     else{
-      return res.redirect('/login')
       console.log('bug else')
+      return res.redirect('/login')
     } 
 }
 
