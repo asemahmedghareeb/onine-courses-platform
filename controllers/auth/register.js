@@ -7,8 +7,6 @@ router.get('/',(req,res)=>{
 
 
 router.post ('/',async(req,res)=>{
-  // const {name,email,pass}
-
   res.redirect('/users/new')
 })
 

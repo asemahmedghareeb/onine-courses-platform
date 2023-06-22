@@ -5,6 +5,30 @@ const Course = require('../models/course');
 router.use(express.static('public')); 
 const bcrypt=require('bcrypt')
 const {checkuser, adminOnly,userOnly}=require('../middlewares/midddlewares')
+
+router.post('/new',async(req,res)=>{
+    const {name,password,email,number}=req.body
+    //we should make validation for email to chech if it is dublicated or not
+    if(await isEmailDoublicatedOrNot(email)){
+      return res.render('Error.ejs',{error:"الاميل الذي ادخلته مستخدم من قبل"})
+    } 
+
+    //hashing passwords
+    let hashedPass=await bcrypt.hash(password,10)
+
+    const user=new User({
+        name:name, 
+        email:email,  
+        password:hashedPass,  
+        phone_number:number    
+    })
+      
+    await user.save()
+    if(req.user.role==='admin')
+      res.redirect('/users')
+    else
+      res.redirect('/login')
+})
 //adding new course
 router.use(checkuser)
 
@@ -54,29 +78,6 @@ async function isEmailDoublicatedOrNot (email){
 
 
 //create new user
-router.post('/new',async(req,res)=>{
-    const {name,password,email,number}=req.body
-    //we should make validation for email to chech if it is dublicated or not
-    if(await isEmailDoublicatedOrNot(email)){
-      return res.render('Error.ejs',{error:"الاميل الذي ادخلته مستخدم من قبل"})
-    } 
-
-    //hashing passwords
-    let hashedPass=await bcrypt.hash(password,10)
-
-    const user=new User({
-        name:name, 
-        email:email,  
-        password:hashedPass,  
-        phone_number:number    
-    })
-      
-    await user.save()
-    if(req.user.role==='admin')
-      res.redirect('/users')
-    else
-      res.redirect('/login')
-})
 
  
 //get update page  
