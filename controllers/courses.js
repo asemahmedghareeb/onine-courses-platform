@@ -22,7 +22,8 @@ router.get("/create-checkout-session/:id", async (req, res) => {
   
   try { 
     if(userCourses.includes(course.title)){
-      throw new Error()
+      console.log(bug)
+       throw new Error()
     }
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
