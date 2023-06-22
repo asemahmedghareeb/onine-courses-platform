@@ -24,8 +24,11 @@ router.post('/new',async(req,res)=>{
     })
       
     await user.save()
-    if(req.user.role==='admin')
+    if(req.user){
+      if(req.user.role)
       res.redirect('/users')
+      res.redirect('login')
+    } 
     else
       res.redirect('/login')
 })
