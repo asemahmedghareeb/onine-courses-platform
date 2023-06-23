@@ -115,7 +115,7 @@ router.post('/new',async(req,res)=>{
     const course= new Course({
       title:req.body.title,
       description:req.body.description,
-      price:req.body.price
+      price:(req.body.price)*100
     })
     await course.save()
 
