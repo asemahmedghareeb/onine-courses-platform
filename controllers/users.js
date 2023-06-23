@@ -21,16 +21,19 @@ router.post('/new',async(req,res)=>{
         password:hashedPass,  
         phone_number:number    
     })
-      
+       
     await user.save()
     if(req.user){
       if(req.user.role==="admin")
-      res.redirect('/users')
+        return res.redirect('/users')
       res.redirect('/logout')
     } 
     else
       res.redirect('/login')
 })
+
+
+
 //adding new course
 router.use(checkuser)
 
@@ -69,9 +72,8 @@ router.delete('/:id',async(req,res)=>{
 })
 
 async function isEmailDoublicatedOrNot (email){
-  const u=await User.findOne({email:email})
-  console.log(u) 
-  if(u){
+  const user=await User.findOne({email:email})
+  if(user){
     console.log("doublicated")
     return true
   }
@@ -79,35 +81,31 @@ async function isEmailDoublicatedOrNot (email){
 }
 
 
-//create new user
+
 
  
 //get update page  
 router.get('/:id',async(req,res)=>{
     const user=await User.findById(req.params.id)
 
-    const names=await Course.find({}, 'title') 
-    res.render('updateUser.ejs',{id:req.params.id , user:user,names:names})
+    
+    res.render('updateUser.ejs',{id:req.params.id , user:user})
 
 })
 
 //update user information
 router.patch('/:id',async(req,res)=>{
     const {name,password,email,role,course}=req.body
-    const course2=await Course.findOne({title:course})
+
 
     const user=await User.findById(req.params.id)
-    if(course2 ){
-        user.name=name
-        user.email=email,
-        user.password=password
-        user.role=role
-        user.courses=course
-        user.coursesId=course2.id
-        await user.save()
-    }
+      user.name=name
+      user.email=email
+      user.password=password
+      user.role=role
+      user.courses=course
+      await user.save()
+    
   res.redirect('/users/')
-})
-
-
+}) 
 module.exports=router

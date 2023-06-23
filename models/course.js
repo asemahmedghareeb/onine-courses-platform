@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-const Lesson = require('../models/lesson');
-const slugify = require('slugify');
 const courseSchema = new mongoose.Schema({
 
     title: {

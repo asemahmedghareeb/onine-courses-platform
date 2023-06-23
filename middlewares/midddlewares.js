@@ -81,9 +81,6 @@ exports.checkuser=(req,res,next)=>{
       return res.redirect('/login')
     } 
 }
-exports.checkingIfUserBuyTheCourse=(req,res,next)=>{
-  next()
-}
 
 exports.adminOnly=(req, res, next) => {
   if(req.user.role==="admin"){
