@@ -5,7 +5,7 @@ const User = require('../models/user');
 const Lesson = require('../models/lesson');
 const {jwtAuth, checkuser}=require('../middlewares/midddlewares')
 
-// router.use(checkuser)
+router.use(checkuser)
 router.get('/',async(req,res)=>{
     if(req.user){
         if(req.user.role==='admin'){
