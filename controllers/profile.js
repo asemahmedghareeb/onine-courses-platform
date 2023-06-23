@@ -9,7 +9,7 @@ router.use(checkuser)
 router.get('/',async(req,res)=>{
     if(req.user){
         if(req.user.role==='admin'){
-            return res.render('profiles/adminProfile.ejs',{name:req.user.name})
+            return res.render('../profiles/adminProfile.ejs',{name:req.user.name})
         }
         else if(req.user.role==='user'){
             let user=await User.findById(req.user.id)
