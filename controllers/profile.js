@@ -3,9 +3,8 @@ const router = express.Router();
 const Course = require('../models/course');
 const User = require('../models/user');
 const Lesson = require('../models/lesson');
-const {jwtAuth, checkuser}=require('../middlewares/midddlewares')
+const {checkuser}=require('../middlewares/midddlewares')
 
-router.use(jwtAuth)
 router.use(checkuser)
 router.get('/',async(req,res)=>{
     if(req.user){
