@@ -13,11 +13,12 @@
 
 
     <% lessons.map(lesson=>{ %>
-      <div class="lessons">
-
-          <div>
-              <%=lesson.lessonNumber%> : <%= lesson.title %>
-          </div>
+      <div class="lessons lesson">
+        <h3>
+            <div id="lesson_name">
+                <%=lesson.lessonNumber%> : <%= lesson.title %>
+            </div>
+        </h3>
         
 
     </div>

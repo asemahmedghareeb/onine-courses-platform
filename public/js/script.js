@@ -18,7 +18,7 @@ buttons.forEach(button=>{
             
         })
         .catch(e => {
-            window.location = `https://mr-ahmed-ghareeb.cyclic.app/profile/${id}`
+            window.location = "https://mr-ahmed-ghareeb.cyclic.app/profile/"
         })
     })
 })

@@ -3,11 +3,11 @@ const router = express.Router();
 const Course = require('../models/course');
 const User = require('../models/user');
 const Lesson = require('../models/lesson');
-const {jwtAuth}=require('../middlewares/midddlewares')
+const {jwtAuth, checkuser}=require('../middlewares/midddlewares')
 
-
-
-router.get('/',jwtAuth,async(req,res)=>{
+router.use(jwtAuth)
+router.use(checkuser)
+router.get('/',async(req,res)=>{
     if(req.user){
         if(req.user.role==='admin'){
             return res.render('profiles/adminProfile.ejs',{name:req.user.name})

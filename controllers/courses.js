@@ -46,6 +46,7 @@ router.get("/create-checkout-session/:id", async (req, res) => {
       })
     res.json({ url: session.url })
   } catch (e) {
+    
     res.status(500).json({ error: e.message })
   }
 })
