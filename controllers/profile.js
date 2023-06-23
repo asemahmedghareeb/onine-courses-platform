@@ -3,13 +3,13 @@ const router = express.Router();
 const Course = require('../models/course');
 const User = require('../models/user');
 const Lesson = require('../models/lesson');
-const {checkuser}=require('../middlewares/midddlewares')
+const {jwtAuth, checkuser}=require('../middlewares/midddlewares')
 
 router.use(checkuser)
 router.get('/',async(req,res)=>{
     if(req.user){
         if(req.user.role==='admin'){
-            return res.render('../profiles/adminProfile.ejs',{name:req.user.name})
+            return res.render('profiles/adminProfile.ejs',{name:req.user.name})
         }
         else if(req.user.role==='user'){
             let user=await User.findById(req.user.id)
