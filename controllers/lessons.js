@@ -103,7 +103,6 @@ router.get('/show/:id',async(req,res)=>{
       
       const lesson=new Lesson({
         title:req.body.title,
-        content:req.body.content,
         course:Id,
         lessonNumber:req.body.lessonNumber
       })
