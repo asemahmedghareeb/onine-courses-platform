@@ -2,9 +2,13 @@ const express=require('express')
 const router = express.Router();
 const Lesson = require('../models/lesson');
 const Course = require('../models/course');
-
+const fileUpload = require("express-fileupload");
+const path = require("path");
 router.use(express.static('public')); 
 const {checkuser,adminOnly,jwtAuth,adminAndUser}=require('../middlewares/midddlewares')
+const filesPayloadExists = require('../middlewares/filesPayloadExists');
+const fileExtLimiter = require('../middlewares/fileExtLimiter');
+const fileSizeLimiter = require('../middlewares/fileSizeLimiter');
 
 
 
@@ -33,8 +37,29 @@ router.get('/show/:id',async(req,res)=>{
   router.use(jwtAuth) 
   router.use(checkuser) 
   router.use(adminOnly) 
-  
 
+
+  router.post('/upload',
+    fileUpload({ createParentPath: true }),
+    filesPayloadExists,
+    fileExtLimiter(['.png', '.jpg', '.jpeg','.mp4']),
+    fileSizeLimiter,
+    (req, res) => {
+        const files = req.files
+        console.log(files)
+
+        Object.keys(files).forEach(key => {
+            const filepath = path.join(__dirname, 'files', files[key].name)
+            files[key].mv(filepath, (err) => {
+                if (err) return res.status(500).json({ status: "error", message: err })
+            })
+        })
+
+        return res.json({ status: 'success', message: Object.keys(files).toString() })
+    }
+)
+
+ 
 
 
   router.get('/:id',async(req,res)=>{

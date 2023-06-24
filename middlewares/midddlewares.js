@@ -110,4 +110,4 @@ exports.adminAndUser=(req,res,next)=>{
     console.log("not allowed")
     res.redirect('/')
   }
-}
+} 

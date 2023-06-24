@@ -34,7 +34,7 @@ router.post('/new',async(req,res)=>{
 
 
 
-//adding new course
+
 router.use(checkuser)
 
 router.get('/newCourse/:id',userOnly, async(req,res)=>{
@@ -81,9 +81,6 @@ async function isEmailDoublicatedOrNot (email){
 }
 
 
-
-
- 
 //get update page  
 router.get('/:id',async(req,res)=>{
     const user=await User.findById(req.params.id)
@@ -108,4 +105,24 @@ router.patch('/:id',async(req,res)=>{
     
   res.redirect('/users/')
 }) 
+
+
+
+router.post('/addCourse/:id',userOnly, async(req,res)=>{
+  const user=req.user;
+  const course= await Course.findById(req.params.id)
+
+  await User.updateOne(
+    {name:user.name},
+    {$push:{courses:course.title}}
+  ) .then(result => {
+    console.log(result);
+  })
+  .catch(err => {
+    console.error(err);
+  });
+
+  res.redirect('/users/')
+})
+
 module.exports=router
