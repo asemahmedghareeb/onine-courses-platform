@@ -73,20 +73,9 @@ router.get('/show/:id',async(req,res)=>{
   }) 
     
     
-    
-    
-    // router.use((req, res, next) => {
-    //   if(req.user.role==="admin")
-    //   next();
-    //   else{
-    //     console.log("not allowed")
-    //     return res.redirect('/') 
-    //   }
-    // });
-    
-    
-    
-    
+     
+
+
     //delete
     //this id is lesson id
     router.delete('/delete/:id',async(req,res)=>{
