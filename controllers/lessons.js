@@ -75,14 +75,14 @@ router.get('/show/:id',async(req,res)=>{
     
     
     
-    router.use((req, res, next) => {
-      if(req.user.role==="admin")
-      next();
-      else{
-        console.log("not allowed")
-        return res.redirect('/') 
-      }
-    });
+    // router.use((req, res, next) => {
+    //   if(req.user.role==="admin")
+    //   next();
+    //   else{
+    //     console.log("not allowed")
+    //     return res.redirect('/') 
+    //   }
+    // });
     
     
     
@@ -95,7 +95,7 @@ router.get('/show/:id',async(req,res)=>{
       let courseId=course.toString()
       res.redirect(`/lessons/${courseId}`)
     }) 
-    
+     
     //create   
     //this is course id
     router.post('/new/:id',async(req,res)=>{
