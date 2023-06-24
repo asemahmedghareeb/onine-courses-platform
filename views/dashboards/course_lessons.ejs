@@ -20,9 +20,10 @@
 
 
             <div>
-                <label>Node.js File Uploader</label>
+                <label>upload File </label>
                 <input type="file" id="myFiles"  multiple />
             </div>
+            <button id="upload">upload</button>
             <div>
                 <label for="content" >رقم الدرس</label>
                 <input name="lessonNumber" id="lessonNumber"  placeholder="قم بكتابة رقم الدرس" required>
@@ -52,7 +53,7 @@
     <script src="js/main.js"></script></script>
 
     <script>
-        const button = document.getElementById('submit')
+        const button = document.getElementById('upload')
         console.log(button)
         const sendFiles = async () => {
             // Object 
