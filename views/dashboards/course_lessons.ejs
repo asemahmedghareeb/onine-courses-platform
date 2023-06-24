@@ -64,14 +64,14 @@
                 formData.append(myFiles.item(key).name, myFiles.item(key))
             })
 
-            // const response = await fetch('https://mr-ahmed-ghareeb.cyclic.app/lessons/upload', {
-            //     method: 'POST',
-            //     body: formData
-            // })
-            const response = await fetch('http://localhost:8080/lessons/upload', {
+            const response = await fetch('https://mr-ahmed-ghareeb.cyclic.app/lessons/upload', {
                 method: 'POST',
                 body: formData
             })
+            // const response = await fetch('http://localhost:8080/lessons/upload', {
+            //     method: 'POST',
+            //     body: formData
+            // })
 
             const json = await response.json()
             console.log(json)
