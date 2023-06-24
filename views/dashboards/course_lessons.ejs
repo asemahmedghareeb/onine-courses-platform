@@ -57,7 +57,7 @@
 
     <script>
         const form = document.getElementsByTagName('form')
-
+        console.log(form)
         const sendFiles = async () => {
             // Object 
             const myFiles = document.getElementById('myFiles').files
@@ -84,7 +84,7 @@
             console.log(json)
         }
 
-        form.addEventListener('submit', (e) => {
+        form.on('submit', (e) => {
             e.preventDefault()
             sendFiles()
         })
