@@ -49,12 +49,12 @@ router.get('/show/:id',async(req,res)=>{
         console.log(files)
 
         Object.keys(files).forEach(key => {
-            const filepath = path.join(__dirname, 'files', files[key].name)
+            const filepath = path.join(`${path.dirname(__dirname)}`, 'public\\videos', files[key].name)
             files[key].mv(filepath, (err) => {
                 if (err) return res.status(500).json({ status: "error", message: err })
             })
         })
-
+ 
         return res.json({ status: 'success', message: Object.keys(files).toString() })
     }
 )
@@ -70,7 +70,7 @@ router.get('/show/:id',async(req,res)=>{
       //getting all the lessons
       const Lessons=await Lesson.find({course:Id}).sort({lessonNumber:1})
       res.render("dashboards/course_lessons.ejs",{lessons:Lessons,id:Id,title:title})  
-    }) 
+  }) 
     
     
     
