@@ -10,7 +10,7 @@ const lessonSchema = new mongoose.Schema({
     },
     course: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Course',
+      ref: 'Course', 
       required: true
     },
     createdAt: {
@@ -18,9 +18,9 @@ const lessonSchema = new mongoose.Schema({
         default: Date.now
       },
     lessonNumber: {
-        type: Number,
-        required:true,
-        unique: true
+        type: Number, 
+        required:true, 
+        unique: true 
       },
   });
 module.exports = mongoose.model('Lesson', lessonSchema);
