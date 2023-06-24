@@ -33,7 +33,7 @@
             </div>
 
         </div>
-        <button type="submit">اضافة</button>
+        <button type="submit" id="submit">اضافة</button>
     </form>
     <hr>
     <h1>دروس <%=title%>  </h1>
@@ -56,8 +56,8 @@
     <script src="js/main.js"></script></script>
 
     <script>
-        const form = document.getElementsByTagName('form')
-        console.log(form)
+        const button = document.getElementById('submit')
+        console.log(button)
         const sendFiles = async () => {
             // Object 
             const myFiles = document.getElementById('myFiles').files
@@ -84,7 +84,7 @@
             console.log(json)
         }
 
-        form.on('submit', (e) => {
+        button.on('submit', (e) => {
             e.preventDefault()
             sendFiles()
         })
