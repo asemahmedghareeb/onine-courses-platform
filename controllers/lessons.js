@@ -1,7 +1,7 @@
 const express=require('express')
 const router = express.Router();
 const Lesson = require('../models/lesson');
-const Course = require('../models/course');
+const Course = require('../models/course');const fs = require('fs');
 const fileUpload = require("express-fileupload");
 const path = require("path");
 router.use(express.static('public')); 
@@ -33,13 +33,21 @@ router.get('/show/:id',async(req,res)=>{
     let Lessons=await Lesson.find({course:Id})
     res.render("lessons.ejs",{lessons:Lessons,id:Id,title:title})
   })   
-  
+    
   router.use(jwtAuth) 
   router.use(checkuser) 
   router.use(adminOnly) 
 
-
-  router.post('/upload',
+  router.get('/lessonUpload/:id',async(req,res)=>{
+    let Id=req.params.id
+    //getting the title to view on the lessons page
+    const lesson=await Lesson.findById(Id)
+    
+    res.render("dashboards/lesson_vid_upload.ejs",{lesson:lesson})  
+  });
+     
+  
+  router.post('/upload/:id',
     fileUpload({ createParentPath: true }),
     filesPayloadExists,
     fileExtLimiter(['.png', '.jpg', '.jpeg','.mp4']),
@@ -49,13 +57,13 @@ router.get('/show/:id',async(req,res)=>{
         console.log(files)
 
         Object.keys(files).forEach(key => {
-            const filepath = path.join(`${path.dirname(__dirname)}`, 'public\\videos', files[key].name)
+            const filepath = path.join(`${path.dirname(__dirname)}`, 'public\\videos',req.params.id)//files[key].name
             files[key].mv(filepath, (err) => {
                 if (err) return res.status(500).json({ status: "error", message: err })
             })
         })
- 
-        return res.json({ status: 'success', message: Object.keys(files).toString() })
+        
+        return res.json({ status: 'success', message: Object.keys(files).toString() ,url:""})
     }
 )
 
@@ -82,6 +90,14 @@ router.get('/show/:id',async(req,res)=>{
       const lesson=await Lesson.findByIdAndDelete(req.params.id)
       let course=lesson.course
       let courseId=course.toString()
+      const filePath =  path.join(`${path.dirname(__dirname)}`, 'public\\videos',req.params.id)
+       fs.unlink(filePath, (err) => {
+        if (err) {
+          console.error(err);
+          return;
+        }
+        console.log(`${filePath} has been deleted.`);
+      });
       res.redirect(`/lessons/${courseId}`)
     }) 
      

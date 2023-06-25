@@ -18,11 +18,7 @@
             </div>
 
 
-            <div>
-                <label>upload File </label>
-                <input type="file" id="myFiles"  multiple />
-            </div>
-            <button id="upload">upload</button>
+    
             <div>
                 <label for="content" >رقم الدرس</label>
                 <input name="lessonNumber" id="lessonNumber"  placeholder="قم بكتابة رقم الدرس" required>
@@ -35,53 +31,22 @@
     <h1>دروس <%=title%>  </h1>
 
     <% lessons.map(lesson=>{ %>
-      <div >
+ 
+        <div class="lessons">
 
-          <h3><%= lesson.title %></h2>
-         
-          
-        </div >
-          <form action="/lessons/delete/<%= lesson.id %>?_method=Delete" method="post" style="margin-bottom:25px;">
-              <button type="submit" id="delete">حدف الدرس</button>
-            </form>
-            
+            <h3 id=""><%= lesson.title %></h2>
+                <a href="lessonUpload/<%= lesson.id%>" id="lessons_show">رفع فيديو الدرس</a>
+                <form action="/lessons/delete/<%= lesson.id %>?_method=Delete" method="post" style="margin-bottom:25px;">
+                    <button type="submit" id="delete">حدف الدرس</button>
+                </form>
+                
+        </div>
     <% })%>
 
 
 
     <script src="js/main.js"></script></script>
 
-    <script>
-        const button = document.getElementById('upload')
-        console.log(button)
-        const sendFiles = async () => {
-            // Object 
-            const myFiles = document.getElementById('myFiles').files
-
-            const formData = new FormData()
-
-            Object.keys(myFiles).forEach(key => {
-                formData.append(myFiles.item(key).name, myFiles.item(key))
-            })
-
-            const response = await fetch('https://mr-ahmed-ghareeb.cyclic.app/lessons/upload', {
-                method: 'POST',
-                body: formData
-            })
-            // const response = await fetch('http://localhost:8080/lessons/upload', {
-            //     method: 'POST',
-            //     body: formData
-            // })
-
-            const json = await response.json()
-            console.log(json)
-        }  
-
-        button.addEventListener('click', (e) => {
-            console.log('click')
-            e.preventDefault()
-            sendFiles()
-        })
-    </script>
+   
 </body>
 </html>

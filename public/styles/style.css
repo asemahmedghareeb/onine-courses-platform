@@ -110,10 +110,9 @@ img{
     width: 100%;
 }
 
-/* iframe styling */
-iframe{
-    width: 850px;
-    height: 500px;
+video{
+    width: 80%;
+    height: 50%;
 }
 
 /* stylinlg tables */
@@ -324,11 +323,7 @@ footer div{
         width: 70%;
     }
 
-    iframe{
-  
-        height: 300px;
-        width: 90%;
-    } 
+
     h3 a{
         padding: 4px;
         font-size: 14px;
