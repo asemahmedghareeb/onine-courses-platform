@@ -13,7 +13,7 @@ const fileSizeLimiter = require('../middlewares/fileSizeLimiter');
 
 
 
-router.get('/lesson/:id',jwtAuth,adminAndUser,async(req,res)=>{
+router.get('/lesson/:id',adminAndUser,async(req,res)=>{
   let Id=req.params.id
   //getting the title to view on the lessons page
   const lesson=await Lesson.findById(Id)
@@ -34,7 +34,6 @@ router.get('/show/:id',async(req,res)=>{
     res.render("lessons.ejs",{lessons:Lessons,id:Id,title:title})
   })   
     
-  router.use(jwtAuth) 
   router.use(checkuser) 
   router.use(adminOnly) 
 
