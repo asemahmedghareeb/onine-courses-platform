@@ -18,7 +18,7 @@ buttons.forEach(button=>{
             
         })
         .catch(e => {
-            window.location = `http://localhost:8080/profile/${id}`
+            window.location = `http://localhost:8080/profile/`
         })
     })
 })

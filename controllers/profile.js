@@ -3,7 +3,7 @@ const router = express.Router();
 const Course = require('../models/course');
 const User = require('../models/user');
 const Lesson = require('../models/lesson');
-const {jwtAuth, checkuser}=require('../middlewares/midddlewares')
+const {userOnly, checkuser}=require('../middlewares/midddlewares')
 
 router.use(checkuser)
 router.get('/',async(req,res)=>{
@@ -25,7 +25,7 @@ router.get('/',async(req,res)=>{
  
 
 
-router.get('/:id',async(req,res)=>{
+router.get('/:id',userOnly,async(req,res)=>{
     let Id=req.params.id
     //getting the title to view on the lessons page
     const course=await Course.findById(Id)

@@ -91,7 +91,7 @@ router.get('/update/:id',async(req,res)=>{
   }
 })
   
- 
+
 router.put('/update/:id',async(req,res)=>{
   try{
 
@@ -100,15 +100,14 @@ router.put('/update/:id',async(req,res)=>{
     course.description=req.body.description
     course.price=req.body.price
     await course.save()
-
+     
   }catch(err){
     res.send({error:err})
   }
-  res.redirect('/courses/dashboard')
-   
+  res.redirect('/courses/dashboard') 
 })
     
-   
+  
 router.post('/new',async(req,res)=>{
   try{
 

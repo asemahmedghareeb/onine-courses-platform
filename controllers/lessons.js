@@ -5,7 +5,7 @@ const Course = require('../models/course');const fs = require('fs');
 const fileUpload = require("express-fileupload");
 const path = require("path");
 router.use(express.static('public')); 
-const {checkuser,adminOnly,jwtAuth,adminAndUser}=require('../middlewares/midddlewares')
+const {checkuser,adminOnly,adminAndUser}=require('../middlewares/midddlewares')
 const filesPayloadExists = require('../middlewares/filesPayloadExists');
 const fileExtLimiter = require('../middlewares/fileExtLimiter');
 const fileSizeLimiter = require('../middlewares/fileSizeLimiter');
@@ -45,7 +45,7 @@ router.get('/show/:id',async(req,res)=>{
     res.render("dashboards/lesson_vid_upload.ejs",{lesson:lesson})  
   });
      
-  
+   
   router.post('/upload/:id',
     fileUpload({ createParentPath: true }),
     filesPayloadExists,
