@@ -56,8 +56,6 @@ app.get('/logout', (req, res) => {
 //running the sever
 connectDB().then(()=>{
   app.listen(process.env.PORT||5000,()=>{
-    
-    console.log(__dirname)
     console.log(`server is running on port ${process.env.PORT}`)
   }
 )}) 

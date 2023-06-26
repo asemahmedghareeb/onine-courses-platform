@@ -1,6 +1,5 @@
 const jwt=require('jsonwebtoken')
 const User = require('../models/user');
-
 function clearCookie(res){
   res.clearCookie('token');
   res.clearCookie('refreash');
@@ -87,7 +86,6 @@ exports.adminOnly=(req, res, next) => {
     next();
   }
   else{
-    console.log("not allowed")
     res.redirect('/')
   }
 }
@@ -98,7 +96,6 @@ exports.userOnly=(req, res, next)=> {
   if(req.user.role==="user")
   next();
   else{
-    console.log("not allowed")
     res.redirect('/')
   }
 }; 
@@ -107,7 +104,6 @@ exports.adminAndUser=(req,res,next)=>{
   if(req.user.role==="user"||req.user.role==="admin")
   next();
   else{
-    console.log("not allowed")
     res.redirect('/')
   }
 } 
