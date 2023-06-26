@@ -8,7 +8,7 @@
 </head>
 <body>
     <div>
-        <h2><%= lesson.title%></h2>
+        <!-- <h2><%= lesson.title%></h2> -->
         <label>upload File </label>
         <input type="file"  class="myFiles" id="<%= lesson.id%>"  multiple />
         <button class="upload">upload</button>
@@ -25,16 +25,11 @@
         const sendFiles = async () => {
         
             const myFiles =file.files
-            
-
             const formData = new FormData()
-
             Object.keys(myFiles).forEach(key => {
                 formData.append(myFiles.item(key).name, myFiles.item(key))
             })
-            // let parent=file.parentElement
-            // let grand=parent.parentElement
-            // grand.removeChild(parent)
+ 
 
             // const response = await fetch(`https://mr-ahmed-ghareeb.cyclic.app/lessons/upload`, {
             //     method: 'POST',
@@ -57,11 +52,8 @@
                 console.log(id)
             })
         
-            function refreash(id){
-                console.log('ref')
-                              
+            function refreash(id){         
                window.location=`http://localhost:8080/lessons/lessonUpload/${id}`
-      
             }
 
     </script>
