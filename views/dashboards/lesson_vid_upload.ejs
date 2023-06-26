@@ -8,7 +8,7 @@
 </head>
 <body>
     <div>
-        <!-- <h2><%= lesson.title%></h2> -->
+        <h2><%= lesson.title%></h2>
         <label>upload File </label>
         <input type="file"  class="myFiles" id="<%= lesson.id%>"  multiple />
         <button class="upload">upload</button>
@@ -25,7 +25,10 @@
         const sendFiles = async () => {
         
             const myFiles =file.files
+            
+
             const formData = new FormData()
+
             Object.keys(myFiles).forEach(key => {
                 formData.append(myFiles.item(key).name, myFiles.item(key))
             })
@@ -52,7 +55,9 @@
                 console.log(id)
             })
         
-            function refreash(id){         
+            function refreash(id){
+              
+          
                window.location=`http://localhost:8080/lessons/lessonUpload/${id}`
             }
 

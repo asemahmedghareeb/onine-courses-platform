@@ -40,7 +40,7 @@ router.get('/show/:id',async(req,res)=>{
   router.get('/lessonUpload/:id',async(req,res)=>{
     let Id=req.params.id
     console.log(Id)
-    //getting the title to view on the lessons page
+    //getting the title to view on the lessons page 
     const lesson=await Lesson.findById(Id)
     console.log(lesson)
     res.render("dashboards/lesson_vid_upload.ejs",{lesson:lesson})  
@@ -112,7 +112,7 @@ router.post('/new/:id',async(req,res)=>{
     lessonNumber:req.body.lessonNumber
   })
   await lesson.save()
-  res.redirect(`/lessons/lessonUpload/${Id}`)
+  res.redirect(`/lessons/lessonUpload/${lesson.id}`)
 })
-
+ 
 module.exports=router  

@@ -40,9 +40,9 @@ router.get("/create-checkout-session/:id",userOnly, async (req, res) => {
           quantity: 1,
         }
       ], 
-        success_url:`https://mr-ahmed-ghareeb.cyclic.app/users/newCourse/${req.params
+        success_url:`http://localhost:8080/users/newCourse/${req.params
       .id}`,
-        cancel_url: 'https://mr-ahmed-ghareeb.cyclic.app/courses',
+        cancel_url: 'http://localhost:8080/courses',
       })
     res.json({ url: session.url })
   } catch (e) {
