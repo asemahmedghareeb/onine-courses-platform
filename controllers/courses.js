@@ -15,16 +15,14 @@ router.use(checkuser)
 
 router.get("/create-checkout-session/:id",userOnly, async (req, res) => {
   let course=await Course.findById(req.params.id)
-
+  console.log(course)
   let userCourses=req.user.courses
   console.log(userCourses)
-  
-  
   try { 
     if(userCourses.includes(course.title)){
-      console.log(bug)
        throw new Error()
     }
+    
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       mode: "payment",

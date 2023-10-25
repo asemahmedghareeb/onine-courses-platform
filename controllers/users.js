@@ -50,6 +50,7 @@ router.get('/newCourse/:id',userOnly, async(req,res)=>{
   .catch(err => {
     console.error(err);
   });
+  req.user.courses.push(course.title)
 
   res.redirect('/profile')
 })
@@ -84,17 +85,12 @@ async function isEmailDoublicatedOrNot (email){
 //get update page  
 router.get('/:id',async(req,res)=>{
     const user=await User.findById(req.params.id)
-
-    
     res.render('updateUser.ejs',{id:req.params.id , user:user})
-
 })
 
 //update user information
 router.patch('/:id',async(req,res)=>{
     const {name,password,email,role,course}=req.body
-
-
     const user=await User.findById(req.params.id)
       user.name=name
       user.email=email
@@ -111,7 +107,6 @@ router.patch('/:id',async(req,res)=>{
 router.post('/addCourse/:id',userOnly, async(req,res)=>{
   const user=req.user;
   const course= await Course.findById(req.params.id)
-
   await User.updateOne(
     {name:user.name},
     {$push:{courses:course.title}}
@@ -124,5 +119,4 @@ router.post('/addCourse/:id',userOnly, async(req,res)=>{
 
   res.redirect('/users/')
 })
-
 module.exports=router

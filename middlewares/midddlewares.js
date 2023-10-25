@@ -4,6 +4,8 @@ function clearCookie(res){
   res.clearCookie('token');
   res.clearCookie('refreash');
 }
+
+
 exports.jwtAuth = async (req, res, next) => {
       const refreash = req.cookies.refreash;
       const token = req.cookies.token;
