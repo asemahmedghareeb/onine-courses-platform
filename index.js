@@ -48,7 +48,6 @@ app.use('/users',jwtAuth,usersRouter)
 app.get('/logout', (req, res) => {
   res.clearCookie('token');
   res.clearCookie('refreash');
-  // res.redirect("/login")
   res.redirect("/login")
 });
 
@@ -57,4 +56,4 @@ connectDB().then(()=>{
   app.listen(process.env.PORT||8000,()=>{
     console.log(`server is running on port ${process.env.PORT}`)
   }
-)}) 
+)})  
