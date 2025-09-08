@@ -21,6 +21,7 @@ const userSchema = new mongoose.Schema({
   courses: [
     {
       type: String,
+      trim:true,
       required: false,
     },
   ],

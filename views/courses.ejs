@@ -18,11 +18,15 @@
             
                 <div><%= course.title %></div>
                 <div>  <%= course.description %></div>
-                <!-- <div><%= course.price %>$</div> -->
+                <div><%= course.price/100 %>$</div>
+                
+                
                 <a  id="lessons_show" href="/lessons/show/<%= course.id %>"> اسماء الدروس</a>
-                <button  class="buy" id="<%= course.id %>">
-                     اشترك في الكورس
-                </button>
+                <a href="/howToBuy">
+                    <button  class="buy" id="<%= course.id %>">
+                        اشترك في الكورس
+                    </button>
+                </a>
                 
                 
             </section>
@@ -30,7 +34,7 @@
         <% })%>
     </div>
     <script src="js/main.js"></script></script>
-    <script src="js/script.js"></script></script>
+    <!-- <script src="js/script.js"></script></script> -->
 
 </body>
 </html>

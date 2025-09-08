@@ -44,13 +44,9 @@ router.get("/newCourse/:id", userOnly, async (req, res) => {
   await User.updateOne(
     { name: user.name },
     { $push: { courses: course.title } }
-  )
-    .then((result) => {
-      console.log(result);
-    })
-    .catch((err) => {
-      console.error(err);
-    });
+  ).catch((err) => {
+    console.error(err);
+  });
   req.user.courses.push(course.title);
 
   res.redirect("/profile");
@@ -83,7 +79,13 @@ async function isEmailDoublicatedOrNot(email) {
 //get update page
 router.get("/:id", async (req, res) => {
   const user = await User.findById(req.params.id);
-  res.render("updateUser.ejs", { id: req.params.id, user: user });
+
+  const courses = await Course.find();
+  res.render("updateUser.ejs", {
+    id: req.params.id,
+    user: user,
+    courses: courses,
+  });
 });
 
 //update user information
@@ -94,7 +96,7 @@ router.patch("/:id", async (req, res) => {
   user.email = email;
   user.password = password;
   user.role = role;
-  user.courses = course;
+  user.courses.push(course);
   await user.save();
 
   res.redirect("/users/");
@@ -106,13 +108,9 @@ router.post("/addCourse/:id", userOnly, async (req, res) => {
   await User.updateOne(
     { name: user.name },
     { $push: { courses: course.title } }
-  )
-    .then((result) => {
-      console.log(result);
-    })
-    .catch((err) => {
-      console.error(err);
-    });
+  ).catch((err) => {
+    console.error(err);
+  });
 
   res.redirect("/users/");
 });

@@ -35,12 +35,15 @@
             <div>
 
                 <label for="course">اسم الكورس</label>
-                <textarea name="course" id="course">
+                <!-- <textarea name="course" id="course">
                     <%= user.courses%>
-                </textarea>
+                </textarea> -->
+                <select name="course" id="course">
+                    <% courses.map(course=>{ %>
+                        <option value="<%= course.title %>"><%= course.title %></option>
+                    <% }) %>
+                </select>
             </div>
-
-
                 <button type="submit">حفظ</button>
     </form>
     <script src="js/main.js"></script></script>

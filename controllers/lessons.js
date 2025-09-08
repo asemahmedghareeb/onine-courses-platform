@@ -2,8 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Lesson = require("../models/lesson");
 const Course = require("../models/course");
-const fs = require("fs");
-const fileUpload = require("express-fileupload");
+
 const path = require("path");
 router.use(express.static("public"));
 const {
@@ -11,9 +10,9 @@ const {
   adminOnly,
   adminAndUser,
 } = require("../middlewares/midddlewares");
-const filesPayloadExists = require("../middlewares/filesPayloadExists");
-const fileExtLimiter = require("../middlewares/fileExtLimiter");
-const fileSizeLimiter = require("../middlewares/fileSizeLimiter");
+
+const { upload } = require("../config/multer");
+const { uploadToCloudinary, cloudinary } = require("../config/cloudinary");
 
 router.get("/lesson/:id", adminAndUser, async (req, res) => {
   let Id = req.params.id;
@@ -41,41 +40,35 @@ router.use(adminOnly);
 
 router.get("/lessonUpload/:id", async (req, res) => {
   let Id = req.params.id;
-  console.log(Id);
+
   //getting the title to view on the lessons page
   const lesson = await Lesson.findById(Id);
-  console.log(lesson);
+
   res.render("dashboards/lesson_vid_upload.ejs", { lesson: lesson });
 });
 
-router.post(
-  "/upload/:id",
-  fileUpload({ createParentPath: true }),
-  filesPayloadExists,
-  fileExtLimiter([".png", ".jpg", ".jpeg", ".mp4"]),
-  fileSizeLimiter,
-  (req, res) => {
-    const files = req.files;
-    console.log(files);
+router.post("/upload/:id", upload.single("file"), async (req, res) => {
+  try {
+    const file = req.file;
 
-    Object.keys(files).forEach((key) => {
-      const filepath = path.join(
-        `${path.dirname(__dirname)}`,
-        "public\\videos",
-        req.params.id
-      ); //files[key].name
-      files[key].mv(filepath, (err) => {
-        if (err) return res.status(500).json({ status: "error", message: err });
-      });
+    const result = await uploadToCloudinary({
+      file: file,
+      folder: "platform_videos",
     });
+    const lesson = await Lesson.findById(req.params.id);
+    lesson.video = result.url;
+    lesson.publicId = result.publicId;
+    await lesson.save();
 
     return res.json({
       status: "success",
-      message: Object.keys(files).toString(),
-      url: "",
+      message: file.name,
+      url: result.url,
     });
+  } catch (err) {
+    console.log(err.message);
   }
-);
+});
 
 router.get("/:id", async (req, res) => {
   let Id = req.params.id;
@@ -97,18 +90,13 @@ router.delete("/delete/:id", async (req, res) => {
   const lesson = await Lesson.findByIdAndDelete(req.params.id);
   let course = lesson.course;
   let courseId = course.toString();
-  const filePath = path.join(
-    `${path.dirname(__dirname)}`,
-    "public\\videos",
-    req.params.id
-  );
-  fs.unlink(filePath, (err) => {
-    if (err) {
-      console.error(err);
-      return;
-    }
-    console.log(`${filePath} has been deleted.`);
-  });
+
+  await cloudinary.v2.uploader
+    .destroy({ public_id: lesson.publicId })
+    .catch((err) => {
+      console.log(err);
+    });
+
   res.redirect(`/lessons/${courseId}`);
 });
 
@@ -123,6 +111,7 @@ router.post("/new/:id", async (req, res) => {
     lessonNumber: req.body.lessonNumber,
   });
   await lesson.save();
+
   res.redirect(`/lessons/lessonUpload/${lesson.id}`);
 });
 

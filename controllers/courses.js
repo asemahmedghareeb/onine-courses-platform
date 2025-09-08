@@ -15,13 +15,18 @@ router.get("/", async (req, res) => {
   res.render("courses.ejs", { courses: courses });
 });
 
+router.get("/howToBuy", async (req, res) => {
+  const courses = await Course.find();
+  res.render("howToBuy.ejs", { courses: courses });
+});
+
 router.use(checkuser);
 
 router.get("/create-checkout-session/:id", userOnly, async (req, res) => {
   let course = await Course.findById(req.params.id);
-  console.log(course);
+
   let userCourses = req.user.courses;
-  console.log(userCourses);
+
   try {
     if (userCourses.includes(course.title)) {
       throw new Error();
@@ -53,6 +58,7 @@ router.get("/create-checkout-session/:id", userOnly, async (req, res) => {
 
 router.get("/", async (req, res) => {
   const courses = await Course.find();
+
   res.render("courses.ejs", { courses: courses });
 });
 

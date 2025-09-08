@@ -1,63 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/style.css" />
     <title>uploading vide</title>
-</head>
-<body>
+  </head>
+  <body>
     <div>
-        <h2><%= lesson.title%></h2>
-        <label>upload File </label>
-        <input type="file"  class="myFiles" id="<%= lesson.id%>"  multiple />
-        <button class="upload">upload</button>
-    </div> 
-    <video  src="/videos/<%= lesson.id %>" controls controlslist="nodownload">video</video>
+      <h2><%= lesson.title%></h2>
+      <label>upload File </label>
+      <input type="file" class="myFiles" id="<%= lesson.id%>" multiple />
+      <button class="upload">upload</button>
+    </div>
+    <video src="/videos/<%= lesson.id %>" controls controlslist="nodownload">
+      video
+    </video>
 
     <script>
-        const vid=document.getElementsByClassName('hide')[0]
-        const button = document.getElementsByClassName('upload')[0]
-        console.log(button)
-        const file=document.getElementsByClassName('myFiles')[0]
-        console.log(file)
-        let id=file.id
-        const sendFiles = async () => {
-        
-            const myFiles =file.files
-            
+      const vid = document.getElementsByClassName("hide")[0];
+      const button = document.getElementsByClassName("upload")[0];
+      console.log(button);
+      const file = document.getElementsByClassName("myFiles")[0];
+      console.log(file);
+      let id = file.id;
+      const sendFiles = async () => {
+        const myFiles = file.files;
 
-            const formData = new FormData()
+        const formData = new FormData();
+        formData.append("file", myFiles[0]); // ✅ always "file"
 
-            Object.keys(myFiles).forEach(key => {
-                formData.append(myFiles.item(key).name, myFiles.item(key))
-            })
- 
+        const response = await fetch(
+          `http://localhost:8080/lessons/upload/${id}`,
+          {
+            method: "POST",
+            body: formData,
+          }
+        );
 
-       
-            const response = await fetch(`http://localhost:8080/lessons/upload/${id}`, {
-                method: 'POST',
-                body: formData
-            })
+        const json = await response.json();
+        console.log(json);
+      };
 
-            const json = await response.json()
-            console.log(json)
-        }  
-        
-            button.addEventListener('click', (e) => {
-                console.log('click')
-                e.preventDefault(id)
-                sendFiles()
-                refreash(id)
-                console.log(id)
-            })
-        
-            function refreash(id){
-              
-          
-               window.location=`http://localhost:8080/lessons/lessonUpload/${id}`
-            }
+      button.addEventListener("click", (e) => {
+        console.log("click");
+        e.preventDefault(id);
+        sendFiles();
+        refreash(id);
+        console.log(id);
+      });
 
+      function refreash(id) {
+        window.location = `http://localhost:8080/lessons/lessonUpload/${id}`;
+      }
     </script>
-</body>
+  </body>
 </html>

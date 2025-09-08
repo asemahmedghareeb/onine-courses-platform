@@ -5,24 +5,7 @@ const { jwtAuth } = require('../../middlewares/midddlewares');
 const router = express.Router();
 const bcrypt=require('bcrypt')
 
-function checkpassword(sendedpass,hashedpassword){
-  let res;
-  bcrypt.compare(sendedpass, hashedpassword, (err, result) => {
-    if (err) {
-      console.error(err);
-      res= false
-    } else if (result === true) {
-      console.log("correct password")
-      result= true
 
-    } else {
-      console.log('Password incorrect!');
-      res= false
-  
-    }
-  })
-  return  res;
-}
 
 
 router.get('/',jwtAuth,(req,res)=>{
