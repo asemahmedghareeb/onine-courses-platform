@@ -25,9 +25,9 @@ const lessonSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  lessonNumber: {
-    type: Number,
-    required: true,
-  },
+  // lessonNumber: {
+  //   type: Number,
+  //   required: true,
+  // },
 });
 module.exports = mongoose.model("Lesson", lessonSchema);   
