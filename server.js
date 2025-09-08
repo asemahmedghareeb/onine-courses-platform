@@ -47,7 +47,7 @@ app.get("/logout", (req, res) => {
   res.clearCookie("token");
   res.clearCookie("refreash");
   res.redirect("/login");
-});
+}); 
 app.get("/howToBuy", async (req, res) => {
   const courses = await Course.find();
   res.render("howToBuy.ejs", { courses: courses });
@@ -58,4 +58,4 @@ connectDB().then(() => {
     console.log(`server is running on port http://localhost:${process.env.PORT}`);
   });
 });
- 
+  

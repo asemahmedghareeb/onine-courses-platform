@@ -3,7 +3,7 @@ const router = express.Router();
 const Course = require("../models/course");
 const Lesson = require("../models/lesson");
 require("dotenv").config();
-const stripe = require("stripe")(process.env.STRIPE_KEY);
+
 router.use(express.static("public"));
 const {
   checkuser,
@@ -22,45 +22,45 @@ router.get("/howToBuy", async (req, res) => {
 
 router.use(checkuser);
 
-router.get("/create-checkout-session/:id", userOnly, async (req, res) => {
-  let course = await Course.findById(req.params.id);
+// router.get("/create-checkout-session/:id", userOnly, async (req, res) => {
+//   let course = await Course.findById(req.params.id);
 
-  let userCourses = req.user.courses;
+//   let userCourses = req.user.courses;
 
-  try {
-    if (userCourses.includes(course.title)) {
-      throw new Error();
-    }
+//   try {
+//     if (userCourses.includes(course.title)) {
+//       throw new Error();
+//     }
 
-    const session = await stripe.checkout.sessions.create({
-      payment_method_types: ["card"],
-      mode: "payment",
-      line_items: [
-        {
-          price_data: {
-            currency: "usd",
-            product_data: {
-              name: course.title,
-            },
-            unit_amount: course.price,
-          },
-          quantity: 1,
-        },
-      ],
-      success_url: `http://localhost:8080/users/newCourse/${req.params.id}`,
-      cancel_url: "http://localhost:8080/courses",
-    });
-    res.json({ url: session.url });
-  } catch (e) {
-    res.status(500).json({ error: e.message });
-  }
-});
+//     const session = await stripe.checkout.sessions.create({
+//       payment_method_types: ["card"],
+//       mode: "payment",
+//       line_items: [
+//         {
+//           price_data: {
+//             currency: "usd",
+//             product_data: {
+//               name: course.title,
+//             },
+//             unit_amount: course.price,
+//           },
+//           quantity: 1,
+//         },
+//       ],
+//       success_url: `http://localhost:8080/users/newCourse/${req.params.id}`,
+//       cancel_url: "http://localhost:8080/courses",
+//     });
+//     res.json({ url: session.url });
+//   } catch (e) {
+//     res.status(500).json({ error: e.message });
+//   }
+// });
 
 router.get("/", async (req, res) => {
   const courses = await Course.find();
 
   res.render("courses.ejs", { courses: courses });
-});
+}); 
 
 router.use(adminOnly);
 router.get("/dashboard", async (req, res) => {
