@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../styles/style.css" />
-    <title>uploading vide</title>
+    <title>uploading video</title>
   </head>
   <body>
     <div>
@@ -31,7 +31,7 @@
         formData.append("file", myFiles[0]); // ✅ always "file"
 
         const response = await fetch(
-          `http://localhost:8080/lessons/upload/${id}`,
+          `https://mr-ahmed-ghareeb.onrender.com/lessons/upload/${id}`,
           {
             method: "POST",
             body: formData,
@@ -51,7 +51,7 @@
       });
 
       function refreash(id) {
-        window.location = `http://localhost:8080/lessons/lessonUpload/${id}`;
+        window.location = `https://mr-ahmed-ghareeb.onrender.com/lessons/lessonUpload/${id}`;
       }
     </script>
   </body>
