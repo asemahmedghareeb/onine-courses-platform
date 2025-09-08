@@ -13,13 +13,13 @@ const lessonSchema = new mongoose.Schema({
     ref: "Course",
     required: true,
   },
-  video:{
-    type:String, 
-    required:false
+  video: {
+    type: String,
+    required: false,
   },
-  publicId:{
-    type:String,
-    required:false
+  publicId: {
+    type: String,
+    required: false,
   },
   createdAt: {
     type: Date,
@@ -30,4 +30,4 @@ const lessonSchema = new mongoose.Schema({
   //   required: true,
   // },
 });
-module.exports = mongoose.model("Lesson", lessonSchema);   
+module.exports = mongoose.model("Lesson", lessonSchema);
