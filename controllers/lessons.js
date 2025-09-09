@@ -61,11 +61,12 @@ router.post("/upload/:id", upload.single("file"), async (req, res) => {
       file: file,
       folder: "platform",
     });
+    console.log(result);
+
     if (!result.url) {
       // return res.redirect(`/lessons/lessonUpload/${req.params.id}`);
       return res.render("Error.ejs", { error: "حدث خطأ أثناء رفع الفيديو" });
     }
-    console.log(result.url);
     const lesson = await Lesson.findById(req.params.id);
     lesson.video = result.url;
     lesson.publicId = result.publicId;
@@ -78,7 +79,6 @@ router.post("/upload/:id", upload.single("file"), async (req, res) => {
     });
   } catch (err) {
     return res.render("Error.ejs", { error: "حدث خطأ أثناء رفع الفيديو" });
-    console.log(err.message);
   }
 });
 
