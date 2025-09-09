@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/style.css" />
     <title><%=lesson.title%></title>
-</head>
-<body>
+  </head>
+  <body>
     <%- include('nav.ejs') %>
 
-    <br>
-   <h1><%=lesson.title%></h1> 
-    <br><br>
-    <video src="<%= lesson.video %>" controls controlslist="nodownload" style="width: 80vw; height: 60vh;">video</video>
+    <br />
+    <h1><%=lesson.title%></h1>
+    <br /><br />
+    <video src="<%= lesson.video %>" style="width: 80vw; height: 60vh">
+      video
+    </video>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/doxeIvnj6F0?si=rRm0rhX7ZBJXQTuK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <!-- <video src="<%= lesson.video %>" controls controlslist="nodownload" style="width: 80vw; height: 60vh;">video</video> -->
     <script src="../js/main.js"></script>
-    
-</body>
+  </body>
 </html>

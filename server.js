@@ -105,7 +105,7 @@ app.use((err, req, res, next) => {
       });
     } else {
       console.error("ERROR ", err);
-      res.status(500).json({
+      res.status(500).json({ 
         status: "error",
         message: err.message,
         // message: "Something went very wrong!",
