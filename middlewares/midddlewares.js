@@ -103,11 +103,9 @@ exports.adminAndUser = (req, res, next) => {
   }
 };
 
-exports.freeLessonOrCouseSubscriber = async (req, res, next) => {
+exports.freeLessonOrCourseSubscriber = async (req, res, next) => {
   const lesson = await Lesson.findById(req.params.id);
   const course = await Course.findById(lesson.course);
-  console.log(course.title)
-  // const user=User.findById(req.user.id)
   if (lesson.public) {
     next();
   } else {

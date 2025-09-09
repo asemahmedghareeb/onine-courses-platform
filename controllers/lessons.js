@@ -9,7 +9,7 @@ const {
   checkuser,
   adminOnly,
   adminAndUser,
-  freeLessonOrCouseSubscriber,
+  freeLessonOrCourseSubscriber,
 } = require("../middlewares/midddlewares");
 
 const { upload } = require("../config/multer");
@@ -19,7 +19,7 @@ const {
 } = require("../config/cloudinary");
 
 
-router.get("/lesson/:id", freeLessonOrCouseSubscriber, async (req, res) => {
+router.get("/lesson/:id", freeLessonOrCourseSubscriber, async (req, res) => {
   let Id = req.params.id;
   //getting the title to view on the lessons page
   const lesson = await Lesson.findById(Id);
@@ -37,7 +37,6 @@ router.get("/show/:id", async (req, res) => {
 
   //getting all the lessons
   let Lessons = await Lesson.find({ course: Id }).sort({ createdAt: 1 });
-  console.log(Lessons);
   res.render("lessons.ejs", { lessons: Lessons, id: Id, title: title });
 });
 
