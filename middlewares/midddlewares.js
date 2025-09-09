@@ -107,11 +107,11 @@ exports.freeLessonOrCouseSubscriber = (req, res, next) => {
   const lesson = Lesson.findById(req.params.id);
   const course = Course.findById(lesson.course);
   console.log(req.user);
-  const user=User.findById(req.user.id)
+  // const user=User.findById(req.user.id)
   if (lesson.public) {
     next();
   } else {
-    if (user.courses.includes(course.title)) {
+    if (req.user.courses.includes(course.title)) {
       next();
     } else {
       res.redirect("/");
