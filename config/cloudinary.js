@@ -21,11 +21,9 @@ const uploadToCloudinary = async ({ file, folder }) => {
             else resolve(result);
           }
         );
-        stream.end(file.buffer); 
+        stream.end(file.buffer);
       });
-    }
-
-    else {
+    } else {
       throw new Error("Unsupported file format or missing buffer");
     }
 
@@ -39,5 +37,15 @@ const uploadToCloudinary = async ({ file, folder }) => {
   }
 };
 
-module.exports = { uploadToCloudinary, cloudinary };
+const deleteFromCloudinary = async (public_id) => {
+  try {
+    await cloudinary.uploader.destroy(
+      public_id
+    );
+  } catch (error) {
+    console.error("Error deleting from Cloudinary:", error);
+    throw new Error("Failed to delete from Cloudinary");
+  }
+};
 
+module.exports = { uploadToCloudinary, cloudinary, deleteFromCloudinary };

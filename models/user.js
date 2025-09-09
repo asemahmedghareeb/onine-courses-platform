@@ -21,7 +21,7 @@ const userSchema = new mongoose.Schema({
   courses: [
     {
       type: String,
-      trim:true,
+      trim: true,
       required: false,
     },
   ],
@@ -30,6 +30,10 @@ const userSchema = new mongoose.Schema({
     required: false,
   },
   createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+  updatedAt: {
     type: Date,
     default: Date.now,
   },

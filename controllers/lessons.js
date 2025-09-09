@@ -12,7 +12,11 @@ const {
 } = require("../middlewares/midddlewares");
 
 const { upload } = require("../config/multer");
-const { uploadToCloudinary, cloudinary } = require("../config/cloudinary");
+const {
+  uploadToCloudinary,
+  cloudinary,
+  deleteFromCloudinary,
+} = require("../config/cloudinary");
 const { render } = require("ejs");
 
 router.get("/lesson/:id", adminAndUser, async (req, res) => {
@@ -33,6 +37,7 @@ router.get("/show/:id", async (req, res) => {
 
   //getting all the lessons
   let Lessons = await Lesson.find({ course: Id }).sort({ createdAt: 1 });
+  console.log(Lessons);
   res.render("lessons.ejs", { lessons: Lessons, id: Id, title: title });
 });
 
@@ -49,30 +54,30 @@ router.get("/lessonUpload/:id", async (req, res) => {
 });
 
 router.post("/upload/:id", upload.single("file"), async (req, res) => {
-  // try {
-  const file = req.file;
+  try {
+    const file = req.file;
 
-  const result = await uploadToCloudinary({
-    file: file,
-    folder: "platform",
-  });
-  if (!result.url) {
-    // return res.redirect(`/lessons/lessonUpload/${req.params.id}`);
-    return res.render("Error.ejs", { error: "حدث خطأ أثناء رفع الفيديو" });
+    const result = await uploadToCloudinary({
+      file: file,
+      folder: "platform",
+    });
+    if (!result.url) {
+      // return res.redirect(`/lessons/lessonUpload/${req.params.id}`);
+      return res.render("Error.ejs", { error: "حدث خطأ أثناء رفع الفيديو" });
+    }
+    const lesson = await Lesson.findById(req.params.id);
+    lesson.video = result.url;
+    lesson.publicId = result.publicId;
+    await lesson.save();
+
+    return res.json({
+      status: "success",
+      message: file.name,
+      url: result.url,
+    });
+  } catch (err) {
+    console.log(err.message);
   }
-  const lesson = await Lesson.findById(req.params.id);
-  lesson.video = result.url;
-  lesson.publicId = result.publicId;
-  await lesson.save();
-
-  return res.json({
-    status: "success",
-    message: file.name,
-    url: result.url,
-  });
-  // } catch (err) {
-  //   console.log(err.message);
-  // }
 });
 
 router.get("/:id", async (req, res) => {
@@ -96,12 +101,10 @@ router.delete("/delete/:id", async (req, res) => {
     const lesson = await Lesson.findByIdAndDelete(req.params.id);
     let course = lesson.course;
     let courseId = course.toString();
+    if (lesson.publicId) {
+      await deleteFromCloudinary(lesson.publicId);
+    }
 
-    await cloudinary.v2.uploader
-      .destroy({ public_id: lesson.publicId })
-      .catch((err) => {
-        console.log(err);
-      });
     res.redirect(`/lessons/${courseId}`);
   } catch (error) {
     console.log(error);
@@ -114,18 +117,17 @@ router.delete("/delete/:id", async (req, res) => {
 router.post("/new/:id", async (req, res) => {
   try {
     let Id = req.params.id;
-  
+
     const lesson = new Lesson({
       title: req.body.title,
       course: Id,
       lessonNumber: req.body.lessonNumber,
     });
     await lesson.save();
-  
+
     res.redirect(`/lessons/lessonUpload/${lesson.id}`);
-    
   } catch (error) {
-    console.log(error.message)
+    console.log(error.message);
     res.render("Error.ejs", { error: "حدث خطأ أثناء إنشاء الدرس" });
   }
 });

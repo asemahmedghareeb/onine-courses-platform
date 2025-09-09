@@ -32,7 +32,7 @@ router.get("/", async (req, res) => {
 router.use(adminOnly);
 router.get("/dashboard", async (req, res) => {
   try {
-    const courses = await Course.find();
+    const courses = await Course.find().sort({ createdAt: 1 });
     res.render("dashboards/coursesDashboard.ejs", { courses: courses });
   } catch (err) {
     res.send({ error: err });
