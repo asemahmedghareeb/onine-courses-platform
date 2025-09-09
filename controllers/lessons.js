@@ -49,16 +49,16 @@ router.get("/lessonUpload/:id", async (req, res) => {
 });
 
 router.post("/upload/:id", upload.single("file"), async (req, res) => {
-  try {
+  // try {
     const file = req.file;
 
     const result = await uploadToCloudinary({
       file: file,
-      folder:req.params.id,
+      folder:"platform videos",
     });
-    if (!result) {
-      return res.redirect(`https://dashboard.render.com/web/srv-d2vmbc6r433s73c33l5g/events`);
-      // return res.render("Error.ejs", { error: "حدث خطأ أثناء رفع الفيديو" });
+    if (!result.url) {
+      // return res.redirect(`/lessons/lessonUpload/${req.params.id}`);
+      return res.render("Error.ejs", { error: "حدث خطأ أثناء رفع الفيديو" });
     }
     const lesson = await Lesson.findById(req.params.id);
     lesson.video = result.url;
@@ -70,9 +70,9 @@ router.post("/upload/:id", upload.single("file"), async (req, res) => {
       message: file.name,
       url: result.url,
     });
-  } catch (err) {
-    console.log(err.message);
-  }
+  // } catch (err) {
+  //   console.log(err.message);
+  // }
 });
 
 router.get("/:id", async (req, res) => {
