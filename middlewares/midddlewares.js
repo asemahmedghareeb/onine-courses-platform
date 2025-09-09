@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/user");
+const Lesson = require("../models/lesson");
 function clearCookie(res) {
   res.clearCookie("token");
   res.clearCookie("refreash");
@@ -98,5 +99,21 @@ exports.adminAndUser = (req, res, next) => {
   if (req.user.role === "user" || req.user.role === "admin") next();
   else {
     res.redirect("/");
+  }
+};
+
+exports.freeLessonOrCouseSubscriber = (req, res, next) => {
+  const lesson = Lesson.findById(req.params.id);
+  const course = Course.findById(lesson.course);
+  console.log(req.user);
+  const user=User.findById(req.user.id)
+  if (lesson.public) {
+    next();
+  } else {
+    if (user.courses.includes(course.title)) {
+      next();
+    } else {
+      res.redirect("/");
+    }
   }
 };
