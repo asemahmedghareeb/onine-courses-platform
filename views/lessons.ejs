@@ -19,12 +19,21 @@
                <%= lesson.title %>
             </div>
         </h3>
-
-        <h3>
-           <a href="lesson/<%= lesson.id %>"> video</a>
-               
+        <%
+        if(lesson.public){
             
-        </h3>
+            <h3>
+               <a href="/lessons/lesson/<%= lesson.id%>">درس مجاني</a>
+                   
+            </h3>
+        }
+        else{
+            <h3>
+               <a href="/lessons/lesson/<%= lesson.id%>">درس مدفوع</a>
+                   
+            </h3>
+        }
+        %>
        
        
         
