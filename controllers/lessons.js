@@ -69,13 +69,14 @@ router.post("/upload/:id", upload.single("file"), async (req, res) => {
     lesson.video = result.url;
     lesson.publicId = result.publicId;
     await lesson.save();
-
+    
     return res.json({
       status: "success",
       message: file.name,
       url: result.url,
     });
   } catch (err) {
+    return res.render("Error.ejs", { error: "حدث خطأ أثناء رفع الفيديو" });
     console.log(err.message);
   }
 });
