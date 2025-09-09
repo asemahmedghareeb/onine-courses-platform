@@ -125,7 +125,8 @@ router.post("/new/:id", async (req, res) => {
     res.redirect(`/lessons/lessonUpload/${lesson.id}`);
     
   } catch (error) {
-    res.render("Error.ejs", { error: "حدث خطأ أثناء إنشاء الفيديو" });
+    console.log(error.message)
+    res.render("Error.ejs", { error: "حدث خطأ أثناء إنشاء الدرس" });
   }
 });
 
