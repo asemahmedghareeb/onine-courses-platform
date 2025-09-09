@@ -13,13 +13,12 @@
     <h1><%=lesson.title%></h1>
     <br /><br />
     <video
-      src="<%= lesson.video %>"
       style="width: 80vw; height: 60vh"
       controls
       controlsList="nodownload"
       oncontextmenu="return false;"
     >
-      Your browser does not support the video tag.
+      <source src="<%= lesson.video %>" type="video/mp4" />
     </video>
 
     <!-- <iframe width="560" height="315" src="<%= lesson.video %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>  -->
