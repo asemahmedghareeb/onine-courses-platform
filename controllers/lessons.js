@@ -54,7 +54,7 @@ router.post("/upload/:id", upload.single("file"), async (req, res) => {
 
   const result = await uploadToCloudinary({
     file: file,
-    folder: "platform_videos",
+    folder: "platform",
   });
   if (!result.url) {
     // return res.redirect(`/lessons/lessonUpload/${req.params.id}`);

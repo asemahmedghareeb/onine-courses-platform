@@ -31,8 +31,8 @@
         formData.append("file", myFiles[0]); // ✅ always "file"
 
         const response = await fetch(
-          `https://mr-ahmed-ghareeb.onrender.com/lessons/upload/${id}`,
-          // `http://localhost:8080/lessons/upload/${id}`,
+          // `https://mr-ahmed-ghareeb.onrender.com/lessons/upload/${id}`,
+          `http://localhost:8080/lessons/upload/${id}`,
           {
             method: "POST",
             body: formData,
@@ -52,8 +52,8 @@
       });
 
       function refreash(id) {
-        window.location = `https://mr-ahmed-ghareeb.onrender.com/lessons/lessonUpload/${id}`;
-        // window.location = `http://localhost:8080/lessons/lessonUpload/${id}`;
+        // window.location = `https://mr-ahmed-ghareeb.onrender.com/lessons/lessonUpload/${id}`;
+        window.location = `http://localhost:8080/lessons/lessonUpload/${id}`;
 
       }
     </script>
