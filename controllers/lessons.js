@@ -54,10 +54,11 @@ router.post("/upload/:id", upload.single("file"), async (req, res) => {
 
     const result = await uploadToCloudinary({
       file: file,
-      folder: "platform_videos",
+      folder:req.params.id,
     });
     if (!result) {
-      return res.render("Error.ejs", { error: "حدث خطأ أثناء رفع الفيديو" });
+      return res.redirect(`https://dashboard.render.com/web/srv-d2vmbc6r433s73c33l5g/events`);
+      // return res.render("Error.ejs", { error: "حدث خطأ أثناء رفع الفيديو" });
     }
     const lesson = await Lesson.findById(req.params.id);
     lesson.video = result.url;
