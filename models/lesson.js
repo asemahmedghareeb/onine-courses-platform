@@ -4,10 +4,10 @@ const lessonSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  content: {
-    type: String,
-    required: false,
-  },
+  // content: {
+  //   type: String,
+  //   required: false,
+  // },
   course: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Course",
@@ -16,6 +16,11 @@ const lessonSchema = new mongoose.Schema({
   video: {
     type: String,
     required: false,
+  },
+  public: {
+    type: Boolean,
+    required: false,
+    default: false,
   },
   publicId: {
     type: String,

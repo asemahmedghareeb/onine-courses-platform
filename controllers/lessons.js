@@ -17,7 +17,6 @@ const {
   cloudinary,
   deleteFromCloudinary,
 } = require("../config/cloudinary");
-const { render } = require("ejs");
 
 router.get("/lesson/:id", adminAndUser, async (req, res) => {
   let Id = req.params.id;
@@ -26,7 +25,7 @@ router.get("/lesson/:id", adminAndUser, async (req, res) => {
 
   res.render("lesson_vid_page.ejs", { lesson: lesson });
 });
-
+ 
 //read
 //this id is course id
 router.get("/show/:id", async (req, res) => {
@@ -80,7 +79,6 @@ router.post("/upload/:id", upload.single("file"), async (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
-  
   let Id = req.params.id;
   //getting the title to view on the lessons page
   const course = await Course.findById(Id);
@@ -117,11 +115,16 @@ router.delete("/delete/:id", async (req, res) => {
 router.post("/new/:id", async (req, res) => {
   try {
     let Id = req.params.id;
+    console.log(req.body);
+    if (req.body.public === "true") {
+      req.body.public = true;
+    } else {
+      req.body.public = false;
+    }
 
     const lesson = new Lesson({
-      title: req.body.title,
       course: Id,
-      lessonNumber: req.body.lessonNumber,
+      ...req.body,
     });
     await lesson.save();
 
