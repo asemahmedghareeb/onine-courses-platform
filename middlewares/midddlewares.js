@@ -103,9 +103,9 @@ exports.adminAndUser = (req, res, next) => {
   }
 };
 
-exports.freeLessonOrCouseSubscriber = (req, res, next) => {
-  const lesson = Lesson.findById(req.params.id);
-  const course = Course.findById(lesson.course);
+exports.freeLessonOrCouseSubscriber = async (req, res, next) => {
+  const lesson = await Lesson.findById(req.params.id);
+  const course = await Course.findById(lesson.course);
   console.log(course.title)
   // const user=User.findById(req.user.id)
   if (lesson.public) {
@@ -115,6 +115,7 @@ exports.freeLessonOrCouseSubscriber = (req, res, next) => {
       next();
     } else {
       res.redirect("/");
-    }
-  }
-};
+    }  
+  } 
+};  
+   
