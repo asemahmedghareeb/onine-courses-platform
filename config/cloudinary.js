@@ -11,6 +11,7 @@ cloudinary.config({
 
 const uploadToCloudinary = async ({ file, folder }) => {
   try {
+    console.log(file);
     let result;
     if (file?.buffer && Buffer.isBuffer(file.buffer)) {
       result = await new Promise((resolve, reject) => {

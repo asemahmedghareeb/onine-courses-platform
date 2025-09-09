@@ -56,15 +56,12 @@ router.get("/lessonUpload/:id", async (req, res) => {
 router.post("/upload/:id", upload.single("file"), async (req, res) => {
   try {
     const file = req.file;
-    console.log(file);
     const result = await uploadToCloudinary({
       file: file,
       folder: "platform",
     });
-    console.log(result);
 
     if (!result.url) {
-      // return res.redirect(`/lessons/lessonUpload/${req.params.id}`);
       return res.render("Error.ejs", { error: "حدث خطأ أثناء رفع الفيديو" });
     }
     const lesson = await Lesson.findById(req.params.id);
@@ -83,6 +80,7 @@ router.post("/upload/:id", upload.single("file"), async (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
+  
   let Id = req.params.id;
   //getting the title to view on the lessons page
   const course = await Course.findById(Id);
