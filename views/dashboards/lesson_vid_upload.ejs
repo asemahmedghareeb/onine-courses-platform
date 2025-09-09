@@ -20,9 +20,7 @@
     <script>
       const vid = document.getElementsByClassName("hide")[0];
       const button = document.getElementsByClassName("upload")[0];
-      console.log(button);
       const file = document.getElementsByClassName("myFiles")[0];
-      console.log(file);
       let id = file.id;
       const sendFiles = async () => {
         const myFiles = file.files;
@@ -44,11 +42,9 @@
       };
 
       button.addEventListener("click", (e) => {
-        console.log("click");
         e.preventDefault(id);
         sendFiles();
         refreash(id);
-        console.log(id);
       });
 
       function refreash(id) {

@@ -112,16 +112,21 @@ router.delete("/delete/:id", async (req, res) => {
 //create
 //this is course id
 router.post("/new/:id", async (req, res) => {
-  let Id = req.params.id;
-
-  const lesson = new Lesson({
-    title: req.body.title,
-    course: Id,
-    lessonNumber: req.body.lessonNumber,
-  });
-  await lesson.save();
-
-  res.redirect(`/lessons/lessonUpload/${lesson.id}`);
+  try {
+    let Id = req.params.id;
+  
+    const lesson = new Lesson({
+      title: req.body.title,
+      course: Id,
+      lessonNumber: req.body.lessonNumber,
+    });
+    await lesson.save();
+  
+    res.redirect(`/lessons/lessonUpload/${lesson.id}`);
+    
+  } catch (error) {
+    res.render("Error.ejs", { error: "حدث خطأ أثناء إنشاء الفيديو" });
+  }
 });
 
 module.exports = router;
