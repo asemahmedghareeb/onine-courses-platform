@@ -19,22 +19,16 @@
                <%= lesson.title %>
             </div>
         </h3>
-        <%
-        if(lesson.public){
-            
+        <% if (lesson.public) { %>
             <h3>
-               <a href="/lessons/lesson/<%= lesson.id%>">درس مجاني</a>
-                   
+              <a href="/lessons/lesson/<%= lesson.id %>">درس مجاني</a>
             </h3>
-        }
-        else{
+          <% } else { %>
             <h3>
-               <a href="/lessons/lesson/<%= lesson.id%>">درس مدفوع</a>
-                   
+              <a href="/lessons/lesson/<%= lesson.id %>">درس مدفوع</a>
             </h3>
-        }
-        %>
-       
+          <% } %>
+          
        
         
 
