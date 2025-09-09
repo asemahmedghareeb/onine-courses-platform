@@ -107,7 +107,6 @@ exports.freeLessonOrCouseSubscriber = (req, res, next) => {
   const lesson = Lesson.findById(req.params.id);
   const course = Course.findById(lesson.course);
   console.log(course.title)
-  console.log(req.user);
   // const user=User.findById(req.user.id)
   if (lesson.public) {
     next();
