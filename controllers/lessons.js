@@ -31,7 +31,7 @@ router.get("/show/:id", async (req, res) => {
   title = course.title;
 
   //getting all the lessons
-  let Lessons = await Lesson.find({ course: Id }).sort({ createdAt: -1 });
+  let Lessons = await Lesson.find({ course: Id }).sort({ createdAt: 1 });
   res.render("lessons.ejs", { lessons: Lessons, id: Id, title: title });
 });
 
