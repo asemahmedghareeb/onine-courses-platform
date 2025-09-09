@@ -13,6 +13,7 @@ const {
 
 const { upload } = require("../config/multer");
 const { uploadToCloudinary, cloudinary } = require("../config/cloudinary");
+const { render } = require("ejs");
 
 router.get("/lesson/:id", adminAndUser, async (req, res) => {
   let Id = req.params.id;
@@ -55,6 +56,9 @@ router.post("/upload/:id", upload.single("file"), async (req, res) => {
       file: file,
       folder: "platform_videos",
     });
+    if (!result) {
+      return res.render("Error.ejs", { error: "حدث خطأ أثناء رفع الفيديو" });
+    }
     const lesson = await Lesson.findById(req.params.id);
     lesson.video = result.url;
     lesson.publicId = result.publicId;
