@@ -15,11 +15,10 @@ const {
 const { upload } = require("../config/multer");
 const {
   uploadToCloudinary,
-  cloudinary,
   deleteFromCloudinary,
 } = require("../config/cloudinary");
 
-// router.get("/lesson/:id", adminAndUser, async (req, res) => {
+
 router.get("/lesson/:id", freeLessonOrCouseSubscriber, async (req, res) => {
   let Id = req.params.id;
   //getting the title to view on the lessons page

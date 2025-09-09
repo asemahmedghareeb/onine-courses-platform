@@ -8,7 +8,6 @@ router.use(express.static("public"));
 const {
   checkuser,
   adminOnly,
-  userOnly,
 } = require("../middlewares/midddlewares");
 router.get("/", async (req, res) => {
   const courses = await Course.find();
