@@ -56,7 +56,7 @@ router.get("/lessonUpload/:id", async (req, res) => {
 router.post("/upload/:id", upload.single("file"), async (req, res) => {
   try {
     const file = req.file;
-
+    console.log(file)
     const result = await uploadToCloudinary({
       file: file,
       folder: "platform",
