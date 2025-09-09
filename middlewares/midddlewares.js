@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/user");
 const Lesson = require("../models/lesson");
+const Course = require("../models/course");
 function clearCookie(res) {
   res.clearCookie("token");
   res.clearCookie("refreash");
