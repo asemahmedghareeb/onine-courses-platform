@@ -50,26 +50,26 @@ router.get("/lessonUpload/:id", async (req, res) => {
 
 router.post("/upload/:id", upload.single("file"), async (req, res) => {
   // try {
-    const file = req.file;
+  const file = req.file;
 
-    const result = await uploadToCloudinary({
-      file: file,
-      folder:"platform videos",
-    });
-    if (!result.url) {
-      // return res.redirect(`/lessons/lessonUpload/${req.params.id}`);
-      return res.render("Error.ejs", { error: "حدث خطأ أثناء رفع الفيديو" });
-    }
-    const lesson = await Lesson.findById(req.params.id);
-    lesson.video = result.url;
-    lesson.publicId = result.publicId;
-    await lesson.save();
+  const result = await uploadToCloudinary({
+    file: file,
+    folder: "platform_videos",
+  });
+  if (!result.url) {
+    // return res.redirect(`/lessons/lessonUpload/${req.params.id}`);
+    return res.render("Error.ejs", { error: "حدث خطأ أثناء رفع الفيديو" });
+  }
+  const lesson = await Lesson.findById(req.params.id);
+  lesson.video = result.url;
+  lesson.publicId = result.publicId;
+  await lesson.save();
 
-    return res.json({
-      status: "success",
-      message: file.name,
-      url: result.url,
-    });
+  return res.json({
+    status: "success",
+    message: file.name,
+    url: result.url,
+  });
   // } catch (err) {
   //   console.log(err.message);
   // }
@@ -92,17 +92,21 @@ router.get("/:id", async (req, res) => {
 //delete
 //this id is lesson id
 router.delete("/delete/:id", async (req, res) => {
-  const lesson = await Lesson.findByIdAndDelete(req.params.id);
-  let course = lesson.course;
-  let courseId = course.toString();
+  try {
+    const lesson = await Lesson.findByIdAndDelete(req.params.id);
+    let course = lesson.course;
+    let courseId = course.toString();
 
-  await cloudinary.v2.uploader
-    .destroy({ public_id: lesson.publicId })
-    .catch((err) => {
-      console.log(err);
-    });
-
-  res.redirect(`/lessons/${courseId}`);
+    await cloudinary.v2.uploader
+      .destroy({ public_id: lesson.publicId })
+      .catch((err) => {
+        console.log(err);
+      });
+    res.redirect(`/lessons/${courseId}`);
+  } catch (error) {
+    console.log(error);
+    res.render("Error.ejs", { error: "حدث خطأ أثناء حذف الفيديو" });
+  }
 });
 
 //create
