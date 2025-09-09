@@ -195,7 +195,9 @@ label{
     color: rgb(255, 184, 53);
 }
 
-
+video {
+    pointer-events: none;
+}
 
 textarea, input  {
     background-color:#101426;
