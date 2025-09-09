@@ -51,7 +51,7 @@ router.get("/lessonUpload/:id", async (req, res) => {
 
   res.render("dashboards/lesson_vid_upload.ejs", { lesson: lesson });
 });
-
+ 
 router.post("/upload/:id", upload.single("file"), async (req, res) => {
   try {
     const file = req.file;
