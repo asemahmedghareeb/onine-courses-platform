@@ -12,31 +12,15 @@
     <h1><%= lesson.title %></h1>
     <br /><br />
 
-    <!-- video sources -->
-    <!-- <% if (lesson.source === 'youtube') { %> -->
-    <!-- <iframe
-        style="width: 66vw; height: 60vh; border: none"
-        src="<%= lesson.video %>"
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen
-      ></iframe> -->
-    <!-- <% } else if (lesson.source === 'mux') { %> -->
-    <!-- <iframe
-        src="https://player.mux.com/<%= lesson.video %>"
-        style="width: 100%; border: none; aspect-ratio: 16/9"
-        allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
-        allowfullscreen
-      ></iframe> -->
-    <!-- <% } else if (lesson.source === 'cloudinary') { %> -->
-    <iframe src="<%= lesson.video %>"
-      style="width: 66vw; height: 60vh" allow="autoplay; fullscreen;
-      encrypted-media; picture-in-picture" allowfullscreen frameborder="0"
-      ></iframe
-    >
-    <!-- <% } %> -->
+    <iframe
+    src="<%= lesson.video %>
+    width="640"
+    height="360" 
+    style="height: auto; width: 100%; aspect-ratio: 640 / 360;"
+    allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+    allowfullscreen
+    frameborder="0"
+  ></iframe>
 
     <script src="../js/main.js"></script>
   </body>
