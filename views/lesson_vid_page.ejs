@@ -15,7 +15,7 @@
     <br /><br />
 
     <!-- video sources -->
-    <% if (lesson.source === 'youtube') { %>
+    <!-- <% if (lesson.source === 'youtube') { %> -->
       <!-- <iframe
         style="width: 66vw; height: 60vh; border: none"
         src="<%= lesson.video %>"
@@ -25,14 +25,14 @@
         referrerpolicy="strict-origin-when-cross-origin"
         allowfullscreen
       ></iframe> -->
-    <% } else if (lesson.source === 'mux') { %>
+    <!-- <% } else if (lesson.source === 'mux') { %> -->
       <!-- <iframe
         src="https://player.mux.com/<%= lesson.video %>"
         style="width: 100%; border: none; aspect-ratio: 16/9"
         allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
         allowfullscreen
       ></iframe> -->
-    <% } else if (lesson.source === 'cloudinary') { %>
+    <!-- <% } else if (lesson.source === 'cloudinary') { %> -->
       <iframe
         src="https://player.cloudinary.com/embed/?cloud_name=druwl8dww&public_id=<%= lesson.video %>&profile=cld-default"
         style="width: 66vw; height: 60vh"
@@ -40,7 +40,7 @@
         allowfullscreen
         frameborder="0"
       ></iframe>
-    <% } %>
+    <!-- <% } %> -->
 
     <script src="../js/main.js"></script>
   </body>
