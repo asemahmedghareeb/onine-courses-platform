@@ -13,13 +13,16 @@
     <h1><%=lesson.title%></h1>
     <br /><br />
     <video style="width: 80vw; height: 60vh" controls controlsList="nodownload">
-      <source src="<%= lesson.video %>" type="video/mp4" />
+      <source
+        src="https://res.cloudinary.com/druwl8dww/video/upload/f_mp4/platform/no5kignyh8zmjy3gnje5.mp4"
+        type="video/mp4"
+      />
       Your browser does not support the video tag.
     </video>
 
     <iframe
-      width="560"
-      height="315"
+      width="80vw"
+      height="60vh"
       src="<%= lesson.video %>"
       title="YouTube video player"
       frameborder="0"
