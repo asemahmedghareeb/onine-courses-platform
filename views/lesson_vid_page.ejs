@@ -13,14 +13,24 @@
     <h1><%=lesson.title%></h1>
     <br /><br />
 
-    <iframe
-      style="width: 80vw; height: 60vh; border: none"
+    <!-- <iframe
+      style="width: 66vw; height: 60vh; border: none"
       src="<%= lesson.video %>"
       title="YouTube video player"
       frameborder="0"
       allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
       referrerpolicy="strict-origin-when-cross-origin"
       allowfullscreen
+    ></iframe> -->
+
+    <iframe
+      src="https://player.cloudinary.com/embed/?cloud_name=druwl8dww&public_id=<%= lesson.video%>&profile=cld-default"
+      width="640"
+      height="360"
+      style="height: auto; width: 100%; aspect-ratio: 640 / 360"
+      allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+      allowfullscreen
+      frameborder="0"
     ></iframe>
 
     <script src="../js/main.js"></script>
