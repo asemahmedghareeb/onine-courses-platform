@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../styles/style.css" />
     <title><%= lesson.title %></title>
+    <script src="https://cdn.jsdelivr.net/npm/@mux/mux-player"></script>
   </head>
   <body>
     <%- include('nav.ejs') %>
@@ -12,16 +13,27 @@
     <h1><%= lesson.title %></h1>
     <br /><br />
 
+    <% if (lesson.source === 'mux') { %>
+    <mux-player
+      stream-type="on-demand"
+      playback-id="<%= lesson.video %>"
+      style="width: 75%; max-width: 800px; aspect-ratio: 16 / 9"
+      controls
+    ></mux-player>
+    <% } else { %>
     <iframe
-    src="<%= lesson.video %>"
-    width="640"
-    height="360" 
-    style="height: 60%; width: 75%; aspect-ratio: 640 / 360;"
-    allow="autoplay; fullscreen; accelerometer; gyroscope; encrypted-media; picture-in-picture;"
-    allowfullscreen
-    frameborder="0"
-  ></iframe>
+      src="<%= lesson.video %>"
+      width="640"
+      height="360"
+      style="height: 60%; width: 75%; aspect-ratio: 640 / 360"
+      allow="autoplay; fullscreen; accelerometer; gyroscope; encrypted-media; picture-in-picture;"
+      allowfullscreen
+      frameborder="0"
+    ></iframe>
+    <% } %>
 
     <script src="../js/main.js"></script>
   </body>
 </html>
+
+<!-- https://iframe.mux.com/LYpJZgRe02Kh1H6EZmuOucZQh1TySbsF3BQ3nqH2ZwMs -->
