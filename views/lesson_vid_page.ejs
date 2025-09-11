@@ -17,7 +17,9 @@
     <mux-player
       stream-type="on-demand"
       playback-id="<%= lesson.video %>"
-      style="width: 75%; max-width: 800px; aspect-ratio: 16 / 9"
+      style="height: 60%; width: 75%; aspect-ratio: 640 / 360"
+      allow="autoplay; fullscreen; accelerometer; gyroscope; encrypted-media; picture-in-picture;"
+      allowfullscreen
       controls
     ></mux-player>
     <% } else { %>
