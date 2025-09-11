@@ -1,12 +1,11 @@
-const express=require('express')
+const express = require("express");
 const router = express.Router();
-const User=require('../../models/user')
-router.get('/',(req,res)=>{
-  if(req.user){
-    res.render("Error.ejs",{error:"لقد قمت بتسجيل الدخول"})
+const User = require("../../models/user");
+router.get("/", (req, res) => {
+  if (req.user) {
+    res.render("Error.ejs", { error: " لديك حساب بالفعل" });
+  } else {
+    res.render("auth/register.ejs");
   }
-  else{
-    res.render('auth/register.ejs')
-  }
-})
-module.exports=router
+});
+module.exports = router;
