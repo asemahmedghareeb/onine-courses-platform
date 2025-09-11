@@ -22,7 +22,6 @@ router.get("/", async (req, res) => {
     }
   }
   res.redirect("/login");
-  // res.render('Error.ejs',{error:"قم بتسجيل الدخول"})
 });
 
 router.get("/:id", userOnly, async (req, res) => {
