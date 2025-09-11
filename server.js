@@ -49,8 +49,7 @@ app.use("/lessons", jwtAuth, lessonsRouter);
 app.use("/users", jwtAuth, usersRouter);
 app.get("/howToBuy", async (req, res, next) => {
   try {
-    const courses = await Course.find();
-    res.render("howToBuy.ejs", { courses: courses });
+    res.render("howToBuy.ejs");
   } catch (error) {
     next(error);
   }
