@@ -10,7 +10,9 @@
 <body>
     <%- include('../nav.ejs') %>
     <h1>تسجيل الدخول</h1>
-    <div><%= error%></div>
+    <div><% if (typeof error !== "undefined" && error) { %>
+        <div><%= error %></div>
+      <% } %></div>
     <form action="/login" method="Post" class="ff">
         <div class="form-container">
             <div>

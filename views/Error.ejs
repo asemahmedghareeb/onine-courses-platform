@@ -12,7 +12,9 @@
 
     <%- include('nav.ejs') %>
     <div id="container" style="display: flex; align-items: center; justify-content: center;">
-        <div><%= error.message%></div>
+        <% if (typeof error !== "undefined" && error) { %>
+            <div><%= error %></div>
+          <% } %>
     </div>
     <script src="js/main.js"></script>
 </body>

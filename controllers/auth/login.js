@@ -8,7 +8,7 @@ const bcrypt = require("bcrypt");
 router.get("/", jwtAuth, (req, res) => {
   if (req.user) {
     res.render("Error.ejs", { error: "لقد قمت بتسجيل الدخول" });
-  } else res.render("auth/login.ejs");
+  } else res.render("auth/login.ejs", { error: "" });
 });
 
 router.post("/", async (req, res) => {

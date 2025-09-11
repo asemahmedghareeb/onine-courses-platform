@@ -5,7 +5,8 @@ router.get("/", (req, res) => {
   if (req.user) {
     res.render("Error.ejs", { error: " لديك حساب بالفعل" });
   } else {
-    res.render("auth/register.ejs");
+    res.render("auth/register.ejs", { error: "" });
   }
 });
-module.exports = router;
+
+module.exports = router; 
