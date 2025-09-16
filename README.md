@@ -1,1 +1,1 @@
-# platform
+Online courses platform
