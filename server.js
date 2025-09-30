@@ -6,7 +6,6 @@ const app = express();
 const methodOverride = require("method-override");
 const cookieParser = require("cookie-parser");
 const { jwtAuth } = require("./middlewares/midddlewares");
-const Course = require("./models/course");
 const { globalLimiter, authLimiter } = require("./config/rateLimiter");
 
 app.use(cors());
@@ -62,19 +61,19 @@ app.get("/logout", (req, res) => {
 });
 
 // Custom Error Class
-class ApiError extends Error {
-  constructor(statusCode, message, isOperational = true, stack = "") {
-    super(message);
-    this.statusCode = statusCode;
-    this.isOperational = isOperational;
-    this.status = `${statusCode}`.startsWith("4") ? "fail" : "error";
-    if (stack) {
-      this.stack = stack;
-    } else {
-      Error.captureStackTrace(this, this.constructor);
-    }
-  }
-}
+// class ApiError extends Error {
+//   constructor(statusCode, message, isOperational = true, stack = "") {
+//     super(message);
+//     this.statusCode = statusCode;
+//     this.isOperational = isOperational;
+//     this.status = `${statusCode}`.startsWith("4") ? "fail" : "error";
+//     if (stack) {
+//       this.stack = stack;
+//     } else {
+//       Error.captureStackTrace(this, this.constructor);
+//     }
+//   }
+// }
 
 // 404 Handler
 app.use((req, res, next) => {
@@ -113,19 +112,19 @@ app.use((err, req, res, next) => {
   }
 });
 
-// process.on("unhandledRejection", (err) => {
-//   console.log("UNHANDLED REJECTION!  Shutting down...");
-//   console.log(err.name, err.message);
-//   server.close(() => {
-//     process.exit(1);
-//   });
-// });
+process.on("unhandledRejection", (err) => {
+  console.log("UNHANDLED REJECTION!  Shutting down...");
+  console.log(err.name, err.message);
+  server.close(() => {
+    process.exit(1);
+  });
+});
 
-// process.on("uncaughtException", (err) => {
-//   console.log("UNCAUGHT EXCEPTION!  Shutting down...");
-//   console.log(err.name, err.message);
-//   process.exit(1);
-// });
+process.on("uncaughtException", (err) => {
+  console.log("UNCAUGHT EXCEPTION!  Shutting down...");
+  console.log(err.name, err.message);
+  process.exit(1);
+});
 
 let server;
 connectDB().then(() => {
